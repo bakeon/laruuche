@@ -8,8 +8,10 @@
  * Factory in the laruucheApp.
  */
 angular.module('laruucheApp')
-  .factory('authFactory', function ($firebaseAuth) {
-    // Service logic
-    return $firebaseAuth();
+  .factory('AuthFactory', ["$firebaseAuth",
 
-  });
+    function($firebaseAuth){
+      return $firebaseAuth();
+    }
+
+  ]);

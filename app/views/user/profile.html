@@ -1,0 +1,26 @@
+<div layout="row" layout-align="center">
+  <md-content class="md-no-momentum" ng-show="firebaseUser">
+    <h3 class=".md-headline">Bienvenue {{ firebaseUser.displayName}} !</h3>
+    <p>Une dernière étape avant de nous rejoindre.</p>
+    <form>
+      <img ng-src="{{firebaseUser.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
+      <md-input-container>
+        <p>Je souhait devenir un : {{ userRole.name }} </p>
+        <md-radio-group ng-model="userRole.name">
+          <md-radio-button value="Mentor" class="md-primary">Mentor</md-radio-button>
+          <md-radio-button value="Elève">Elève</md-radio-button>
+        </md-radio-group>
+      </md-input-container>
+
+      <md-input-container md-no-float class="md-block">
+        <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
+      </md-input-container>
+      <md-input-container ng-show="userRole.name === 'Elève'" md-no-float class="md-block">
+        <input ng-model="user.class" type="text" placeholder="Je suis en ...">
+      </md-input-container>
+      <md-button class="md-raised md-primary">Je rejoins la Ruuche</md-button>
+
+
+    </form>
+  </md-content>
+</div>

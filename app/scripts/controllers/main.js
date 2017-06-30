@@ -10,9 +10,17 @@
 
 angular.module('laruucheApp')
 
-  .controller('MainCtrl', function ($scope, $firebaseObject, $route) {
+  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, AuthFactory) {
+    var auth = AuthFactory;
 
-    console.log($route.routes);
+    $rootScope.auth = AuthFactory;
+
+    // any time auth state changes, add the user data to scope
+    $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
+      $rootScope.firebaseUser = firebaseUser;
+      console.log(firebaseUser);
+    });
+
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
