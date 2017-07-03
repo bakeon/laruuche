@@ -1,3 +1,25 @@
 <div class="main-content">
-
+  <div class="fourthArticle">
+    <div class="section-container">
+      <div class="title-container" layout="row" layout-align="center center">
+        <h1>Comment ca marche</h1>
+        <div class="triangle triangle-1"></div>
+      </div>
+      <div class="articleWrapper layout-{{direction}}">
+        <div ng-repeat="article in homeTemplate" layout="row" layout-align="center center">
+          <div class="article-container" layout="row" layout-align="{{article.alignement}}">
+            <article class="{{article.class}}" layout="row">
+              <div>
+                <div class="triangle  triangle-2"><span class="icon lricon-{{article.title}} number-etape"></span>triangle</div>
+              </div>
+              <p class="lr-shadow">
+                <span class="icon lricon-{{article.icon}}"></span>
+                <span class="text-fonctionality">{{article.paragraphe}}</span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

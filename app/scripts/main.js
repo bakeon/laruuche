@@ -17,5 +17,21 @@
 
   firebase.initializeApp(config);
 
+
+  var body = $('body');
+  body.on('click', '.playVideoInLightbox, #closeLightboxVideo, .lightbox-shadow', function () {
+    body.toggleClass('lightbox-open');
+    $('.lightbox').html('');
+    $('.lightbox').html(templateKnow[1].lightbox);
+  });
+
+  body.on('click','.condition',function () {
+    body.toggleClass('lightbox-open');
+    $('.lightbox').html('');
+    $.get('views/mentions.mst', function (template) {
+      let rendered = Mustache.render(template);
+      $('.lightbox').html(rendered);
+    });
+  });
 })();
 

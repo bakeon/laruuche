@@ -42,9 +42,17 @@
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+    <div class="footer" layout="row" layout-align="center center">
+      <div class="container" layout="row" layout-align="center center">
+        <div id="footer" class=" layout-row-space-around">
+          <a href="#" class="lr-link-button condition">conditions générale d'utilisation</a>
+        </div>
+      </div>
+    </div>
+    <div class="lightbox-container">
+      <div class="lightbox-shadow"></div>
+      <div class="lightbox layout-column">
+
       </div>
     </div>
 
@@ -72,6 +80,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/mustache.js/mustache.js"></script>
     <!-- endbower -->
 
     <!-- CDN scripts-->
@@ -81,8 +90,10 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/app.js"></script>
+
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
