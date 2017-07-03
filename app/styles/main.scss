@@ -1,5 +1,9 @@
 // bower:scss
 // endbower
+@import "reset";
+@import "mixin";
+@import "variables";
+@import "gui";
 
 .browsehappy {
   margin: 0.2em 0;
@@ -24,7 +28,7 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
-
+  background-color: #000000;
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
@@ -32,6 +36,29 @@ body {
     line-height: 40px;
     padding-bottom: 19px;
   }
+}
+.navbar .container{
+  width:100%;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  ul{
+    li{
+      &:first-child{
+        margin-right: 10px;
+      }
+    }
+    .icon{
+      font-size:40px;
+    }
+  }
+}
+.logo{
+  width:300px;
+  height: auto;
+}
+a{
+  text-decoration: none;
+  color: $white;
 }
 
 /* Custom page footer */
@@ -67,9 +94,6 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
   /* Remove the padding we set earlier */
   .header,

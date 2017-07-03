@@ -22,19 +22,16 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
+      <div class="navbar navbar-default" role="navigation" layout="row" flex>
+        <div class="container" flex layout="row" layout-align="space-between center">
+          <div class="navbar-header" layout="row" layout-align="space-between center">
+            <a href="#/"><img class="logo" src="assets/images/logo-inline.svg" alt="logo la ruuche"></a>
             <a class="navbar-brand" href="#/">laruuche</a>
           </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#!about">About</a></li>
-              <li><a ng-href="#!login">Login</a></li>
+          <div class="collapse" layout="row" layout-align="space-between center">
+            <ul layout="row" layout-align="space-between center">
+              <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
+              <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
             </ul>
           </div>
         </div>
