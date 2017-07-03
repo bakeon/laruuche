@@ -73,6 +73,21 @@ a{
   color: $white;
 }
 
+.article1{
+  height:70vh;
+  padding: 20px;
+  box-sizing: border-box;
+  h1{
+    margin-bottom: 20px;
+    color:$blue;
+  }
+  .cta-list{
+    li:first-child{
+      margin-right: 10px;
+    }
+  }
+}
+
 .fourthArticle {
   padding: 30px 20px 40px 20px;
 
@@ -89,14 +104,6 @@ a{
     }
     h1 {
       color: $blue;
-    }
-    .big-four {
-      height: 400px;
-      width: 400px;
-      background: url("../assets/img/gros4.svg") no-repeat right top;
-      background-size: 100%;
-      z-index: 2;
-
     }
   }
   .articleWrapper>div{
@@ -175,7 +182,7 @@ a{
           height: 280px;
           width: 280px;
           font-size: 0;
-          background: url("../assets/img/alveoleombre.svg") no-repeat center center;
+          background: url("../assets/images/alveoleombre.svg") no-repeat center center;
           right: -100px;
           bottom: -30px;
           z-index: 1;
