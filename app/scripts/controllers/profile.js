@@ -13,8 +13,10 @@
           if(!$rootScope.firebaseUser){
             $location.path('/login');
           }
-          /*Retrieve User Data*/
-          $scope.user = ProfileFactory(firebaseUser.uid);
+          else{
+            /*Retrieve User Data*/
+            $scope.user = ProfileFactory(firebaseUser.uid);
+          }
         });
 
 

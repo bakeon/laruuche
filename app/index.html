@@ -39,6 +39,7 @@
 
           <div ng-show="firebaseUser">
             <p>Salut, {{ firebaseUser.displayName }}</p>
+            <a ng-href="#!panel">Ruuche Rooms</a>
             <a ng-href="#!profile">Profil</a>
             <button ng-click="auth.$signOut()">Déconnexion</button>
           </div>
