@@ -27,7 +27,6 @@ body {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
   background-color: #000000;
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -59,7 +58,7 @@ body {
     background: $black;
     width:100%;
     height:100%;
-    a{
+    a,p{
       color:$white;
     }
   }
@@ -67,6 +66,10 @@ body {
 .logo{
   width:300px;
   height: auto;
+}
+
+.login{
+  height:100vh;
 }
 a{
   text-decoration: none;
@@ -278,11 +281,6 @@ a{
 }
 
 /* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -319,9 +317,7 @@ a{
     padding-right: 0;
   }
   /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
+
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;

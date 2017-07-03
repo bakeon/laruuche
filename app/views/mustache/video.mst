@@ -1,7 +1,0 @@
-<div class="section-container layout-column-space-around-center">
-    <!--<span id="playVideo" class="icon lricon-{{icon}} pointer"></span>-->
-    <div class="playVideoInLightbox player-action"></div>
-    <span class="hive1 hive">hive</span>
-    <span class="hive2 hive">hive</span>
-</div>
-
