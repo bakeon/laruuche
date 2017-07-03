@@ -22,18 +22,17 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
+      <div class="navbar navbar-default" role="navigation" layout="row" flex>
+        <div class="container" flex layout="row" layout-align="space-between center">
+          <div class="navbar-header" layout="row" layout-align="space-between center">
+            <a href="#/"><img class="logo" src="assets/images/logo-inline.svg" alt="logo la ruuche"></a>
             <a class="navbar-brand" href="#/">laruuche</a>
           </div>
+          <div class="collapse" layout="row" layout-align="space-between center">
+            <ul layout="row" layout-align="space-between center">
+              <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
+              <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
 
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#!about">About</a></li>
             </ul>
           </div>
 
@@ -52,9 +51,18 @@
     <div ng-view=""></div>
     </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
+    <div class="footer" layout="row" layout-align="center center">
+      <div class="container" layout="row" layout-align="center center">
+        <div id="footer" layout="row " layout-align="space-between center" layout-padding>
+          <a href="#" class="lr-link-button condition">conditions générale d'utilisation</a>
+          <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
+        </div>
+      </div>
+    </div>
+    <div class="lightbox-container">
+      <div class="lightbox-shadow"></div>
+      <div class="lightbox layout-column">
+
       </div>
     </div>
 
@@ -82,6 +90,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/mustache.js/mustache.js"></script>
     <!-- endbower -->
 
     <!-- CDN scripts-->
@@ -91,6 +100,7 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/app.js"></script>
 

@@ -1,5 +1,9 @@
 // bower:scss
 // endbower
+@import "reset";
+@import "mixin";
+@import "variables";
+@import "gui";
 
 .browsehappy {
   margin: 0.2em 0;
@@ -24,13 +28,183 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
-
+  background-color: #000000;
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
+  }
+}
+.navbar .container{
+  width:100%;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  ul{
+    li{
+      &:first-child{
+        margin-right: 10px;
+      }
+    }
+    .icon{
+      font-size:40px;
+    }
+  }
+}
+
+.footer {
+  height:90px;
+  .container{
+    background: $black;
+    width:100%;
+    height:100%;
+    a{
+      color:$white;
+    }
+  }
+}
+.logo{
+  width:300px;
+  height: auto;
+}
+a{
+  text-decoration: none;
+  color: $white;
+}
+
+.article1{
+  height:70vh;
+  padding: 20px;
+  box-sizing: border-box;
+  h1{
+    margin-bottom: 20px;
+    color:$blue;
+  }
+  .cta-list{
+    li:first-child{
+      margin-right: 10px;
+    }
+  }
+}
+
+.fourthArticle {
+  padding: 30px 20px 40px 20px;
+
+  .title-container {
+    .triangle-1 {
+      position: absolute;
+      height: 280px;
+      width: 280px;
+      font-size: 0;
+      background: url("../assets/images/alveoleombre.svg") no-repeat right bottom;
+      z-index: 0;
+      bottom: 60px;
+      right: 0;
+    }
+    h1 {
+      color: $blue;
+    }
+  }
+  .articleWrapper>div{
+    &:first-child{
+      margin-top: 100px;
+    }
+  }
+
+  .article-container {
+
+  }
+  .article-container {
+    width: 100%;
+    height: 270px;
+    article {
+      width: 40vw;
+      .number-etape {
+        font-size: 100px;
+        color: $grey;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 3px;
+
+        color: $blue;
+        font-size: 20px;
+        line-height: 35px;
+        .icon {
+          color: $yellow;
+          font-size: 35px;
+        }
+      }
+    }
+    .order-1 {
+      transform: translateX(20vw);
+      & > div {
+        order: 0;
+        & > div {
+          position: absolute;
+          height: 280px;
+          width: 280px;
+          font-size: 0;
+          background: url("../assets/images/alveoleombre2.svg") no-repeat center center;
+          left: -100px;
+          bottom: -30px;
+          z-index: 1;
+          .icon {
+            position: absolute;
+            top: -20px;
+            left: 0;
+          }
+        }
+      }
+      p {
+        z-index: 2;
+        order: 1;
+        .icon {
+          margin-right: 20px;
+          order: 0;
+          & + span {
+            order: 1;
+          }
+        }
+      }
+    }
+    .order-2 {
+      transform: translateX(-20vw);
+      & > div {
+        order: 1;
+        & > div {
+          position: absolute;
+          height: 280px;
+          width: 280px;
+          font-size: 0;
+          background: url("../assets/images/alveoleombre.svg") no-repeat center center;
+          right: -100px;
+          bottom: -30px;
+          z-index: 1;
+          .icon {
+            position: absolute;
+            top: -20px;
+            right: 0;
+          }
+        }
+      }
+      p {
+        z-index: 2;
+        order: 0;
+        .icon {
+          margin-left: 20px;
+          order: 1;
+          & + span {
+            order: 0;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -75,9 +249,6 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
   /* Remove the padding we set earlier */
   .header,

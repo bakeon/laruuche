@@ -1,0 +1,57 @@
+<div class="section-container">
+    <div class="title-container layout-row-flex-start-center">
+        <div class="{{titleNumber}}"></div>
+        <h1>{{titleSection}}</h1>
+        <div class="triangle triangle-1"></div>
+    </div>
+    <div class="articleWrapper layout-{{direction}}">
+        <div class="article-container {{articles.first.class}}">
+            <article class="{{articles.first.class}}">
+                <div>
+                    <div class="triangle  triangle-2"><span class="icon lricon-{{articles.first.title}} number-etape"></span>triangle</div>
+                </div>
+                <p class="lr-shadow">
+                    <span class="icon lricon-{{articles.first.icon}}"></span>
+                    <span class="text-fonctionality">{{articles.first.paragraphe}}</span>
+                </p>
+            </article>
+        </div>
+         <div class="article-container {{articles.second.class}}">
+            <article class="{{articles.second.class}}">
+                <div>
+
+                   <div class="triangle  triangle-1"><span class="icon lricon-{{articles.second.title}} number-etape"></span>triangle</div>
+                </div>
+
+                <p class="lr-shadow">
+                    <span class="icon lricon-{{articles.second.icon}}"></span>
+                    <span class="text-fonctionality">{{articles.second.paragraphe}}</span>
+                </p>
+            </article>
+        </div>
+         <div class="article-container {{articles.third.class}}">
+            <article class="{{articles.third.class}}">
+                  <div>
+
+                        <div class="triangle  triangle-2"><span class="icon lricon-{{articles.third.title}} number-etape"></span>triangle</div>
+                  </div>
+                <p class="lr-shadow">
+                    <span class="icon lricon-{{articles.third.icon}}"></span>
+                    <span class="text-fonctionality">{{articles.third.paragraphe}}</span>
+                </p>
+            </article>
+        </div>
+         <div class="article-container {{articles.fourth.class}}">
+            <article class="{{articles.fourth.class}}">
+                <div>
+
+                    <div class="triangle  triangle-1"><span class="icon lricon-{{articles.fourth.title}} number-etape"></span>triangle</div>
+                </div>
+                <p class="lr-shadow">
+                    <span class="icon lricon-{{articles.fourth.icon}}"></span>
+                    <span class="text-fonctionality">{{articles.fourth.paragraphe}}</span>
+                </p>
+            </article>
+         </div>
+    </div>
+</div>

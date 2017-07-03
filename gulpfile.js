@@ -8,6 +8,10 @@ var lazypipe = require('lazypipe');
 var rimraf = require('rimraf');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
+let mainBowerFiles = require('main-bower-files');
+let concat = require('concat');
+let sass = require('gulp-sass');
+
 
 var yeoman = {
   app: require('./bower.json').appPath || 'app',
@@ -145,6 +149,12 @@ gulp.task('bower', function () {
       ignorePath: '..'
     }))
   .pipe(gulp.dest(yeoman.app));
+});
+
+gulp.task('vendors',function () {
+  gulp.src(mainBowerFiles('**/*.js',{includeDev:true}))
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest('scripts/'));
 });
 
 ///////////
