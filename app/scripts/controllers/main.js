@@ -10,10 +10,10 @@
 
 angular.module('laruucheApp')
 
-  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, AuthFactory) {
-    var auth = AuthFactory;
+  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, Auth) {
+    var auth = Auth;
 
-    $rootScope.auth = AuthFactory;
+    $rootScope.auth = Auth;
 
     // any time auth state changes, add the user data to scope
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {

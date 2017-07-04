@@ -2,11 +2,11 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('AuthCtrl', ["$rootScope","$scope", "AuthFactory","$location", "ProfileFactory" ,
-      function ($rootScope ,$scope, AuthFactory, $location, ProfileFactory) {
-        var auth = AuthFactory;
+    .controller('AuthCtrl', ["$rootScope","$scope", "Auth","$location", "Users" ,
+      function ($rootScope ,$scope, Auth, $location, Users) {
+        var auth = Auth;
 
-        $rootScope.auth = AuthFactory;
+        $rootScope.auth = Auth;
 
 
         // any time auth state changes, add the user data to scope
@@ -51,7 +51,7 @@
 
       function addUserData(uid, email, displayName){
         var userRef = firebase.database().ref();
-        var isUser = ProfileFactory(uid);
+        var isUser = Users.getProfile(uid);
         var fname = displayName.split(' ')[0];
         var lname = displayName.split(' ').slice(1).join(' ');
         var user = {

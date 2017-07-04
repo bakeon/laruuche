@@ -279,7 +279,15 @@ a{
   right: -15vw;
   background: url("../assets/images/bg_video-02.svg") no-repeat center center;
 }
-
+.back-link{
+  color:black;
+}
+/*Chatrooms*/
+.room-title{
+  display:block;
+  width: 100%;
+  padding:15px;
+}
 /* Custom page footer */
 
 .container-narrow > hr {
