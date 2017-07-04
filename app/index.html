@@ -21,7 +21,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" style="height: 102px">
       <div class="navbar navbar-default" role="navigation" layout="row" flex>
         <div class="container" flex layout="row" layout-align="space-between center">
           <div class="navbar-header" layout="row" layout-align="space-between center">
@@ -39,24 +39,14 @@
             <p>Salut, {{ firebaseUser.displayName }}</p>
             <a ng-href="#!panel">Ruuche Rooms</a>
             <a ng-href="#!profile">Profil</a>
-            <button ng-click="auth.$signOut()">Déconnexion</button>
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer" layout="row" layout-align="center center">
-      <div class="container" layout="row" layout-align="center center">
-        <div id="footer" layout="row " layout-align="space-between center" layout-padding>
-          <a href="#!about" class="lr-link-button condition">conditions générale d'utilisation</a>
-          <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
-        </div>
-      </div>
+    <div class="container main-container" flex>
+      <div ng-view=""></div>
     </div>
     <div class="lightbox-container">
       <div class="lightbox-shadow"></div>

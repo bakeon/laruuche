@@ -1,38 +1,40 @@
-<div layout="row" layout-wrap style="padding:30px;">
-  <div class="main">
-    <div class="sidebar">
-      <div>
-        <h2>Panel utilisateur</h2>
-      </div>
-
-      <div class="my-info">
-        <img class="user-pic" ng-src="{{  }}" />
+<div layout="row" class="container" layout-align="start start">
+  <div class="sidebar" layout="column" layout-align="space-between start">
+    <div class="up" flex layout="column" layout-align="start start">
+      <div class="my-info" layout="column" layout-align="start start">
+        <img class="user-pic" ng-src="{{  }}"/>
         <div class="user-info">
           <div class="user-name">
             {{ user.displayName }}
           </div>
           <div class="actions">
-            <md-button class="md-raise md-primary" ng-href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">Créer une chatrooms</md-button>
+            <md-button class="md-raise md-primary" ng-href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
+              Créer une chatrooms
+            </md-button>
           </div>
-          <div class="options">
+          <div class="options" layout="column" layout-align="start start">
             <md-button ng-href="#!profile"
                        title="Editer mon profil"
-                       class="md-icon-button launch" >
-              <md-icon md-svg-icon="img/icons/launch.svg"></md-icon>
+                       class="md-raised md-primary launch">
+              Éditer
             </md-button>
-            <md-button ng-click="logout" class="md-raised md-warn">Déconnexion</md-button>
+            <md-button ng-click="logout()" class="md-raised md-warn">Déconnexion</md-button>
           </div>
         </div>
       </div>
-
+    </div>
+    <div class="down" layout="column " layout-align="end start">
+      <div id="footer" layout="column " layout-align="end start" >
+        <a href="#!about" class="lr-link-button condition">conditions générale d'utilisation</a>
+        <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
+      </div>
     </div>
   </div>
-
-  <div flex="grow">
-    <h3 class="md-title" style="text-align:center;">Rejoindre une chatroom</h3>
-  </div>
-
-  <div flex="33">
+  <div layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content" layout-padding>
+      <h3 class="md-title">Rejoindre une chatroom</h3>
+    </div>
+    <md-content flex="wrap" layout="row" layout-align="start start" class="inset-shadow">
       <md-card ng-repeat="chatroom in chatrooms.all">
         <md-card-header>
           <md-card-avatar>
@@ -53,13 +55,6 @@
           </p>
         </md-card-content>
       </md-card>
+    </md-content>
   </div>
-  <div flex="33">
-
-  </div>
-  <div flex="33">
-
-  </div>
-
-
 </div>

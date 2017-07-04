@@ -1,27 +1,35 @@
-<div layout="row" layout-wrap style="padding:30px;">
-  <a class="back-link"ng-href="#!/panel">< Liste des rooms </a>
-  <div class="room-title">
-    <h2 class="md-title"># {{ chatroomName }}</h2>
-    <md-divider ng-if="!$last"></md-divider>
+<div class="chat" layout="column" layout-align="start start" flex>
+  <div class="header-room" layout="row" layout-align="start center">
+    <a class="back-link" ng-href="#!/panel">< Liste des rooms </a>
+    <div class="room-title">
+      <h2 class="md-title"># {{ chatroomName }}</h2>
+      <md-divider ng-if="!$last"></md-divider>
+    </div>
   </div>
-  <div class="messengerBox">
-    <div class="message-wrap" ng-repeat="message in messages">
-      <div class="message-info">
-        <div class="user-name">
-          {{ getUserName(message.uid) }} :
-          <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
-        </div>
-        <div class="message">
-          {{ message.body }}
+  <div class="messengerBox" flex>
+    <div class="message-wrapper">
+      <div class="message-wrap" ng-repeat="message in messages">
+        <div class="message-container isUser(message.uid)">
+          <div class="message-info">
+            <div class="user-name">
+              {{ getUserName(message.uid) }} :
+              <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
+            </div>
+            <div class="message">
+              {{ message.body }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
-  <div flex="grow">
-  <form ng-submit="sendMessage()">
-    <md-input-container class="md-block">
-      <input ng-model="message" md-maxlength="100" rows="5" md-select-on-focus placeholder="Message #{{ chatroomName }} :"></input>
-    </md-input-container>
-  </form>
+  <div class="send-message">
+    <form ng-submit="sendMessage()">
+      <md-input-container class="md-block">
+        <input ng-model="message" md-maxlength="100" rows="5" md-select-on-focus
+               placeholder="Message #{{ chatroomName }} :"></input>
+      </md-input-container>
+    </form>
   </div>
 </div>

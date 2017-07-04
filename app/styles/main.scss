@@ -90,6 +90,81 @@ a{
     }
   }
 }
+.messengerBox{
+  overflow: auto;
+  .message-wrapper{
+    padding: 20px;
+  }
+}
+.header-room{
+  height:70px;
+  background: $yellow;
+  .back-link{
+    width:200px;
+  }
+}
+.send-message{
+  height:80px;
+}
+.chat{
+  height:100%;
+  &>div{
+    width:100%;
+
+  }
+}
+.sidebar{
+  background: $bg-grey;
+  width:200px;
+  padding:10px;
+  color: $white;
+  background: $black;
+  .lr-link-button{
+    margin-bottom: 10px;
+    font-size: 10px;
+    padding: 5px;
+    color: $white;
+  }
+  #footer{
+    p{
+      font-size: 10px;
+    }
+  }
+}
+
+.chatroom{
+  &>div{
+    width:100%;
+  }
+  md-content{
+    overflow: auto;
+  }
+}
+
+.title-content{
+  color: $blue;
+  height:40px;
+}
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container.main-container{
+  height:calc(100% - 102px);
+}
+
+.container{
+  height:100%;
+  &>div{
+    height:100%;
+  }
+}
+
+.down{
+  height:200px;
+}
 
 .fourthArticle {
   padding: 30px 20px 40px 20px;
@@ -286,7 +361,6 @@ a{
 .room-title{
   display:block;
   width: 100%;
-  padding:15px;
 }
 /* Custom page footer */
 
