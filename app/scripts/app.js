@@ -40,6 +40,14 @@ angular
         templateUrl: 'views/user/panel.html',
         controller: 'PanelCtrl'
       })
+      .when('/panel/chatroom/create',{
+        templateUrl: 'views/user/create.html',
+        controller: 'PanelCtrl'
+      })
+      .when('/panel/chatroom/:id',{
+        templateUrl: 'views/user/chatroom.html',
+        controller: 'ChatRoomCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
