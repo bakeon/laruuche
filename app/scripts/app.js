@@ -48,6 +48,14 @@ angular
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl'
       })
+      .when('/admin',{
+        templateUrl:'views/admin/backoffice.html',
+        controller:'BackOfficeCtrl'
+      })
+      .when('/admin/users',{
+        templateUrl:'views/admin/users.html',
+        controller:'AdminUsersCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

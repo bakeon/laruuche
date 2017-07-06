@@ -362,6 +362,29 @@ a{
   display:block;
   width: 100%;
 }
+.angular-material-table{
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  thead{
+    border-bottom:1px solid #C1C1C1;
+    color:#6B6464;
+  }
+
+  thead tr td, tbody tr td{
+    text-align: center;
+    width:10%;
+    height: 50px;
+    padding: 16px;
+    font-size: 12px;
+  }
+
+  thead tr td{
+    font-size:14px;
+  }
+
+  tbody tr:hover td{
+    background-color: #8faeb3;
+  }
+}
 /* Custom page footer */
 
 .container-narrow > hr {
