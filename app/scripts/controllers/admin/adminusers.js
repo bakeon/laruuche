@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name laruucheApp.controller:AdminusersctrlCtrl
+ * @name laruucheApp.controller:AdminUsersCtrl
  * @description
- * # AdminusersctrlCtrl
+ * # AdminUsersCtrl
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
@@ -81,7 +81,7 @@ angular.module('laruucheApp')
         };
 
         $scope.delete = function(uid, ev){
-          if($rootScope.firebaseUser.accessLevel >= 20){
+          if($scope.user.accessLevel >= 20){
             var selectedUser = Users.getProfile(uid);
             var confirm = $mdDialog.confirm()
               .title('Voulez-vous supprimer cet utilisateur')

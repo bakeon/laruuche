@@ -34,7 +34,7 @@ angular
       })
       .when('/profile',{
         templateUrl: 'views/user/profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl as ctrl'
       })
       .when('/panel',{
         templateUrl: 'views/user/panel.html',
@@ -55,6 +55,10 @@ angular
       .when('/admin/users',{
         templateUrl:'views/admin/users.html',
         controller:'AdminUsersCtrl'
+      })
+      .when('/admin/rooms',{
+        templateUrl:'views/admin/rooms.html',
+        controller:'AdminRoomsCtrl'
       })
       .otherwise({
         redirectTo: '/'

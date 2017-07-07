@@ -1,0 +1,32 @@
+<div layout="row" layout-align="center">
+  <md-content layout-padding flex="100">
+    <h3 class=".md-headline">Editer la room</h3>
+    <form>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom :</label>
+        <input ng-model="room.name">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Type :</label>
+        <input ng-model="room.type" disabled>
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Created by :</label>
+        <input ng-model="room.createdBy" disabled>
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Created at :</label>
+        <input ng-model="room.createdAt" disabled>
+      </md-input-container>
+
+      <md-button class="md-raised md-primary" ng-click="updateProfile()">Sauvegarder</md-button>
+
+
+    </form>
+  </md-content>
+</div>
+
