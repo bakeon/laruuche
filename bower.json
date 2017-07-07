@@ -11,9 +11,7 @@
     "angular-touch": "^1.4.0",
     "jQuery": "^3.2.1",
     "angular-material": "^1.1.4",
-    "compass-sass-mixins": "*",
-    "mustache.js": "mustache#^2.3.0",
-    "angular-material-data-table": "^0.10.10"
+    "compass-sass-mixins": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

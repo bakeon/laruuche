@@ -8,9 +8,10 @@ var lazypipe = require('lazypipe');
 var rimraf = require('rimraf');
 var wiredep = require('wiredep').stream;
 var runSequence = require('run-sequence');
-let mainBowerFiles = require('main-bower-files');
-let concat = require('concat');
-let sass = require('gulp-sass');
+var mainBowerFiles = require('main-bower-files');
+var concat = require('concat');
+var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
 
 
 var yeoman = {
@@ -151,11 +152,6 @@ gulp.task('bower', function () {
   .pipe(gulp.dest(yeoman.app));
 });
 
-gulp.task('vendors',function () {
-  gulp.src(mainBowerFiles('**/*.js',{includeDev:true}))
-    .pipe(concat('vendor.js'))
-    .pipe(gulp.dest('scripts/'));
-});
 
 ///////////
 // Build //
@@ -172,8 +168,6 @@ gulp.task('client:build', ['html', 'styles'], function () {
   return gulp.src(paths.views.main)
     .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
     .pipe(jsFilter)
-    .pipe($.ngAnnotate())
-    .pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.minifyCss({cache: true}))
@@ -187,15 +181,18 @@ gulp.task('html', function () {
   return gulp.src(yeoman.app + '/views/**/*')
     .pipe(gulp.dest(yeoman.dist + '/views'));
 });
-
+gulp.task('fonts',function(){
+  return gulp.src(yeoman.app + '/assets/fonts/*')
+    .pipe(gulp.dest(yeoman.dist +'/assets/fonts'))
+});
 gulp.task('images', function () {
-  return gulp.src(yeoman.app + '/images/**/*')
+  return gulp.src(yeoman.app + '/assets/images/**/*')
     .pipe($.cache($.imagemin({
         optimizationLevel: 5,
         progressive: true,
         interlaced: true
     })))
-    .pipe(gulp.dest(yeoman.dist + '/images'));
+    .pipe(gulp.dest(yeoman.dist + '/assets/images'));
 });
 
 gulp.task('copy:extras', function () {

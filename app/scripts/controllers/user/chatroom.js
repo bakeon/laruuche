@@ -17,8 +17,8 @@ angular.module('laruucheApp')
       $scope.getUserName = '';
       $scope.getRoomName = '';
       $scope.ChatroomsList='';
-      var chatrooms = Chatrooms.all;
-      var chatRef = firebase.database().ref('chatrooms');
+      let chatrooms = Chatrooms.all;
+      let chatRef = firebase.database().ref('chatrooms');
 
 
       chatrooms.$loaded().then(function () {
@@ -30,7 +30,8 @@ angular.module('laruucheApp')
         });
         $scope.getUserName = function (uid) {
           return Users.getDisplayName(uid);
-
+        }
+      });
       $rootScope.auth.$onAuthStateChanged(function (firebaseUser) {
         $rootScope.firebaseUser = firebaseUser;
         $scope.getRoomName = function (uid) {
@@ -43,8 +44,9 @@ angular.module('laruucheApp')
           /*Retrieve User Data*/
           $scope.user = Users.getProfile(firebaseUser.uid);
           /*Add user to the chatroom*/
-          $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
+          $scope.ChatroomsList = Users.getRooms(firebaseUser.uid);
         }
+      });
         $scope.message = '';
         $scope.sendMessage = function () {
           console.log('ok');
@@ -56,15 +58,14 @@ angular.module('laruucheApp')
             }).then(function () {
               $scope.message = '';
             });
-          }
-          ;
+          };
         };
 
         let room = [];
         $scope.addRoomToUser = function () {
-          var roomToAdd = $routeParams.id;
-          var exist;
-          var userRef = firebase.database().ref().child('users').child(firebaseUser.uid).child('roomList');
+          let roomToAdd = $routeParams.id;
+          let exist;
+          let userRef = firebase.database().ref().child('users').child(firebaseUser.uid).child('roomList');
           userRef.once('value').then(function (snapshot) {
             room = snapshot.val();
             if (room == null) {
@@ -87,7 +88,7 @@ angular.module('laruucheApp')
             console.log(room);
             userRef.set(room);
           });
-          /*var isUser = Users.getProfile(uid);
+          /*let isUser = Users.getProfile(uid);
            isUser.$loaded().then(function(isUser) {
            if(isUser.email){
            //user exist
@@ -96,10 +97,10 @@ angular.module('laruucheApp')
            userRef.child('users').child('room').set(user);
            }
            });*/
-        }
+      };
 
-      });
       $scope.enterChat = function (id) {
         $location.path('/panel/chatroom/' + id);
       };
+
     }]);
