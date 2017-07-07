@@ -30,8 +30,6 @@ angular.module('laruucheApp')
         });
         $scope.getUserName = function (uid) {
           return Users.getDisplayName(uid);
-        }
-      });
 
       $rootScope.auth.$onAuthStateChanged(function (firebaseUser) {
         $rootScope.firebaseUser = firebaseUser;

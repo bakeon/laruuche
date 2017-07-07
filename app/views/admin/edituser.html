@@ -1,0 +1,52 @@
+<div layout="row" layout-align="center">
+  <md-content layout-padding flex="100">
+    <h3 class=".md-headline">Editer le profil de l'utilisateur {{ user.displayName }}</h3>
+    <form>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom d'utilisateur :</label>
+        <input ng-model="user.displayName">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Prénom :</label>
+        <input ng-model="user.firstName">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom :</label>
+        <input ng-model="user.lastName">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Bac :</label>
+        <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
+          <md-option ng-repeat="track in tracks" ng-value="track">
+            {{ track }}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
+        Mentor
+      </md-checkbox>
+
+      <md-input-container>
+        <label>Niveau d'accès :</label>
+        <md-select ng-model="user.accessLevel" class="md-no-underline">
+          <md-option ng-repeat="userLevel in userLevels" ng-value="userLevel.value">
+            {{ userLevel.displayName }}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container md-no-float class="md-block">
+        <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="updateProfile()">Sauvegarder</md-button>
+
+
+    </form>
+  </md-content>
+</div>
+

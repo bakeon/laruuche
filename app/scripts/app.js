@@ -34,7 +34,7 @@ angular
       })
       .when('/profile',{
         templateUrl: 'views/user/profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl as ProfileCtrl'
       })
       .when('/panel',{
         templateUrl: 'views/user/panel.html',
@@ -47,6 +47,18 @@ angular
       .when('/panel/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl',
+      })
+      .when('/admin',{
+        templateUrl:'views/admin/backoffice.html',
+        controller:'BackOfficeCtrl'
+      })
+      .when('/admin/users',{
+        templateUrl:'views/admin/users.html',
+        controller:'AdminUsersCtrl'
+      })
+      .when('/admin/rooms',{
+        templateUrl:'views/admin/rooms.html',
+        controller:'AdminRoomsCtrl'
       })
       .otherwise({
         redirectTo: '/'
