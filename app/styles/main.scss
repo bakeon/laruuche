@@ -271,6 +271,10 @@ h5{
 .room-wrapper{
   width:80%;
   margin: auto;
+  background: $white;
+  md-content{
+    background: $white;
+  }
 }
 .chat {
   height: 100%;
