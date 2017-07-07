@@ -160,6 +160,36 @@ h5{
   }
 }
 
+.room-list-wrapper{
+  width:100%;
+  overflow: auto;
+  .room-list{
+    width:100%;
+    .room{
+      width:80%;
+      border-radius:20px;
+      background: $black-blue;
+      box-sizing: border-box;
+      padding: 14px 8px;
+      word-wrap: break-word;
+      margin-bottom: 10px;
+      &>div>div{
+        word-wrap: break-word;
+        height:15px;
+        overflow: hidden;
+        text-align: center;
+        font-size: 12px;
+      }
+      &:focus{
+        outline-style: none;
+      }
+    }
+  }
+}
+.pointer{
+  cursor: pointer;
+}
+
 .chat {
   height: 100%;
   & > div {
@@ -264,10 +294,11 @@ h5{
   }
   md-content {
     position: relative;
-    width: 100%;
     overflow: auto;
     box-sizing: border-box;
     padding-top: 80px;
+    width: 80%;
+    margin: auto;
   }
 }
 
@@ -481,7 +512,13 @@ input[type=submit] {
   }
 }
 
+.margin-left{
+  margin-left: 10px;
+}
 
+.margin-right{
+  margin-right: 10px;
+}
 
 .title-content {
   height: 110px;
@@ -491,7 +528,7 @@ input[type=submit] {
   position: relative;
   width:100%;
   &>div{
-    height:65px;
+    height:100%;
     width:100%;
     position: relative;
     h3{
@@ -505,7 +542,6 @@ input[type=submit] {
       &:hover{
         a{
           color: $yellow;
-
         }
       }
       &:first-child {

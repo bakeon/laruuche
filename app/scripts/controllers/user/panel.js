@@ -6,9 +6,14 @@
       function ($rootScope ,$scope , Auth, $location, Users, $firebaseObject, Chatrooms,$mdDialog) {
         $rootScope.auth = Auth;
         var userUid = '';
+        $scope.getRoomName='';
+        $scope.ChatroomsList='';
         // any time auth state changes, add the user data to scope
         $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
+          $scope.getRoomName = function(uid){
+            return Chatrooms.getName(uid);
+          };
           if(!$rootScope.firebaseUser){
             $location.path('/login');
           }
@@ -17,8 +22,12 @@
             $scope.user = Users.getProfile(firebaseUser.uid);
             userUid = $scope.user.$id;
             console.log($rootScope.firebaseUser);
+            $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
           }
+
         });
+
+
 
         /*Load ChatRooms*/
         $scope.chatrooms = Chatrooms;

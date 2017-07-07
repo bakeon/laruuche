@@ -5,7 +5,7 @@
         <div class="header-app" layout="row" layout-align="center center">
           <span class="icon lricon-picto-logo"></span>
         </div>
-        <div class="back-home" layout="row" layout-align="start center">
+        <div class="back-home" layout="row" layout-align="start center" ng-href="#!">
           <span class="icon lricon-back"></span>
           <span>Accueil</span>
         </div>
@@ -35,8 +35,17 @@
         </div>
       </div>
     </div>
+    <div class="room-list-wrapper" flex layout="column" layout-align="start center">
+      <div class="room-list" layout="column" layout-align="start center">
+        <div class="room pointer" ng-repeat="room in ChatroomsList" ng-click="enterChat(room)">
+          <div layout layout-align="center center">
+            <div>{{getRoomName(room)}}</div> <span class="icon lricon-messages margin-left"></span>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="down" layout="column " layout-align="center center">
-      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings"></span></a>
+      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </div>
   <div class="chat content-app" layout="column" layout-align="start start" flex>
@@ -45,7 +54,7 @@
       <div class="room-title" flex>
         <h2>{{ chatroomName }}</h2>
       </div>
-      <button class="lr-add-button" layout="row" layout-align="center center"><span class="icon lricon-plus"></span>Ajouter cette room</button>
+      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser(chatroom.$id)"><span class="icon lricon-plus"></span>Ajouter cette room</button>
     </div>
     <div class="messengerBox" flex>
       <div class="message-wrapper">
@@ -65,7 +74,6 @@
                   {{ message.body }}
                 </div>
               </div>
-
             </div>
           </div>
         </div>
