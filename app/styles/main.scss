@@ -269,11 +269,12 @@ h5{
   cursor: pointer;
 }
 .room-wrapper{
-  width:80%;
+  width:100%;
   margin: auto;
   background: $white;
   md-content{
     background: $white;
+    padding: 40px;
   }
 }
 .chat {
@@ -371,7 +372,6 @@ h5{
 
 .room-wrapper{
   box-sizing: border-box;
-  padding-top: 80px;
 }
 
 .chatroom {
