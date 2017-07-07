@@ -181,16 +181,12 @@ gulp.task('html', function () {
     .pipe(gulp.dest(yeoman.dist + '/views'));
 });
 gulp.task('fonts',function(){
-  return gulp.src(yeoman.app + 'assets/fonts/*')
-})
+  return gulp.src(yeoman.app + '/assets/fonts/*')
+    .pipe(gulp.dest(yeoman.dist +'/assets/fonts'));
+});
 gulp.task('images', function () {
-  return gulp.src(yeoman.app + 'assets/images/**/*')
-    .pipe($.cache($.imagemin({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true
-    })))
-    .pipe(gulp.dest(yeoman.dist + '/images'));
+  return gulp.src(yeoman.app + '/assets/images/**/*')
+    .pipe(gulp.dest(yeoman.dist + '/assets/images'));
 });
 
 gulp.task('copy:extras', function () {

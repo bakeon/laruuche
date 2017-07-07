@@ -70,17 +70,28 @@
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
         <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.all" layout="column" layout-align="center center">
+        <div class="card-header" layout="column" layout-align="center center">
+          <div>
+            <span class="icon lricon-messages"></span>
+          </div>
+          <div class="card-header-text">
+            <span class="title-card">{{ chatroom.name }}</span>
+          </div>
+        </div>
+        <div class="card-actions" layout="row" layout-align="start center">
+          <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
+        </div>
+      </div>
+        <div class="card-room inactive-room" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
-              <span class="icon lricon-messages"></span>
+              <span class="icon lricon-lock"></span>
             </div>
             <div class="card-header-text">
-              <span class="title-card">{{ chatroom.name }}</span>
+              <span class="title-card">Disponible soon !</span>
             </div>
           </div>
-          <div class="card-actions" layout="row" layout-align="start center">
-            <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
-          </div>
+
         </div>
       </md-content>
     </div>

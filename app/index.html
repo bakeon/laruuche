@@ -5,6 +5,7 @@
     <title>La Ruuche</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -26,10 +27,10 @@
     <div class="container main-container" flex>
       <div ng-view=""></div>
     </div>
-    <div class="lightbox-container">
-      <div class="lightbox-shadow"></div>
-      <div class="lightbox layout-column">
-        <iframe width="854" height="480" src="https://www.youtube.com/embed/eK1iQ6be4Zg" frameborder="0" allowfullscreen></iframe>
+    <div class="lightbox-container" layout="row" layout-align="center center">
+      <div class="lightbox-shadow" layout layout-align="center center"></div>
+      <div class="lightbox">
+        <iframe width="100%" height="480" src="https://www.youtube.com/embed/eK1iQ6be4Zg" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -62,7 +63,6 @@
     <!-- CDN scripts-->
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
-
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
