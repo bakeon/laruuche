@@ -1,6 +1,5 @@
 <div layout="row" class="container" layout-align="start start">
-
-  <div class="sidebar" layout="column" layout-align="space-between start">
+  <div class="sidebar shadow" layout="column" layout-align="space-between start">
     <div class="up-container">
       <div class="up" flex layout="column" layout-align="start start">
         <div class="header-app" layout="row" layout-align="center center">
@@ -40,37 +39,42 @@
       <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings"></span></a>
     </div>
   </div>
-  <div class="chat" layout="column" layout-align="start start" flex>
-    <div class="header-room" layout="row" layout-align="start center">
-      <a class="back-link" ng-href="#!/panel">< Liste des rooms </a>
-      <div class="room-title">
-        <h2 class="md-title"># {{ chatroomName }}</h2>
-        <md-divider ng-if="!$last"></md-divider>
+  <div class="chat content-app" layout="column" layout-align="start start" flex>
+    <div class="header-room shadow" layout="row" layout-align="space-between center">
+      <a class="back" ng-href="#!/panel" layout layout-align="start center"><span class="icon lricon-back"></span>Retour</a>
+      <div class="room-title" flex>
+        <h2>{{ chatroomName }}</h2>
       </div>
+      <button class="lr-add-button" layout="row" layout-align="center center"><span class="icon lricon-plus"></span>Ajouter cette room</button>
     </div>
     <div class="messengerBox" flex>
       <div class="message-wrapper">
-        <div class="message-wrap" ng-repeat="message in messages">
+        <h5>Exprime toi !</h5>
+        <div class="message" ng-repeat="message in messages">
           <div class="message-container isUser(message.uid)">
-            <div class="message-info">
-              <div class="user-name">
-                {{ getUserName(message.uid) }} :
-                <span class="timestamp">{{ message.timestamp | date:'short' }}</span>
+            <div class="message-info" layout layout-align="start start">
+              <div class="left">
+                <img alt="photo profil user"/>
               </div>
-              <div class="message">
-                {{ message.body }}
+              <div class="right" layout="column" layout-align="start start">
+                <div class="user-name" layout="row" layout-align="start center">
+                  {{ getUserName(message.uid) }}
+                  <span class="timestamp">{{ message.timestamp | date:'h:mm ' }}</span>
+                </div>
+                <div class="message-text">
+                  {{ message.body }}
+                </div>
               </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="send-message">
+    <div class="send-message shadow-top" layout layout-align="center center">
       <form ng-submit="sendMessage()">
-        <md-input-container class="md-block">
-          <input ng-model="message" md-maxlength="100" rows="5" md-select-on-focus
-                 placeholder="Message #{{ chatroomName }} :"></input>
-        </md-input-container>
+          <input ng-model="message" rows="5"
+                 placeholder="Message"/>
       </form>
     </div>
   </div>

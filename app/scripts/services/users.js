@@ -20,6 +20,9 @@ angular.module('laruucheApp')
       getDisplayName: function(uid){
         return users.$getRecord(uid).displayName;
       },
+      getPhotoURL: function(uid){
+        return users.$getRecord(uid).photoURL;
+      },
       all: users
 
     };

@@ -1,5 +1,5 @@
 <div layout="row" class="container" layout-align="start start">
-  <div class="sidebar" layout="column" layout-align="space-between start">
+  <div class="sidebar shadow" layout="column" layout-align="space-between start">
     <div class="up-container">
       <div class="up" flex layout="column" layout-align="start start">
         <div class="header-app" layout="row" layout-align="center center">
@@ -39,8 +39,8 @@
         <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings"></span></a>
     </div>
   </div>
-  <div layout="column" layout-align="start start" flex class="chatroom">
-    <div class="title-content" layout layout-align="start start">
+  <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
         <h3 class="md-title">Rejoindre une alvéole</h3>
         <ul class="social" layout="row" layout-align="space-between center">
@@ -58,7 +58,7 @@
         </div>s
       </form>
     </div>
-    <div class="wrapper" layout="column" layout-align="start start" flex>
+    <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
         <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.all" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">

@@ -52,6 +52,7 @@
       function addUserData(uid, email, displayName){
         var userRef = firebase.database().ref();
         var isUser = Users.getProfile(uid);
+        var photo = $rootScope.firebaseUser.photoURL;
         var fname = displayName.split(' ')[0];
         var lname = displayName.split(' ').slice(1).join(' ');
         var user = {
@@ -59,6 +60,7 @@
             displayName:displayName,
             firstName:fname,
             lastName:lname,
+            photoURL:photo,
             accessLevel:10
         };
         isUser.$loaded().then(function(isUser) {

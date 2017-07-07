@@ -20,9 +20,6 @@
           }
         });
 
-        $scope.user
-
-
         /*Data for profile*/
         $scope.userRole = {
           name: 'Elève'

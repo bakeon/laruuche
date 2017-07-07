@@ -100,17 +100,64 @@ a {
     padding: 20px;
   }
 }
+.shadow{
+  -moz-box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+  -webkit-box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+  -o-box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+}
 
+.shadow-top{
+  -moz-box-shadow: 2px -2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+  -webkit-box-shadow: 2px -2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+  -o-box-shadow: 2px -2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+  box-shadow: 2px -2px 5px 2px rgba(0, 0, 0, $shadow-opacity);
+}
+h5{
+  text-align:center;
+  margin-bottom:30px;
+}
 .header-room {
-  height: 70px;
-  background: $yellow;
+  height: 65px;
+  background: $white;
+  z-index: 5;
+  .lricon-delete{
+    color: $black;
+    margin-left: 30px;
+  }
   .back-link {
     width: 200px;
+  }
+  .lr-add-button{
+    margin-right: 30px;
   }
 }
 
 .send-message {
   height: 80px;
+  form{
+    width:90%;
+    height:60%;
+    border-radius:5px;
+    input{
+      margin:0;
+      height:100%;
+      width:100%;
+      border:2px solid $yellow;
+      border-radius:5px;
+      &:focus{
+        outline-style: none;
+      }
+    }
+  }
+}
+
+.back{
+  color: $black;
+  margin-left: 30px;
+  .icon{
+    margin-right:10px;
+  }
 }
 
 .chat {
@@ -120,9 +167,12 @@ a {
 
   }
 }
-
+.content-app{
+  z-index: 2;
+}
 .sidebar {
   text-transform: uppercase;
+  z-index:10;
   .save {
     height: 65px;
     color: $white;
@@ -203,6 +253,11 @@ a {
   }
 }
 
+.room-wrapper{
+  box-sizing: border-box;
+  padding-top: 80px;
+}
+
 .chatroom {
   & > div {
     width: 100%;
@@ -270,6 +325,32 @@ a {
   cursor: pointer;
   background: transparent;
   &.black{
+    border: 1px solid $white;
+    color: $white;
+    &:hover{
+      background: $white;
+      color: $yellow;
+    }
+  }
+  &:hover {
+    color: $white;
+    background: $yellow;
+  }
+}
+.lr-add-button {
+  height:40px;
+  padding: 0 20px;
+  border-radius: 20px;
+  color: $white;
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  background: $yellow;
+  border:none;
+  .icon{
+    margin-right: 10px;
+  }
+  &.black{
     border: 1px solid $black;
     &:hover{
       background: $black;
@@ -292,6 +373,11 @@ a {
 .card-header-text{
   margin:20px 0;
   color: $white;
+}
+
+.message{
+  padding: 20px;
+  border-top:1px solid $yellow;
 }
 
 
@@ -395,12 +481,15 @@ input[type=submit] {
   }
 }
 
+
+
 .title-content {
   height: 110px;
   color: $white;
   background: url("../assets/images/bg_header.jpg") no-repeat center center;
   background-size: cover;
   position: relative;
+  width:100%;
   &>div{
     height:65px;
     width:100%;
@@ -411,6 +500,7 @@ input[type=submit] {
   }
   .social {
     font-size: 40px;
+    margin-right: 30px;
     li{
       &:hover{
         a{
@@ -422,6 +512,27 @@ input[type=submit] {
         margin-right: 10px;
       }
     }
+  }
+}
+
+.timestamp{
+  color: $light-grey;
+  margin-left: 15px;
+}
+.user-name{
+  margin-bottom: 20px;
+}
+.left{
+  margin-right: 15px;
+  width:40px;
+  height:40px;
+  border-radius:20px;
+  border:1px solid $yellow;
+  position: relative;
+  overflow: hidden;
+  img{
+    width:100%;
+    height:auto;
   }
 }
 
@@ -655,7 +766,9 @@ input[type=submit] {
 /*Chatrooms*/
 .room-title {
   display: block;
-  width: 100%;
+  color: $yellow;
+  font-size: 16px;
+  text-align: center;
 }
 
 /* Custom page footer */
