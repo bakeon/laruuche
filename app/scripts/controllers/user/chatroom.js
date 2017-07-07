@@ -63,6 +63,7 @@ angular.module('laruucheApp')
         let room = [];
         $scope.addRoomToUser = function () {
           var roomToAdd = $routeParams.id;
+          var exist;
           var userRef = firebase.database().ref().child('users').child(firebaseUser.uid).child('roomList');
           userRef.once('value').then(function (snapshot) {
             room = snapshot.val();
@@ -71,7 +72,17 @@ angular.module('laruucheApp')
               room[0] = roomToAdd;
             }
             else {
-              room.push(roomToAdd);
+              room.forEach(function (value) {
+                if (value==roomToAdd){
+                  exist=true;
+                }
+                else{
+                  exist=false
+                }
+              });
+              if(exist==false){
+                room.push(roomToAdd);
+              }
             }
             console.log(room);
             userRef.set(room);
