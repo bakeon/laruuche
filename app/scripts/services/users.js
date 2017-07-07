@@ -8,12 +8,15 @@
  * Factory in the laruucheApp.
  */
 angular.module('laruucheApp')
-  .factory('Users', function ($firebaseArray, $firebaseObject) {
+  .factory('Users', function ($firebaseArray, $firebaseObject, $firebaseUtils) {
 
     var usersRef = firebase.database().ref('users');
     var users = $firebaseArray(usersRef);
 
     var Users = {
+      getTags: function(uid){
+        return $firebaseObject(usersRef.child(uid).child('tags'));
+      },
       getProfile: function(uid){
         return $firebaseObject(usersRef.child(uid));
       },

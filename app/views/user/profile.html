@@ -26,31 +26,47 @@
       <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
         Je souhaite devenir un mentor
       </md-checkbox>
-      <md-autocomplete
-        ng-disabled="ctrl.isDisabled"
-        md-no-cache="ctrl.noCache"
-        md-selected-item="ctrl.selectedItem"
-        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-        md-search-text="ctrl.searchText"
-        md-selected-item-change="ctrl.selectedItemChange(item)"
-        md-items="item in ctrl.querySearch(ctrl.searchText)"
+      <!--
+      <p>Mon dernier diplome :</p>
+      <md-input-container>
+        <md-select ng-model="degree.level" class="md-no-underline" placeholder="Niveau">
+          <md-option ng-repeat="degreeLevel in degreesLevel" ng-value="degreeLevel">
+            {{ degreeLevel }}
+          </md-option>
+        </md-select>
+      </md-input-container>-->
+      <!--<md-autocomplete flex="50" ng-model="degree.name"
+        ng-disabled="ProfileCtrl.isDisabled"
+        md-no-cache="ProfileCtrl.noCache"
+        md-selected-item="ProfileCtrl.selectedItem"
+        md-search-text-change="ProfileCtrl.searchTextChange(ProfileCtrl.searchText)"
+        md-search-text="ProfileCtrl.searchText"
+        md-selected-item-change="ProfileCtrl.selectedItemChange(item)"
+        md-items="item in ProfileCtrl.querySearch(ProfileCtrl.searchText)"
         md-item-text="item.display"
         md-min-length="0"
-        placeholder="Sélectionner votre dernier diplome">
+        placeholder="Chef de projet Multimédia">
         <md-item-template>
-          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+          <span md-highlight-text="ProfileCtrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
         </md-item-template>
         <md-not-found>
-          No states matching "{{ctrl.searchText}}" were found.
-          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+          Pas de résultats pour {{ProfileCtrl.searchText}}.
+          <a ng-click="ProfileCtrl.newDegree(ProfileCtrl.searchText, degree.level)">Ajoutez le votre.</a>
         </md-not-found>
-      </md-autocomplete>
+      </md-autocomplete>-->
 
       <md-input-container md-no-float class="md-block">
         <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
       </md-input-container>
-      <md-button class="md-raised md-primary" ng-click="updateProfile()">Je rejoins la Ruuche</md-button>
+      <!--Mon domaine de compétences-->
+      <md-chips ng-model="userTags" readonly="ProfileCtrl.readonly"
+                md-removable="ProfileCtrl.removable" placeholder="Entrer un domaine d'activité...">
+        <md-chip-template>
+          <strong>{{$chip}}</strong>
+        </md-chip-template>
+      </md-chips>
 
+      <md-button class="md-raised md-primary" ng-click="updateProfile()">Je rejoins la Ruuche</md-button>
 
     </form>
   </md-content>

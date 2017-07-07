@@ -34,7 +34,7 @@ angular
       })
       .when('/profile',{
         templateUrl: 'views/user/profile.html',
-        controller: 'ProfileCtrl as ctrl'
+        controller: 'ProfileCtrl as ProfileCtrl'
       })
       .when('/panel',{
         templateUrl: 'views/user/panel.html',

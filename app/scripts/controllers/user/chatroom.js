@@ -26,7 +26,7 @@ angular.module('laruucheApp')
       $scope.messages = Messages.getChatMessages($routeParams.id);
       $scope.getUserName = function(uid){
           return Users.getDisplayName(uid);
-        }
+      }
     });
 
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
@@ -37,8 +37,6 @@ angular.module('laruucheApp')
       else{
         /*Retrieve User Data*/
         $scope.user = Users.getProfile(firebaseUser.uid);
-        /*Add user to the chatroom*/
-
       }
 
       $scope.message = '';
