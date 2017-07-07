@@ -52,6 +52,32 @@ body {
     }
   }
 }
+.header-main{
+  background: url("../assets/images/bg_header_2.jpg")no-repeat center center;
+  background-size: cover;
+  color:$white;
+  height:80vh;
+  .navbar-header{
+    height:80%;
+  }
+  &>div{
+    width:80%;
+    margin: auto;
+    &>div{
+      width:100%;
+    }
+  }
+  h1{
+    font-size: 33px;
+    margin-bottom: 25px;
+  }
+  p{
+    font-size: 22px;
+    max-width: 450px;
+    line-height: 35px;
+    margin-bottom: 30px;
+  }
+}
 
 .footer {
   height: 90px;
@@ -189,7 +215,10 @@ h5{
 .pointer{
   cursor: pointer;
 }
-
+.room-wrapper{
+  width:80%;
+  margin: auto;
+}
 .chat {
   height: 100%;
   & > div {
@@ -297,8 +326,6 @@ h5{
     overflow: auto;
     box-sizing: border-box;
     padding-top: 80px;
-    width: 80%;
-    margin: auto;
   }
 }
 
@@ -368,6 +395,22 @@ h5{
     background: $yellow;
   }
 }
+
+.lr-yellow-button {
+  height:40px;
+  padding: 10px 40px;
+  border-radius: 20px;
+  color: $white;
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  background: $yellow;
+  &:hover {
+    color: $white;
+    background: $yellow;
+  }
+}
+
 .lr-add-button {
   height:40px;
   padding: 0 20px;
@@ -547,6 +590,17 @@ input[type=submit] {
       &:first-child {
         margin-right: 10px;
       }
+    }
+  }
+}
+
+.social{
+  position: absolute;
+  right:30px;
+  top:30px;
+  li{
+    .icon{
+      font-size: 40px;
     }
   }
 }

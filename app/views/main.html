@@ -1,36 +1,30 @@
 <div class="main-content">
-  <div class="header" style="height: 102px">
-    <div class="navbar navbar-default" role="navigation" layout="row" flex>
-      <div class="container" flex layout="row" layout-align="space-between center">
-        <div class="navbar-header" layout="row" layout-align="space-between center">
+  <div class="header-main">
+      <div class="container" flex layout="column" layout-align="space-around center">
+        <div class="navbar-header" layout="row" layout-align="center center">
           <a href="#/"><img class="logo" src="assets/images/logo-inline.svg" alt="logo la ruuche"></a>
         </div>
-        <div class="collapse" layout="row" layout-align="space-between center">
-          <ul layout="row" layout-align="space-between center">
-            <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
-            <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
-
-          </ul>
+        <ul layout="row" class="social" layout-align="space-between center">
+          <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/"
+                 target="_blank"><span class="icon lricon-facebook"></span></a></li>
+          <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
+                 target="_blank"><span class="icon lricon-twitter"></span></a></li>
+        </ul>
+        <div layout="column" layout-align="start start">
+          <h1>Ta conseillère d'orientation en mieux</h1>
+          <p>la ruuche est la première plateforme de conseil pour les étudiants par des étudiants</p>
+          <div layout>
+            <ul layout="row" layout-align="start center" class="cta-list">
+              <li><a class="lr-yellow-button" href="#!login">Essayer</a></li>
+            </ul>
+          </div>
         </div>
-
-        <div ng-show="firebaseUser">
+        <!--<div ng-show="firebaseUser">
           <p>Salut, {{ firebaseUser.displayName }}</p>
           <a ng-href="#!panel">Ruuche Rooms</a>
           <a ng-href="#!profile">Profil</a>
-        </div>
-
+        </div>-->
       </div>
-    </div>
-  </div>
-  <div class="article1" layout="column" layout-align="space-around flex-start">
-    <h1>Qu'est ce que la ruuche</h1>
-    <p>la ruuche bla bla bla</p>
-    <div layout flex>
-      <ul layout="row" layout-align="start center" class="cta-list">
-        <li><a class="lr-link-button" href="#!login">Rejoindre</a></li>
-        <li><a class="lr-link-button" href="/#comment">comment ca marche</a></li>
-      </ul>
-    </div>
   </div>
   <div class="video">
     <div class="section-container layout-column-space-around-center">
@@ -50,7 +44,8 @@
           <div class="article-container" layout="row" layout-align="{{article.alignement}}">
             <article class="{{article.class}}" layout="row">
               <div>
-                <div class="triangle  triangle-2"><span class="icon lricon-{{article.title}} number-etape"></span>triangle</div>
+                <div class="triangle  triangle-2"><span class="icon lricon-{{article.title}} number-etape"></span>triangle
+                </div>
               </div>
               <p class="lr-shadow">
                 <span class="icon lricon-{{article.icon}}"></span>
