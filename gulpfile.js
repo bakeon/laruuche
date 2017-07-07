@@ -11,7 +11,6 @@ var runSequence = require('run-sequence');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('concat');
 var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
 
 
 var yeoman = {
@@ -182,17 +181,16 @@ gulp.task('html', function () {
     .pipe(gulp.dest(yeoman.dist + '/views'));
 });
 gulp.task('fonts',function(){
-  return gulp.src(yeoman.app + '/assets/fonts/*')
-    .pipe(gulp.dest(yeoman.dist +'/assets/fonts'))
-});
+  return gulp.src(yeoman.app + 'assets/fonts/*')
+})
 gulp.task('images', function () {
-  return gulp.src(yeoman.app + '/assets/images/**/*')
+  return gulp.src(yeoman.app + 'assets/images/**/*')
     .pipe($.cache($.imagemin({
         optimizationLevel: 5,
         progressive: true,
         interlaced: true
     })))
-    .pipe(gulp.dest(yeoman.dist + '/assets/images'));
+    .pipe(gulp.dest(yeoman.dist + '/images'));
 });
 
 gulp.task('copy:extras', function () {
