@@ -14,6 +14,7 @@
           $rootScope.firebaseUser = firebaseUser;
           if(!$rootScope.firebaseUser){
             $location.path('/login');
+            console.log($rootScope.firebaseUser);
           }
           else{
             /*Retrieve User Data*/
@@ -22,8 +23,6 @@
             console.log($scope.getTags);
           }
         });
-
-
 
         /*Data for profile*/
         $scope.userTags = [];

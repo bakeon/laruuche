@@ -11,7 +11,6 @@ angular.module('laruucheApp')
   .factory('Chatrooms', function ($firebaseArray, $firebaseObject) {
     var usersRef = firebase.database().ref('users');
     var users = $firebaseArray(usersRef);
-
     var ref = firebase.database().ref("chatrooms");
 
     var chatrooms = $firebaseArray(ref);
@@ -22,6 +21,9 @@ angular.module('laruucheApp')
       },
       getCreatorName: function(uid){
         return users.$getRecord(uid).displayName;
+      },
+      getName:function (uid) {
+        return chatrooms.$getRecord(uid).name;
       },
       all: chatrooms
     };

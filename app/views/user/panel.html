@@ -1,60 +1,89 @@
 <div layout="row" class="container" layout-align="start start">
-  <div class="sidebar" layout="column" layout-align="space-between start">
-    <div class="up" flex layout="column" layout-align="start start">
-      <div class="my-info" layout="column" layout-align="start start">
-        <img class="user-pic" ng-src="{{  }}"/>
-        <div class="user-info">
-          <div class="user-name">
-            {{ user.displayName }}
-          </div>
-          <div class="actions">
-            <md-button class="md-raise md-primary" ng-href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
-              Créer une chatrooms
-            </md-button>
-          </div>
-          <div class="options" layout="column" layout-align="start start">
-            <md-button ng-href="#!profile"
-                       title="Editer mon profil"
-                       class="md-raised md-primary launch">
+  <div class="sidebar shadow" layout="column" layout-align="space-between start">
+    <div class="up-container">
+      <div class="up" flex layout="column" layout-align="start start">
+        <div class="header-app" layout="row" layout-align="center center">
+          <span class="icon lricon-picto-logo"></span>
+        </div>
+        <div class="back-home" layout="row" layout-align="start center" ng-href="#/">
+          <span class="icon lricon-back"></span>
+          <span>Accueil</span>
+        </div>
+        <div class="my-info" layout="column" layout-align="center center" layout-padding>
+          <div class="edit" layout="row" layout-align="end center">
+            <a href="#!profile"
+               title="Editer mon profil"
+               class="md-raised md-primary launch" layout="row" layout-align="end center">
+              <span class="icon lricon-edit"></span>
               Éditer
-            </md-button>
-            <md-button ng-click="logout()" class="md-raised md-warn">Déconnexion</md-button>
+            </a>
+          </div>
+          <img class="user-pic" ng-src="{{firebaseUser.photoURL}}"/>
+          <div class="user-info">
+            <div class="user-name">
+              {{ user.displayName }}
+            </div>
+            <div class="actions">
+              <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
+                Créer une chatrooms
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="save" layout layout-align="center center">
+          alvéoles enregistrées
+        </div>
+      </div>
+    </div>
+    <div class="room-list-wrapper" flex layout="column" layout-align="start center">
+      <div class="room-list" layout="column" layout-align="start center">
+        <div class="room pointer" ng-repeat="room in ChatroomsList" ng-click="enterChat(room)">
+          <div layout layout-align="center center">
+            <div>{{getRoomName(room)}}</div> <span class="icon lricon-messages margin-left"></span>
           </div>
         </div>
       </div>
     </div>
-    <div class="down" layout="column " layout-align="end start">
-      <div id="footer" layout="column " layout-align="end start" >
-        <a href="#!about" class="lr-link-button condition">conditions générale d'utilisation</a>
-        <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
-      </div>
+    <div class="down" layout="column " layout-align="center center">
+        <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </div>
-  <div layout="column" layout-align="start start" flex class="chatroom">
-    <div class="title-content" layout-padding>
-      <h3 class="md-title">Rejoindre une chatroom</h3>
+  <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content shadow" layout layout-align="start start">
+      <div layout="row" layout-align="end center">
+        <h3 class="md-title">Rejoindre une alvéole</h3>
+        <ul class="social" layout="row" layout-align="space-between center">
+          <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
+          <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
+        </ul>
+      </div>
+
+      <!--<form class="search-bar" layout layout-align="start center">
+        <div class="" layout="row" layout-align="start start">
+          <div class="search-input" layout layout-align="start center">
+            <span class="icon lricon-search"></span>
+            <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
+          </div>
+        </div>
+      </form>-->
     </div>
-    <md-content flex="wrap" layout="row" layout-align="start start" class="inset-shadow">
-      <md-card ng-repeat="chatroom in chatrooms.all">
-        <md-card-header>
-          <md-card-avatar>
-            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title">{{ chatroom.name }}</span>
-            <span class="md-subhead">Mentor : {{ chatrooms.getCreatorName(chatroom.createdBy)}}</span>
-          </md-card-header-text>
-        </md-card-header>
-        <img ng-src="{{imagePath}}" class="md-card-image" alt="Apb ça pue le caca">
-        <md-card-actions layout="row" layout-align="start center">
-          <md-button ng-click="enterChat(chatroom.$id)">Rejoindre la room</md-button>
-        </md-card-actions>
-        <md-card-content>
-          <p>
-            Tags #APB #CACA
-          </p>
-        </md-card-content>
-      </md-card>
-    </md-content>
+    <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
+      <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
+        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.all" layout="column" layout-align="center center">
+          <div class="card-header" layout="column" layout-align="center center">
+            <div>
+              <span class="icon lricon-messages"></span>
+            </div>
+            <div class="card-header-text">
+              <span class="title-card">{{ chatroom.name }}</span>
+            </div>
+          </div>
+          <div class="card-actions" layout="row" layout-align="start center">
+            <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
+          </div>
+        </div>
+      </md-content>
+    </div>
+
   </div>
 </div>

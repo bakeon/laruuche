@@ -12,7 +12,6 @@ angular.module('laruucheApp')
 
     var usersRef = firebase.database().ref('users');
     var users = $firebaseArray(usersRef);
-
     var Users = {
       getTags: function(uid){
         return $firebaseObject(usersRef.child(uid).child('tags'));
@@ -22,6 +21,12 @@ angular.module('laruucheApp')
       },
       getDisplayName: function(uid){
         return users.$getRecord(uid).displayName;
+      },
+      getPhotoURL: function(uid){
+        return users.$getRecord(uid).photoURL;
+      },
+      getRooms :function (uid) {
+        return $firebaseObject(usersRef.child(uid).child('roomList'));
       },
       all: users
 

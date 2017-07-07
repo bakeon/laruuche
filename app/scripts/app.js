@@ -46,7 +46,7 @@ angular
       })
       .when('/panel/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
-        controller: 'ChatRoomCtrl'
+        controller: 'ChatRoomCtrl',
       })
       .when('/admin',{
         templateUrl:'views/admin/backoffice.html',

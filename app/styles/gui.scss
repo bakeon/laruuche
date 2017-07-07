@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'laRucheFont';
-  src:  url('#{$icomoon-font-path}/laRucheFont.eot?9924h3');
-  src:  url('#{$icomoon-font-path}/laRucheFont.eot?9924h3#iefix') format('embedded-opentype'),
-  url('#{$icomoon-font-path}/laRucheFont.ttf?9924h3') format('truetype'),
-  url('#{$icomoon-font-path}/laRucheFont.woff?9924h3') format('woff'),
-  url('#{$icomoon-font-path}/laRucheFont.svg?9924h3#laRucheFont') format('svg');
+  src:  url('#{$icomoon-font-path}/laRucheFont.eot?sq1wjk');
+  src:  url('#{$icomoon-font-path}/laRucheFont.eot?sq1wjk#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/laRucheFont.ttf?sq1wjk') format('truetype'),
+  url('#{$icomoon-font-path}/laRucheFont.woff?sq1wjk') format('woff'),
+  url('#{$icomoon-font-path}/laRucheFont.svg?sq1wjk#laRucheFont') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,14 +26,134 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.lricon-people {
+.lricon-facebook {
   &:before {
-    content: $lricon-people;
+    content: $lricon-facebook;
   }
 }
-.lricon-bubble {
+.lricon-twitter {
   &:before {
-    content: $lricon-bubble;
+    content: $lricon-twitter;
+  }
+}
+.lricon-picto-logo {
+  &:before {
+    content: $lricon-picto-logo;
+  }
+}
+.lricon-back {
+  &:before {
+    content: $lricon-back;
+  }
+}
+.lricon-delete {
+  &:before {
+    content: $lricon-delete;
+  }
+}
+.lricon-doodle {
+  &:before {
+    content: $lricon-doodle;
+  }
+}
+.lricon-go {
+  &:before {
+    content: $lricon-go;
+  }
+}
+.lricon-help {
+  &:before {
+    content: $lricon-help;
+  }
+}
+.lricon-home {
+  &:before {
+    content: $lricon-home;
+  }
+}
+.lricon-letter {
+  &:before {
+    content: $lricon-letter;
+  }
+}
+.lricon-like {
+  &:before {
+    content: $lricon-like;
+  }
+}
+.lricon-link {
+  &:before {
+    content: $lricon-link;
+  }
+}
+.lricon-list {
+  &:before {
+    content: $lricon-list;
+  }
+}
+.lricon-location {
+  &:before {
+    content: $lricon-location;
+  }
+}
+.lricon-lock {
+  &:before {
+    content: $lricon-lock;
+  }
+}
+.lricon-messages {
+  &:before {
+    content: $lricon-messages;
+  }
+}
+.lricon-mic {
+  &:before {
+    content: $lricon-mic;
+  }
+}
+.lricon-more {
+  &:before {
+    content: $lricon-more;
+  }
+}
+.lricon-plus {
+  &:before {
+    content: $lricon-plus;
+  }
+}
+.lricon-pulse {
+  &:before {
+    content: $lricon-pulse;
+  }
+}
+.lricon-send {
+  &:before {
+    content: $lricon-send;
+  }
+}
+.lricon-settings {
+  &:before {
+    content: $lricon-settings;
+  }
+}
+.lricon-share {
+  &:before {
+    content: $lricon-share;
+  }
+}
+.lricon-slider {
+  &:before {
+    content: $lricon-slider;
+  }
+}
+.lricon-unlike {
+  &:before {
+    content: $lricon-unlike;
+  }
+}
+.lricon-user {
+  &:before {
+    content: $lricon-user;
   }
 }
 .lricon-1 {
@@ -56,86 +176,7 @@
     content: $lricon-4;
   }
 }
-.lricon-smiley {
-  &:before {
-    content: $lricon-smiley;
-  }
-}
-.lricon-picto-logo {
-  &:before {
-    content: $lricon-picto-logo;
-  }
-}
-.lricon-facebook {
-  &:before {
-    content: $lricon-facebook;
-  }
-}
-.lricon-more {
-  &:before {
-    content: $lricon-more;
-  }
-}
-.lricon-website {
-  &:before {
-    content: $lricon-website;
-  }
-}
-.lricon-adresse {
-  &:before {
-    content: $lricon-adresse;
-  }
-}
-.lricon-negative {
-  &:before {
-    content: $lricon-negative;
-  }
-}
-.lricon-pig {
-  &:before {
-    content: $lricon-pig;
-  }
-}
-.lricon-postive {
-  &:before {
-    content: $lricon-postive;
-  }
-}
-.lricon-scroll {
-  &:before {
-    content: $lricon-scroll;
-  }
-}
-.lricon-search {
-  &:before {
-    content: $lricon-search;
-  }
-}
-.lricon-reussite .path1 {
-  &:before {
-    content: $lricon-reussite-path1;
-    color: rgb(229, 185, 0);
-  }
-}
-.lricon-reussite .path2 {
-  &:before {
-    content: $lricon-reussite-path2;
-    margin-left: -1em;
-    color: rgb(255, 255, 255);
-  }
-}
-.lricon-reussite .path3 {
-  &:before {
-    content: $lricon-reussite-path3;
-    margin-left: -1em;
-    color: rgb(229, 185, 0);
-  }
-}
-.lricon-twitter {
-  &:before {
-    content: $lricon-twitter;
-  }
-}
+
 
 .hide {
   display: none;
@@ -145,81 +186,7 @@
   cursor: pointer;
 }
 
-/*.layout-column {
-  @include flex-function(column, space-around, center);
-}
 
-.layout-column-flex-start-center {
-  @include flex-function(column, flex-start, center);
-}
-
-.layout-row-flex-start-top {
-  @include flex-function(row, flex-start, flex-start);
-}
-
-.layout-column-flex-start-start {
-  @include flex-function(column, flex-start, flex-start);
-
-}
-
-.layout-column-space-around-center {
-  @include flex-function(column, space-around, center);
-}
-
-.layout-column-flex-end-center {
-  @include flex-function(column, flex-end, center);
-}
-
-.layout-row-flex-start-center {
-  @include flex-function(row, flex-start, center);
-}
-.layout-row-flex-end-center{
-  @include flex-function(row, flex-end, center);
-}
-.layout-row-flex-start-end{
-  @include flex-function(row, flex-start, flex-end);
-}
-.layout-row-flex-end-end{
-  @include flex-function(row, flex-end, flex-end);
-}
-
-.layout-row-center-center {
-  @include flex-function(row, center, center);
-}
-
-.layout-row-space-between {
-  @include flex-function(row, space-between, center);
-}
-
-.layout-row-space-around {
-  @include flex-function(row, space-around, center);
-}
-
-.layout-row-top {
-  @include flex-function(row, space-around, flex-start);
-}
-
-.layout-row-flex-start-center {
-  @include flex-function(row, flex-start, center);
-}
-.layout-row-flex-start-start {
-  @include flex-function(row, flex-start, flex-start);
-
-}*/
-
-.lr-link-button {
-  padding: 12px 25px;
-  border: 1px solid $yellow;
-  border-radius: 4px;
-  color: $black;
-  box-sizing: border-box;
-  font-size: 14px;
-  cursor: pointer;
-  &:hover {
-    color: $white;
-    background: $yellow;
-  }
-}
 
 .lightbox-container {
   height: 0vh;
