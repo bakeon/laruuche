@@ -21,8 +21,6 @@
   var body = $('body');
   body.on('click', '.playVideoInLightbox, #closeLightboxVideo, .lightbox-shadow', function () {
     body.toggleClass('lightbox-open');
-    $('.lightbox').html('');
-    $('.lightbox').html(templateKnow[1].lightbox);
   });
 })();
 

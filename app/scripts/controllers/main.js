@@ -30,37 +30,54 @@ angular.module('laruucheApp')
       {
           first:{
             title:'1',
-            paragraphe:'compare un grand nombre d\'écoles et compare les à tes critères',
+            paragraphe:'Explore les domaines qui t\'intéressent',
             icon:'search',
             class:'order-1',
-            alignement:'start center'
+            alignement:'center center'
           },
           second:{
             title:'2',
-            paragraphe: 'Le mentor le plus adéquat à votre profil vous est présenté ',
+            paragraphe: 'Rejoins une room pour discuter avec des étudiants',
             icon: 'people',
             class:' order-2',
-            alignement:'end center'
+            alignement:'center center'
 
           },
           third:{
             title:'3',
-            paragraphe:'Discuter et rester en contact avec lui pour partager son expérience et vous recommander sur la formation',
+            paragraphe:'Choisis un mentor et construis ton avenir',
             icon:'bubble',
             class:'order-1',
-            alignement:'start center'
+            alignement:'center center'
 
-
-          },
-          fourth:{
-            title:'4',
-            paragraphe: 'Trouver votre fomation idéale grâce à des avis privilégiés et concrets',
-            icon: 'smiley',
-            class:' order-2',
-            alignement:'end center'
 
           }
         };
+    $scope.homeTemplate2=
+      {
+        first:{
+          title:'1',
+          paragraphe:'Inscris toi en tant que mentor',
+          class:'order-1',
+          alignement:'center center'
+        },
+        second:{
+          title:'2',
+          paragraphe: 'Partage ton expérience librement dans les rooms',
+          class:' order-2',
+          alignement:'center center'
+
+        },
+        third:{
+          title:'3',
+          paragraphe:'Conseilles d\'autres étudiants intéressés par ton domaine',
+          icon:'bubble',
+          class:'order-1',
+          alignement:'center center'
+
+
+        }
+      };
 
 
   });
