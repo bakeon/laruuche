@@ -2,8 +2,8 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('PanelCtrl', ["$rootScope","$scope", "Auth", "$location", "Users" , "$firebaseObject", "Chatrooms",
-      function ($rootScope ,$scope , Auth, $location, Users, $firebaseObject, Chatrooms) {
+    .controller('PanelCtrl', ["$rootScope","$scope", "Auth", "$location", "Users" , "$firebaseObject", "Chatrooms","$mdDialog",
+      function ($rootScope ,$scope , Auth, $location, Users, $firebaseObject, Chatrooms,$mdDialog) {
         $rootScope.auth = Auth;
         var userUid = '';
         // any time auth state changes, add the user data to scope
@@ -16,8 +16,8 @@
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);
             userUid = $scope.user.$id;
+            console.log($rootScope.firebaseUser);
           }
-
         });
 
         /*Load ChatRooms*/
@@ -46,18 +46,21 @@
           });
         };
 
+        $scope.addRoom = function ($event) {
+          $scope.room=$event;
+        };
 
         /*Enter to the chatroom*/
         $scope.enterChat = function(id){
           $location.path('/panel/chatroom/' +id)
-        }
+        };
 
         /*Logout*/
         $scope.logout = function(){
           Auth.$signOut().then(function(){
             $location.path('/');
           });
-        }
+        };
 
       }]);
 

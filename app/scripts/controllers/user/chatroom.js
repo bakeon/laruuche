@@ -24,6 +24,11 @@ angular.module('laruucheApp')
       $scope.chatroom = chatrooms.$getRecord($routeParams.id);
       $scope.chatroomName = chatrooms.$getRecord($routeParams.id).name;
       $scope.messages = Messages.getChatMessages($routeParams.id);
+        $.each($scope.messages,function(index, value){
+          console.log(index);
+        });
+
+
       $scope.getUserName = function(uid){
           return Users.getDisplayName(uid);
         }

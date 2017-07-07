@@ -1,4 +1,27 @@
 <div class="main-content">
+  <div class="header" style="height: 102px">
+    <div class="navbar navbar-default" role="navigation" layout="row" flex>
+      <div class="container" flex layout="row" layout-align="space-between center">
+        <div class="navbar-header" layout="row" layout-align="space-between center">
+          <a href="#/"><img class="logo" src="assets/images/logo-inline.svg" alt="logo la ruuche"></a>
+        </div>
+        <div class="collapse" layout="row" layout-align="space-between center">
+          <ul layout="row" layout-align="space-between center">
+            <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
+            <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
+
+          </ul>
+        </div>
+
+        <div ng-show="firebaseUser">
+          <p>Salut, {{ firebaseUser.displayName }}</p>
+          <a ng-href="#!panel">Ruuche Rooms</a>
+          <a ng-href="#!profile">Profil</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <div class="article1" layout="column" layout-align="space-around flex-start">
     <h1>Qu'est ce que la ruuche</h1>
     <p>la ruuche bla bla bla</p>

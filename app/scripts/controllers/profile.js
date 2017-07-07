@@ -12,6 +12,7 @@
           $rootScope.firebaseUser = firebaseUser;
           if(!$rootScope.firebaseUser){
             $location.path('/login');
+            console.log($rootScope.firebaseUser);
           }
           else{
             /*Retrieve User Data*/
@@ -19,7 +20,7 @@
           }
         });
 
-
+        $scope.user
 
 
         /*Data for profile*/
