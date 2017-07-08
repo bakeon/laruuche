@@ -2,8 +2,8 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('ProfileCtrl', ["$rootScope","$scope", "Auth", "$location","Users", "$timeout", "$q", "Degrees", "$firebaseUtils",
-      function ($rootScope ,$scope, Auth, $location, Users, $timeout, $q, Degrees, $firebaseUtils) {
+    .controller('ProfileCtrl', ["$rootScope","$scope", "Auth", "$location","Users", "$timeout", "$q", "Degrees",
+      function ($rootScope ,$scope, Auth, $location, Users, $timeout, $q, Degrees) {
         var self = this;
         $scope.getTags = '';
         $rootScope.auth = Auth;
@@ -14,13 +14,11 @@
           $rootScope.firebaseUser = firebaseUser;
           if(!$rootScope.firebaseUser){
             $location.path('/login');
-            console.log($rootScope.firebaseUser);
           }
           else{
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);
             $scope.getTags = Users.getTags(firebaseUser.uid);
-            console.log($scope.getTags);
           }
         });
 
@@ -127,15 +125,15 @@
         self.readonly = false;
 
         $scope.updateProfile = function(){
-          $scope.user.tags = $scope.userTags;
+          //$scope.user.tags = $scope.userTags;
           $scope.user.$save().then(function(){
             //If works redirect To
             console.log("Profile updated");
-            //$location.path('/panel');
+            $location.path('/panel');
 
           }).catch(function(err){
             console.log(err);
-          })
+          });
         };
 
 
