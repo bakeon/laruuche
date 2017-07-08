@@ -2,7 +2,7 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('AuthCtrl', ["$rootScope","$scope", "Auth","$location", "Users" ,
+    .controller('AuthCtrl', ["$rootScope","$scope", "Auth","$location", "Users",
       function ($rootScope ,$scope, Auth, $location, Users) {
         var auth = Auth;
 
@@ -17,13 +17,37 @@
           }
         });
 
+        function addUserData(uid, email, displayName, photoURL){
+          var userRef = firebase.database().ref();
+          var isUser = Users.getProfile(uid);
+          var photo = photoURL;
+          var fname = displayName.split(' ')[0];
+          var lname = displayName.split(' ').slice(1).join(' ');
+          var user = {
+            email:email,
+            displayName:displayName,
+            firstName:fname,
+            lastName:lname,
+            photoURL:photo,
+            accessLevel:10
+          };
+          isUser.$loaded().then(function(isUser) {
+            if(isUser.email){
+              //user exist
+            }
+            else{
+              userRef.child('users').child(uid).set(user);
+            }
+          });
+        }
+
         $scope.googleSignIn = function(){
           $scope.error = null;
           var provider = new firebase.auth.GoogleAuthProvider();
-          provider.addScope('https://www.googleapis.com/auth/user.birthday.read');
           auth.$signInWithPopup(provider).then(function (firebaseUser) {
             $rootScope.firebaseUser = firebaseUser;
-            addUserData(firebaseUser.user.uid, firebaseUser.user.email, firebaseUser.user.displayName);
+            console.log(firebaseUser);
+            addUserData(firebaseUser.user.uid, firebaseUser.user.email, firebaseUser.user.displayName,  firebaseUser.user.providerData[0].photoURL);
             /*Redirect to profile*/
             $location.path('/profile');
 
@@ -34,11 +58,10 @@
 
       $scope.fbSignIn = function(){
         var provider = new firebase.auth.FacebookAuthProvider();
-        provider.addScope('user_birthday');
         auth.$signInWithPopup(provider).then(function (firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
           /*Add user to Database*/
-          addUserData(firebaseUser.uid, firebaseUser.email, firebaseUser.displayName);
+          addUserData(firebaseUser.user.uid, firebaseUser.user.email, firebaseUser.user.displayName, firebaseUser.user.providerData[0].photoURL);
 
 
           /*Redirect to profile*/
@@ -48,30 +71,6 @@
           $scope.error = error;
         });
       };
-
-      function addUserData(uid, email, displayName){
-        var userRef = firebase.database().ref();
-        var isUser = Users.getProfile(uid);
-        var photo = $rootScope.firebaseUser.photoURL;
-        var fname = displayName.split(' ')[0];
-        var lname = displayName.split(' ').slice(1).join(' ');
-        var user = {
-            email:email,
-            displayName:displayName,
-            firstName:fname,
-            lastName:lname,
-            photoURL:photo,
-            accessLevel:10
-        };
-        isUser.$loaded().then(function(isUser) {
-          if(isUser.email){
-            //user exist
-          }
-          else{
-            userRef.child('users').child(uid).set(user);
-          }
-        });
-      }
 
     }]);
 

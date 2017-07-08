@@ -11,7 +11,6 @@ var runSequence = require('run-sequence');
 var mainBowerFiles = require('main-bower-files');
 var concat = require('concat');
 var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
 
 
 var yeoman = {
