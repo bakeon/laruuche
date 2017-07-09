@@ -799,6 +799,9 @@ html {
 
   }
   .section-container{
+    h1{
+      text-align: center;
+    }
     color:$grey;
     .blue{
       color: $blue;
@@ -1024,5 +1027,26 @@ html {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .header-main p{
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .header-main h1{
+    font-size: 25px;
+    line-height: 34px;
+  }
+  #fourthArticle.fourthArticle{
+    flex-direction: column;
+    .section-container{
+      width:100%;
+    }
+  }
+  #footer .lr-link-button, #footer p{
+    font-size: 10px;
   }
 }
