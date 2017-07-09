@@ -48,6 +48,10 @@ angular
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl',
       })
+      .when('panel/findmymentor',{
+        templateUrl:'views/user/findmymentor.html',
+        controller: 'FindMyMentorCtrl as fmmCtrl'
+      })
       .when('/admin',{
         templateUrl:'views/admin/backoffice.html',
         controller:'BackOfficeCtrl'

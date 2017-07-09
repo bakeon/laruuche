@@ -18,18 +18,17 @@
         <input ng-model="user.lastName">
       </md-input-container>
 
-      <md-input-container>
-        <label>Bac :</label>
-        <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
-          <md-option ng-repeat="track in tracks" ng-value="track">
-            {{ track }}
-          </md-option>
-        </md-select>
-      </md-input-container>
-
       <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
-        Mentor
-      </md-checkbox>
+              Je souhaite devenir un mentor
+            </md-checkbox>
+       <md-input-container ng-if="!user.isMentor" class="md-block" flex-gt-sm>
+              <label>Mon bac :</label>
+              <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
+                <md-option ng-repeat="track in tracks" ng-value="track">
+                  {{ track }}
+                </md-option>
+              </md-select>
+       </md-input-container>
 
       <md-input-container>
         <label>Niveau d'accès :</label>
@@ -43,6 +42,16 @@
       <md-input-container md-no-float class="md-block">
         <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
       </md-input-container>
+
+      <!--Son domaine de compétences-->
+            <label>Ses domaines d'expertise :</label>
+            <md-chips
+              ng-model="tags"
+              placeholder="Espace pour ajouter"
+              secondary-placeholder="Espace pour ajouter"
+              md-separator-keys="ProfileCtrl.customKeys">
+            </md-chips>
+
       <md-button class="md-raised md-primary" ng-click="updateProfile()">Sauvegarder</md-button>
 
 

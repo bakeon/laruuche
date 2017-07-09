@@ -18,17 +18,20 @@
               Éditer
             </a>
           </div>
-          <img class="user-pic" ng-src="{{firebaseUser.photoURL}}"/>
+          <img class="user-pic" ng-src="{{user.photoURL}}"/>
           <div class="user-info">
             <div class="user-name">
               {{ user.displayName }}
             </div>
-            <div class="actions">
-              <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
-                Créer une chatrooms
-              </a>
-            </div>
           </div>
+        </div>
+        <div class="actions save">
+          <a href="#!/panel/findmymentor">
+            Trouver un mentor
+          </a>
+          <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
+            Créer une chatrooms
+          </a>
         </div>
         <div class="save" layout layout-align="center center">
           alvéoles enregistrées
