@@ -37,6 +37,9 @@ angular.module('laruucheApp')
       getMyStudents : function (uid) {
         return $firebaseObject(usersRef.child(uid).child('students'));
       },
+      getMyMentors: function (uid) {
+        return $firebaseObject(usersRef.child(uid).child('mentors'));
+      },
       getStudentInfo : function(uid){
         let user = $firebaseObject(usersRef.child(uid));
 
