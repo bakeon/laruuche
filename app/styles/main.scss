@@ -303,6 +303,16 @@ h5 {
 .content-app {
   z-index: 2;
 }
+.accept-mentor, .refuse-mentor{
+  border-radius: 20px;
+  font-weight: bold;
+}
+.accept-mentor{
+  color: #22801b !important;
+}
+.refuse-mentor{
+  color: #c14233 !important;
+}
 
 .sidebar {
   text-transform: uppercase;

@@ -9,6 +9,17 @@
           <span class="icon lricon-back"></span>
           <span>Accueil</span>
         </div>
+        <div class="actions">
+          <a ng-if="!user.isMentor" href="#!/panel/findmymentor">
+            Trouver un mentor
+          </a>
+          <a ng-if="user.isMentor" href="#!/panel/my-students">
+            Mes étudiants
+          </a>
+          <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
+            Créer une chatrooms
+          </a>
+        </div>
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
             <a href="#!profile"
@@ -24,14 +35,6 @@
               {{ user.displayName }}
             </div>
           </div>
-        </div>
-        <div class="actions save">
-          <a href="#!/panel/findmymentor">
-            Trouver un mentor
-          </a>
-          <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
-            Créer une chatrooms
-          </a>
         </div>
         <div class="save" layout layout-align="center center">
           alvéoles enregistrées
@@ -72,7 +75,7 @@
     </div>
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.all" layout="column" layout-align="center center">
+        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.public" layout="column" layout-align="center center">
         <div class="card-header" layout="column" layout-align="center center">
           <div>
             <span class="icon lricon-messages"></span>

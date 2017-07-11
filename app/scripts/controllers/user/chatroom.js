@@ -31,6 +31,9 @@ angular.module('laruucheApp')
         $scope.getUserName = function (uid) {
           return Users.getDisplayName(uid);
         }
+        $scope.getPhotoURL = function(uid){
+          return Users.getPhotoURL(uid);
+        }
       });
       $rootScope.auth.$onAuthStateChanged(function (firebaseUser) {
         $rootScope.firebaseUser = firebaseUser;

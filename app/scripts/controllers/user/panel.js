@@ -36,7 +36,8 @@
           name: '',
           createdBy:'',
           createdAt:'',
-          messages:''
+          messages:'',
+          type:'public'
         };
 
         $scope.createChatroom = function(){
@@ -47,7 +48,8 @@
               name: '',
               createdBy:$scope.user.$id,
               createdAt:'',
-              messages:''
+              messages:'',
+              type:'public'
             };
 
             $location.path('/panel');

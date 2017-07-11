@@ -19,6 +19,7 @@
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);
             var getTags = Users.getTags(firebaseUser.uid);
+            $scope.tags = [];
             getTags.$loaded().then(function () {
               if(getTags){
                 $scope.tags = getTags.$value.split(',');
