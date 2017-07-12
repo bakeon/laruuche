@@ -3,7 +3,7 @@
     <h3 class=".md-headline">Vous êtes à l'entrée de la Ruuche !</h3>
     <p>Une dernière étape avant de nous rejoindre.</p>
     <form ng-submit="$event.preventDefault()" name="searchForm">
-      <img ng-src="{{firebaseUser.providerData[0].photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
+      <img ng-src="{{user.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
 
       <md-input-container class="md-block" flex-gt-sm>
         <label>Prénom :</label>
@@ -15,7 +15,10 @@
         <input ng-model="user.lastName">
       </md-input-container>
 
-      <md-input-container>
+      <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
+        Je souhaite devenir un mentor
+      </md-checkbox>
+      <md-input-container ng-if="!user.isMentor" class="md-block" flex-gt-sm>
         <label>Mon bac :</label>
         <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
           <md-option ng-repeat="track in tracks" ng-value="track">
@@ -23,9 +26,6 @@
           </md-option>
         </md-select>
       </md-input-container>
-      <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
-        Je souhaite devenir un mentor
-      </md-checkbox>
       <!--
       <p>Mon dernier diplome :</p>
       <md-input-container>
@@ -59,11 +59,12 @@
         <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
       </md-input-container>
       <!--Mon domaine de compétences-->
-      <md-chips ng-model="userTags" readonly="ProfileCtrl.readonly"
-                md-removable="ProfileCtrl.removable" placeholder="Entrer un domaine d'activité...">
-        <md-chip-template>
-          <strong>{{$chip}}</strong>
-        </md-chip-template>
+      <label>Mes domaines d'expertise :</label>
+      <md-chips
+        ng-model="tags"
+        placeholder="Espace pour ajouter"
+        secondary-placeholder="Espace pour ajouter"
+        md-separator-keys="ProfileCtrl.customKeys">
       </md-chips>
 
       <md-button class="md-raised md-primary" ng-click="updateProfile()">Je rejoins la Ruuche</md-button>
