@@ -113,7 +113,7 @@ angular.module('laruucheApp')
       /*Audiochat for mentoring*/
       $scope.ChatRoomObj.$loaded().then(function () {
         if($scope.ChatRoomObj.type === 'private'){
-          let yourId, fromUser;
+          let yourId, fromUser, pc;
           if($scope.user.isMentor){
             console.log('I am Mentor!');
             yourId = $scope.ChatRoomObj.mentorId;
@@ -129,7 +129,6 @@ angular.module('laruucheApp')
           let yourAudio = document.getElementById("localaudio");
           let friendsAudio = document.getElementById("remoteaudio");
           let servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:19302'}, {'urls': 'turn:numb.viagenie.ca','credential': 'webrtc','username': 'websitebeaver@mail.com'}]};
-          let pc = new RTCPeerConnection(servers);
 
           function sendAudio(senderId, data){
             let audio = database.push({sender:senderId, audioMsg:data});
@@ -165,21 +164,23 @@ angular.module('laruucheApp')
               .then(() => sendAudio(yourId, JSON.stringify({'sdp':pc.localDescription})) );
           };
 
-          pc.onicecandidate = (event => event.candidate?sendAudio(yourId, JSON.stringify({'ice': event.candidate})):console.log("Sent All Ice") );
-          pc.onaddstream = (event => friendsAudio.srcObject = event.stream);
           let onlineRef = firebase.database().ref('chatrooms').child($scope.ChatRoomObj.$id).child('online');
           onlineRef.child($scope.user.$id).set({online:true});
           onlineRef.on('value', function(snap){
+            console.log(snap.numChildren() == 2);
             onlineRef.child($scope.user.$id).onDisconnect().remove();
-            if(snap.numChildren() === 2){
+            if(snap.numChildren() == 2){
               //delay the vocal
+              pc = new RTCPeerConnection(servers);
+              pc.onicecandidate = (event => event.candidate?sendAudio(yourId, JSON.stringify({'ice': event.candidate})):console.log("Sent All Ice") );
+              pc.onaddstream = (event => friendsAudio.srcObject = event.stream);
+              getMyAudio();
               document.addEventListener("click", function(){
-                getMyAudio();
                 getHisAudio();
               });
             }
             else{
-
+              pc.close();
             }
 
           });
