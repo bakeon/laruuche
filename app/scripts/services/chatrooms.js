@@ -33,7 +33,7 @@ angular.module('laruucheApp')
         return $firebaseObject(chatroom);
       },
       all: chatrooms,
-      public: publicRooms,
+      publicRooms: publicRooms,
     };
     return Chatrooms;
 
