@@ -37,6 +37,9 @@ angular.module('laruucheApp')
       getMyStudents : function (uid) {
         return $firebaseObject(usersRef.child(uid).child('students'));
       },
+      getNotificationsForUnreadStudents: function(uid){
+        return $firebaseArray(usersRef.child(uid).child('students').orderByChild('read').equalTo(false));
+      },
       getMyMentors: function (uid) {
         return $firebaseObject(usersRef.child(uid).child('mentors'));
       },

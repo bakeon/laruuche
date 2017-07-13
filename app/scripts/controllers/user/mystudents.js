@@ -46,6 +46,7 @@ angular.module('laruucheApp')
           $scope.acceptStudent = function(studentId){
             /*Me*/
             $scope.user.students[studentId].status = 'accepted';
+            $scope.user.students[studentId].read = true;
             $scope.user.$save().then(function () {
 
             });
@@ -60,17 +61,15 @@ angular.module('laruucheApp')
             });
 
             /*Create the private Room*/
-            let Chatrooms = $scope.Chatrooms.all;
+            let Chatrooms = $scope.Chatrooms.privateRooms;
             let newChatroom = {
               uid:$scope.user.$id+studentId,
               name:'Mentor by '+$scope.user.displayName,
-              type:'private',
               timestamp:firebase.database.ServerValue.TIMESTAMP,
               mentorId:$scope.user.$id,
               studentId:studentId,
             };
             Chatrooms.$add(newChatroom).then(function () {
-              console.log('created');
             });
 
           };
@@ -78,6 +77,7 @@ angular.module('laruucheApp')
           $scope.refuseStudent = function(uid){
             /*Me*/
             $scope.user.students[studentId].status = 'refused';
+            $scope.user.students[studentId].read = true;
             $scope.user.$save().then(function () {
 
             });
@@ -94,7 +94,7 @@ angular.module('laruucheApp')
 
           /*Join the private room*/
           $scope.joinPrivateRoom = function(mentorId, studentId){
-            let myRoom = firebase.database().ref('chatrooms').orderByChild('uid').equalTo(mentorId+studentId);
+            let myRoom = firebase.database().ref('chatrooms').child('private').orderByChild('uid').equalTo(mentorId+studentId);
             myRoom.on('value', function(snap){
               for(let value in snap.val()){
                 $location.path('/panel/chatroom/'+value);
