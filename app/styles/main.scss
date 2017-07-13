@@ -316,7 +316,7 @@ h5 {
 
 .sidebar {
   text-transform: uppercase;
-  z-index: 10;
+  z-index: 2000;
   .save {
     height: 65px;
     color: $white;
@@ -519,6 +519,9 @@ h5 {
   &:hover {
     color: $white;
     background: $yellow;
+  }
+  &:focus{
+    outline-style: none;
   }
 }
 
@@ -998,10 +1001,23 @@ html {
 
 .menu{
   position: absolute;
-
+  background: $white;
+  color: $black;
   top:30px;
   left:30px;
   font-size: 25px;
+}
+.md-button.md-default-theme.md-fab, .md-button.md-fab{
+  background: $white;
+  color: $black;
+}
+.menu-2.md-button.md-default-theme.md-fab, .menu-2.md-button.md-fab{
+  background: $blue;
+  color: $white;
+  font-size: 25px;
+}
+.md-button.md-default-theme.md-fab:not([disabled]).md-focused, .md-button.md-fab:not([disabled]).md-focused, .md-button.md-default-theme.md-fab:not([disabled]):hover, .md-button.md-fab:not([disabled]):hover{
+  background: $blue;
 }
 
 .mobile{
@@ -1070,5 +1086,8 @@ html {
   }
   #footer .lr-link-button, #footer p{
     font-size: 10px;
+  }
+  .lr-add-button .icon{
+    margin:0;
   }
 }

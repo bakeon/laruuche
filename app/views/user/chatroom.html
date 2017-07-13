@@ -54,14 +54,14 @@
   <div class="chat content-app" layout="column" layout-align="start start" flex>
     <div class="header-room shadow" layout="row" layout-align="space-between center">
       <md-button  ng-click="openLeftMenu()"
-                  class="md-primary md-fab md-mini menu" hide-gt-sm>
-        <span class="icon lricon-picto-logo"></span>
+                  class=" md-fab md-mini menu-2" hide-gt-sm>
+        <span class="icon lricon-more"></span>
       </md-button>
-      <a class="back" ng-href="#!/panel" layout layout-align="start center"><span class="icon lricon-back"></span>Retour</a>
+      <a class="back" ng-href="#!/panel" layout layout-align="start center"><span class="icon lricon-back"></span><span class="mobile">Retour</span></a>
       <div class="room-title" flex>
         <h2>{{ chatroomName }}</h2>
       </div>
-      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser(chatroom.$id)"><span class="icon lricon-plus"></span><span class="mobile">jouter cette room</span>A</button>
+      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser(chatroom.$id)"><span class="icon lricon-plus"></span><span class="mobile">ajouter cette room</span></button>
     </div>
     <div class="messengerBox" flex>
       <div class="message-wrapper">
