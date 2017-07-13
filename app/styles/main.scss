@@ -1090,4 +1090,24 @@ html {
   .lr-add-button .icon{
     margin:0;
   }
+  .social {
+    position: absolute;
+    right: 10px;
+    top:35px;
+    li {
+      .icon {
+        font-size: 30px;
+      }
+    }
+  }
+  .title-content > div h3{
+    font-size: 16px;
+    transform:translate(-100px,-50%);
+  }
+  .title-content .social li:first-child{
+    margin-right: 5px;
+  }
+  .menu{
+    left:10px;
+  }
 }
