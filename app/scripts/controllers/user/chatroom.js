@@ -101,15 +101,15 @@ angular.module('laruucheApp')
 
             }
             else{
-              console.log('isNotGif');
+              $scope.messages.$add({
+                uid: $scope.user.$id,
+                body: $scope.message,
+                timestamp: firebase.database.ServerValue.TIMESTAMP,
+                type: 'text'
+              }).then(function () {
+                $scope.message = '';
+              });
             }
-/*          $scope.messages.$add({
-            uid: $scope.user.$id,
-            body: $scope.message,
-            timestamp: firebase.database.ServerValue.TIMESTAMP
-          }).then(function () {
-            $scope.message = '';
-          });*/
         };
       };
 
