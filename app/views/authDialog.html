@@ -1,0 +1,82 @@
+<md-dialog aria-label="Rejoins la Ruuche">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Rejoins la Ruuche : {{ step }}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="close()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div ng-if="isLogged === false">
+            <div class="login" layout="row" layout-align="space-around center">
+              <md-button  class="md-raised" ng-click="googleSignIn()">
+                Login with Gmail
+              </md-button>
+              <md-button class="md-raised" ng-click="fbSignIn()">
+                Login with Facebook
+              </md-button>
+            </div>
+          </div>
+      </div>
+      <div ng-if="isLogged === true">
+        <div layout="row" layout-align="center">
+          <md-content layout-padding flex="100">
+            <h3 class=".md-headline">Vous êtes à l'entrée de la Ruuche !</h3>
+            <p>Une dernière étape avant de nous rejoindre.</p>
+            <form ng-submit="$event.preventDefault()" name="searchForm">
+              <img ng-src="{{user.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
+
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Prénom :</label>
+                <input ng-model="user.firstName">
+              </md-input-container>
+
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Nom :</label>
+                <input ng-model="user.lastName">
+              </md-input-container>
+
+              <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
+                Je souhaite devenir un mentor
+              </md-checkbox>
+              <md-input-container ng-if="!user.isMentor" class="md-block" flex-gt-sm>
+                <label>Mon bac :</label>
+                <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
+                  <md-option ng-repeat="track in tracks" ng-value="track">
+                    {{ track }}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container md-no-float class="md-block">
+                <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
+              </md-input-container>
+              <!--Mon domaine de compétences-->
+              <label>Mes domaines d'expertise :</label>
+              <md-chips
+                ng-model="tags"
+                placeholder="Espace pour ajouter"
+                secondary-placeholder="Espace pour ajouter"
+                md-separator-keys="ProfileCtrl.customKeys">
+              </md-chips>
+            </form>
+          </md-content>
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="close()">
+        Annuler
+      </md-button>
+      <md-button ng-if="isLogged === true" ng-click="updateProfile()">
+        C'est parti !
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
