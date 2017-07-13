@@ -32,6 +32,7 @@
             $scope.user.$loaded().then(function () {
               $scope.pendingStudents = Users.getNotificationsForUnreadStudents($scope.user.$id);
               $scope.pendingStudents.$watch(function (event) {
+                console.log(event);
                 let ref = $scope.pendingStudents.$ref();
                 let notifications = {
                   studentId:event.key,
@@ -39,7 +40,9 @@
                   displayName:Users.getDisplayName(event.key),
                   track:Users.getTrack(event.key)
                 };
-                $scope.notifications.push(notifications);
+                if(event.event == 'child_added'){
+                  $scope.notifications.push(notifications);
+                }
 
               });
             });
@@ -63,11 +66,10 @@
               });
 
               /*Create the private Room*/
-              let Chatrooms = $scope.Chatrooms.all;
+              let Chatrooms = $scope.Chatrooms.privateRooms;
               let newChatroom = {
                 uid:$scope.user.$id+studentId,
                 name:'Mentor by '+$scope.user.displayName,
-                type:'private',
                 timestamp:firebase.database.ServerValue.TIMESTAMP,
                 mentorId:$scope.user.$id,
                 studentId:studentId,
@@ -101,8 +103,9 @@
 
         /*Close the notification*/
         $scope.closeNotif = function(studentId, index){
-          $scope.user.students[studentId].read = true;
+          console.log('ok');
           $scope.notifications.splice(index ,1);
+          $scope.user.students[studentId].read = true;
           $scope.user.$save().then(function () {
           });
         };
