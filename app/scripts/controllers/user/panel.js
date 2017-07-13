@@ -11,6 +11,10 @@
         var userUid = '';
         $scope.getRoomName='';
         $scope.ChatroomsList='';
+        $scope.notifications = [];
+        /*Load ChatRooms*/
+        $scope.chatrooms = Chatrooms;
+
         // any time auth state changes, add the user data to scope
         $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
@@ -24,32 +28,104 @@
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);
             userUid = $scope.user.$id;
-            console.log($rootScope.firebaseUser);
             $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
+            $scope.user.$loaded().then(function () {
+              $scope.pendingStudents = Users.getNotificationsForUnreadStudents($scope.user.$id);
+              $scope.pendingStudents.$watch(function (event) {
+                let ref = $scope.pendingStudents.$ref();
+                let notifications = {
+                  studentId:event.key,
+                  studentPhotoURL:Users.getPhotoURL(event.key),
+                  displayName:Users.getDisplayName(event.key),
+                  track:Users.getTrack(event.key)
+                };
+                $scope.notifications.push(notifications);
+
+              });
+            });
+
+            /*Accept a student*/
+            $scope.acceptStudent = function(studentId, index){
+              /*Me*/
+              $scope.user.students[studentId].read = true;
+              $scope.user.students[studentId].status = 'accepted';
+              $scope.notifications.splice(index ,1);
+              $scope.user.$save().then(function () {
+              });
+
+              /*My Student*/
+              let student = Users.getProfile(studentId);
+              student.$loaded().then(function () {
+                student.mentors[$scope.user.$id].status = 'accepted';
+                student.$save().then(function () {
+
+                });
+              });
+
+              /*Create the private Room*/
+              let Chatrooms = $scope.Chatrooms.all;
+              let newChatroom = {
+                uid:$scope.user.$id+studentId,
+                name:'Mentor by '+$scope.user.displayName,
+                type:'private',
+                timestamp:firebase.database.ServerValue.TIMESTAMP,
+                mentorId:$scope.user.$id,
+                studentId:studentId,
+              };
+              Chatrooms.$add(newChatroom).then(function () {
+                console.log('created');
+              });
+
+            };
+            /*Refuse a student*/
+            $scope.refuseStudent = function(uid, index){
+              /*Me*/
+              $scope.user.students[studentId].read = true;
+              $scope.user.students[studentId].status = 'refused';
+              $scope.notifications.splice(index ,1);
+              $scope.user.$save().then(function () {
+              });
+
+              /*My Student*/
+              let student = Users.getProfile(studentId);
+              student.$loaded().then(function () {
+                student.mentors[$scope.user.$id].status = 'refused';
+                student.$save().then(function () {
+
+                });
+              });
+            };
+
           }
         });
 
-        /*Load ChatRooms*/
-        $scope.chatrooms = Chatrooms;
+        /*Close the notification*/
+        $scope.closeNotif = function(studentId, index){
+          $scope.user.students[studentId].read = true;
+          $scope.notifications.splice(index ,1);
+          $scope.user.$save().then(function () {
+          });
+        };
+
         /*Create the chatroom*/
         $scope.newChatroom = {
           name: '',
           createdBy:'',
           createdAt:'',
           messages:'',
-          type:'public'
         };
+
+
 
         $scope.createChatroom = function(){
           $scope.newChatroom.createdBy = userUid;
           $scope.newChatroom.createdAt = firebase.database.ServerValue.TIMESTAMP;
-          $scope.chatrooms.all.$add($scope.newChatroom).then(function(){
+          $scope.chatrooms.publicRooms.$add($scope.newChatroom).then(function(){
             $scope.newChatroom = {
               name: '',
               createdBy:$scope.user.$id,
               createdAt:'',
               messages:'',
-              type:'public'
             };
 
             $location.path('/panel');
