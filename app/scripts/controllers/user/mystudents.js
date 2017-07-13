@@ -97,7 +97,7 @@ angular.module('laruucheApp')
             let myRoom = firebase.database().ref('chatrooms').child('private').orderByChild('uid').equalTo(mentorId+studentId);
             myRoom.on('value', function(snap){
               for(let value in snap.val()){
-                $location.path('/panel/chatroom/'+value);
+                $location.path('/panel/privateroom/'+value);
                 break;
               }
             });

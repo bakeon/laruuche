@@ -19,7 +19,10 @@ angular.module('laruucheApp')
 
     var Chatrooms = {
       getRoom: function(uid){
-        return $firebaseObject(ref.child(uid));
+        return $firebaseObject(ref.child('public').child(uid));
+      },
+      getPrivateRoom: function(uid){
+        return $firebaseObject(ref.child('private').child(uid));
       },
       getCreatorName: function(uid){
         return users.$getRecord(uid).displayName;
