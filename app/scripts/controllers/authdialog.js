@@ -9,7 +9,7 @@
  */
 angular.module('laruucheApp')
   .controller('AuthDialogCtrl', function ($rootScope, $scope, $mdDialog, Auth, $location, Users, $mdConstant) {
-    $scope.step = "Etape 1";
+    $scope.step = "Rejoins la Ruuche";
     $scope.isLogged = false;
 
     var auth = Auth;
@@ -24,7 +24,7 @@ angular.module('laruucheApp')
         $location.path('/');
       }
       else{
-        $scope.step = "Etape 2";
+        $scope.step = "Complète ton profil";
         $scope.isLogged = true;
         /*Retrieve User Data*/
         $scope.user = Users.getProfile(firebaseUser.uid);
@@ -71,6 +71,7 @@ angular.module('laruucheApp')
       $scope.error = null;
       var provider = new firebase.auth.GoogleAuthProvider();
       auth.$signInWithPopup(provider).then(function (firebaseUser) {
+
         $rootScope.firebaseUser = firebaseUser;
         addUserData(firebaseUser.user.uid, firebaseUser.user.email, firebaseUser.user.displayName,  firebaseUser.user.providerData[0].photoURL);
 
@@ -82,6 +83,7 @@ angular.module('laruucheApp')
     $scope.fbSignIn = function(){
       var provider = new firebase.auth.FacebookAuthProvider();
       auth.$signInWithPopup(provider).then(function (firebaseUser) {
+
         $rootScope.firebaseUser = firebaseUser;
         /*Add user to Database*/
         addUserData(firebaseUser.user.uid, firebaseUser.user.email, firebaseUser.user.displayName, firebaseUser.user.providerData[0].photoURL);
@@ -119,9 +121,9 @@ angular.module('laruucheApp')
     this.customKeys = [$mdConstant.KEY_CODE.ENTER,$mdConstant.KEY_CODE.SPACE];
 
     $scope.updateProfile = function(){
+      $mdDialog.hide();
       $scope.user.tags = $scope.tags.join();
       $scope.user.$save().then(function(){
-        //If works redirect To
         console.log("Profile updated");
         $location.path('/panel');
 

@@ -18,7 +18,7 @@
             return Chatrooms.getName(uid);
           };
           if(!$rootScope.firebaseUser){
-            $location.path('/login');
+            $location.path('/');
           }
           else{
             /*Retrieve User Data*/
@@ -66,9 +66,21 @@
           $location.path('/panel/chatroom/' +id)
         };
 
+        $scope.editButton = function(event){
+          $mdDialog.show({
+            controller: 'AuthDialogCtrl',
+            templateUrl: 'views/authDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose: true
+          });
+        };
+
         /*Logout*/
         $scope.logout = function(){
           Auth.$signOut().then(function(){
+            $scope.user = '';
+            $rootScope.firebaseUser = '';
             $location.path('/');
           });
         };
