@@ -1049,4 +1049,10 @@ html {
   #footer .lr-link-button, #footer p{
     font-size: 10px;
   }
+  .sidebar{
+    width:100%;
+    &.hide{
+      display: none;
+    }
+  }
 }
