@@ -1,5 +1,7 @@
 <div layout="row" class="container" layout-align="start start">
-  <div class="sidebar shadow" layout="column" layout-align="space-between start">
+  <md-sidenav class="sidebar shadow" layout="column" layout-align="space-between start" class="md-sidenav-left"
+              md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-sm')">
     <div class="up-container">
       <div class="up" flex layout="column" layout-align="start start">
         <div class="header-app" layout="row" layout-align="center center">
@@ -56,10 +58,14 @@
     <div class="down" layout="column " layout-align="center center">
         <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
-  </div>
+  </md-sidenav>
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
+        <md-button  ng-click="openLeftMenu()"
+                   class="md-primary md-fab md-mini menu" hide-gt-sm>
+          <span class="icon lricon-picto-logo"></span>
+        </md-button>
         <h3 class="md-title">Rejoindre une alvéole</h3>
         <ul class="social" layout="row" layout-align="space-between center">
           <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
@@ -78,7 +84,7 @@
     </div>
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.public" layout="column" layout-align="center center">
+        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.publicRooms" layout="column" layout-align="center center">
         <div class="card-header" layout="column" layout-align="center center">
           <div>
             <span class="icon lricon-messages"></span>

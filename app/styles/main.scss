@@ -996,6 +996,18 @@ html {
   }
 }
 
+.menu{
+  position: absolute;
+
+  top:30px;
+  left:30px;
+  font-size: 25px;
+}
+
+.mobile{
+  display: none;
+}
+
 /* Custom page footer */
 
 .container-narrow > hr {
@@ -1058,11 +1070,5 @@ html {
   }
   #footer .lr-link-button, #footer p{
     font-size: 10px;
-  }
-  .sidebar{
-    width:100%;
-    &.hide{
-      display: none;
-    }
   }
 }

@@ -6,8 +6,11 @@
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
-  .controller('ChatRoomCtrl', ["$rootScope", "$scope", "$routeParams", "Users", "Auth", "Messages", "Chatrooms", "$firebaseObject",
-    function ($rootScope, $scope, $routeParams, Users, Auth, Messages, Chatrooms, $firebaseObject) {
+  .controller('ChatRoomCtrl', ["$rootScope", "$scope", "$routeParams", "Users", "Auth", "Messages", "Chatrooms", "$firebaseObject",'$mdSidenav',
+    function ($rootScope, $scope, $routeParams, Users, Auth, Messages, Chatrooms, $firebaseObject,$mdSidenav) {
+      $scope.openLeftMenu = function() {
+        $mdSidenav('left').toggle();
+      };
       // any time auth state changes, add the user data to scope
       $rootScope.auth = Auth;
       $scope.user = '';

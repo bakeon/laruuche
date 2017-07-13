@@ -2,8 +2,11 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('PanelCtrl', ["$rootScope","$scope", "Auth", "$location", "Users" , "$firebaseObject", "Chatrooms","$mdDialog",
-      function ($rootScope ,$scope , Auth, $location, Users, $firebaseObject, Chatrooms,$mdDialog) {
+    .controller('PanelCtrl', ["$rootScope","$scope", "Auth", "$location", "Users" , "$firebaseObject", "Chatrooms","$mdDialog","$mdSidenav",
+      function ($rootScope ,$scope , Auth, $location, Users, $firebaseObject, Chatrooms,$mdDialog,$mdSidenav) {
+        $scope.openLeftMenu = function() {
+          $mdSidenav('left').toggle();
+        };
         $rootScope.auth = Auth;
         var userUid = '';
         $scope.getRoomName='';
@@ -24,10 +27,7 @@
             console.log($rootScope.firebaseUser);
             $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
           }
-
         });
-
-
 
         /*Load ChatRooms*/
         $scope.chatrooms = Chatrooms;

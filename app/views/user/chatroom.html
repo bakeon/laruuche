@@ -1,5 +1,7 @@
 <div layout="row" class="container" layout-align="start start">
-  <div class="sidebar shadow hide" layout="column" layout-align="space-between start">
+  <md-sidenav class="sidebar shadow" layout="column" layout-align="space-between start" class="md-sidenav-left"
+              md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-md')">
     <div class="up-container">
       <div class="up" flex layout="column" layout-align="start start">
         <div class="header-app" layout="row" layout-align="center center">
@@ -48,14 +50,18 @@
     <div class="down" layout="column " layout-align="center center">
       <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
     </div>
-  </div>
+  </md-sidenav>
   <div class="chat content-app" layout="column" layout-align="start start" flex>
     <div class="header-room shadow" layout="row" layout-align="space-between center">
+      <md-button  ng-click="openLeftMenu()"
+                  class="md-primary md-fab md-mini menu" hide-gt-sm>
+        <span class="icon lricon-picto-logo"></span>
+      </md-button>
       <a class="back" ng-href="#!/panel" layout layout-align="start center"><span class="icon lricon-back"></span>Retour</a>
       <div class="room-title" flex>
         <h2>{{ chatroomName }}</h2>
       </div>
-      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser(chatroom.$id)"><span class="icon lricon-plus"></span>Ajouter cette room</button>
+      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser(chatroom.$id)"><span class="icon lricon-plus"></span><span class="mobile">jouter cette room</span>A</button>
     </div>
     <div class="messengerBox" flex>
       <div class="message-wrapper">
