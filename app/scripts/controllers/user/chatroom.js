@@ -6,8 +6,8 @@
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
-  .controller('ChatRoomCtrl', ["$rootScope", "$scope", "$routeParams", "Users", "Auth", "Messages", "Chatrooms", "$firebaseObject",'$mdSidenav',
-    function ($rootScope, $scope, $routeParams, Users, Auth, Messages, Chatrooms, $firebaseObject,$mdSidenav) {
+  .controller('ChatRoomCtrl', ["$rootScope", "$scope", "$routeParams", "Users", "Auth", "Messages", "Chatrooms", "$firebaseObject",'$mdSidenav', '$http',
+    function ($rootScope, $scope, $routeParams, Users, Auth, Messages, Chatrooms, $firebaseObject,$mdSidenav, $http) {
       $scope.openLeftMenu = function() {
         $mdSidenav('left').toggle();
       };
@@ -21,6 +21,10 @@ angular.module('laruucheApp')
       $scope.ChatroomsList='';
       let chatrooms = Chatrooms.all;
       let chatRef = firebase.database().ref('chatrooms');
+
+      const PUBLIC_KEY = '89689fe58d534335b4fc521ce8c8bb6e';
+      const BASE_URL = 'https://api.giphy.com/v1/gifs/random?';
+      const RATING = 'pg';
 
       /*Get the room object*/
       $scope.ChatRoomObj = Chatrooms.getRoom($routeParams.id);
@@ -38,8 +42,6 @@ angular.module('laruucheApp')
         $scope.getPhotoURL = function(uid){
           return Users.getPhotoURL(uid);
         }
-
-
 
       });
 
@@ -75,13 +77,39 @@ angular.module('laruucheApp')
       $scope.message = '';
       $scope.sendMessage = function () {
         if ($scope.message.length > 0) {
-          $scope.messages.$add({
+            let checkString = $scope.message.split(" ");
+            if(checkString[0] == '/gif'){
+              let gifSearch =  $scope.message.substr(4);
+              $scope.message = '';
+              $http.get(BASE_URL+'api_key='+PUBLIC_KEY+'&tag='+gifSearch+"&rating="+RATING)
+                .then(function (response) {
+                  if(response.status == 200){
+                    let url = response.data.data.fixed_height_downsampled_url;
+                    $scope.messages.$add({
+                      uid: $scope.user.$id,
+                      body: url,
+                      timestamp: firebase.database.ServerValue.TIMESTAMP,
+                      type:'gif'
+                    }).then(function () {
+                      $scope.message = '';
+                    });
+
+                  }
+
+                });
+
+
+            }
+            else{
+              console.log('isNotGif');
+            }
+/*          $scope.messages.$add({
             uid: $scope.user.$id,
             body: $scope.message,
             timestamp: firebase.database.ServerValue.TIMESTAMP
           }).then(function () {
             $scope.message = '';
-          });
+          });*/
         };
       };
 
