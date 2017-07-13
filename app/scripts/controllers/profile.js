@@ -2,8 +2,8 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('ProfileCtrl', ["$rootScope","$scope", "Auth", "$location","Users", "$timeout", "$q", "Degrees",
-      function ($rootScope ,$scope, Auth, $location, Users, $timeout, $q, Degrees) {
+    .controller('ProfileCtrl', ["$rootScope","$scope", "Auth", "$location","Users", "$timeout", "$q", "Degrees", "$mdConstant",
+      function ($rootScope ,$scope, Auth, $location, Users, $timeout, $q, Degrees, $mdConstant) {
         var self = this;
         $scope.getTags = '';
         $rootScope.auth = Auth;
@@ -18,7 +18,16 @@
           else{
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);
-            $scope.getTags = Users.getTags(firebaseUser.uid);
+            var getTags = Users.getTags(firebaseUser.uid);
+            $scope.tags = [];
+            getTags.$loaded().then(function () {
+              if(getTags){
+                $scope.tags = getTags.$value.split(',');
+              }
+              else{
+                $scope.tags = [];
+              }
+            });
           }
         });
 
@@ -26,9 +35,13 @@
         $scope.userTags = [];
         $scope.userTrack = '';
         $scope.tracks = [
-          "S - Scientifique",
-          "L - Littéraire",
-          "ES - Economique et sociale",
+          "S",
+          "L",
+          "ES",
+          "STI2D",
+          "ST2S",
+          "STL",
+          "STMG"
         ];
 
         $scope.userDegreeLevel = '';
@@ -122,10 +135,11 @@
 
         }
 
-        self.readonly = false;
+        /*Tags for expert*/
+        this.customKeys = [$mdConstant.KEY_CODE.ENTER,$mdConstant.KEY_CODE.SPACE];
 
         $scope.updateProfile = function(){
-          //$scope.user.tags = $scope.userTags;
+          $scope.user.tags = $scope.tags.join();
           $scope.user.$save().then(function(){
             //If works redirect To
             console.log("Profile updated");

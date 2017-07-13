@@ -10,11 +10,25 @@
 angular.module('laruucheApp')
   .controller('AdminEditUserCtrl', function ($rootScope, $scope, Users, userToEdit, $mdDialog) {
       $scope.user = Users.getProfile(userToEdit.$id);
+      var getTags = Users.getTags(userToEdit.$id);
+      getTags.$loaded().then(function () {
+        if(getTags){
+          $scope.tags = getTags.$value.split(',');
+        }
+        else{
+          $scope.tags = [];
+        }
+      });
+
       $scope.userTrack = '';
       $scope.tracks = [
-        "S - Scientifique",
-        "L - Littéraire",
-        "ES - Economique et sociale",
+        "S",
+        "L",
+        "ES",
+        "STI2D",
+        "ST2S",
+        "STL",
+        "STMG"
       ];
 
       $scope.userLevels = [
@@ -24,6 +38,7 @@ angular.module('laruucheApp')
       ];
 
       $scope.updateProfile = function(){
+        $scope.user.tags = $scope.tags.join();
         $scope.user.$save().then(function(){
           //If works redirect
           console.log("Profile updated");

@@ -13,6 +13,9 @@
           <a ng-if="!user.isMentor" href="#!/panel/findmymentor">
             Trouver un mentor
           </a>
+          <a href="#!/panel/">
+            Discussions libres
+          </a>
           <a ng-if="user.isMentor" href="#!/panel/my-students">
             Mes étudiants
           </a>
@@ -54,53 +57,37 @@
       </div>
     </div>
     <div class="down" layout="column " layout-align="center center">
-        <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
+      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </div>
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
-        <h3 class="md-title">Rejoindre une alvéole</h3>
+        <h3 class="md-title">Mes mentors</h3>
         <ul class="social" layout="row" layout-align="space-between center">
           <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
           <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
         </ul>
       </div>
-
-      <!--<form class="search-bar" layout layout-align="start center">
-        <div class="" layout="row" layout-align="start start">
-          <div class="search-input" layout layout-align="start center">
-            <span class="icon lricon-search"></span>
-            <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
-          </div>
-        </div>
-      </form>-->
     </div>
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.public" layout="column" layout-align="center center">
-        <div class="card-header" layout="column" layout-align="center center">
-          <div>
-            <span class="icon lricon-messages"></span>
-          </div>
-          <div class="card-header-text">
-            <span class="title-card">{{ chatroom.name }}</span>
-          </div>
-        </div>
-        <div class="card-actions" layout="row" layout-align="start center">
-          <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
-        </div>
-      </div>
-        <div class="card-room inactive-room" layout="column" layout-align="center center">
+        <div class="card-room" ng-repeat="mentor in mentors" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
-              <span class="icon lricon-lock"></span>
+              <span class="icon lricon-messages"></span>
             </div>
-            <div class="card-header-text">
-              <span class="title-card">Disponible soon !</span>
+            <div class="card-head er-text">
+              <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
             </div>
           </div>
-
+          <div class="card-actions" layout="row" layout-align="start center">
+            <!-- pending -->
+            <md-button class="md-raised black" ng-if="mentor.status === 'pending'" ng-disabled="">En attente</md-button>
+            <!-- accepted -->
+            <md-button class="md-raised black accept-mentor" ng-if="mentor.status === 'accepted'" ng-click="joinPrivateRoom( mentor.mentorId, user.$id)" >Rejoindre la room</md-button>
+            <!-- refused -->
+          </div>
         </div>
       </md-content>
     </div>

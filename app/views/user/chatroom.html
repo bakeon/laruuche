@@ -18,7 +18,7 @@
               Éditer
             </a>
           </div>
-          <img class="user-pic" ng-src="{{firebaseUser.photoURL}}"/>
+          <img class="user-pic" ng-src="{{user.photoURL}}"/>
           <div class="user-info">
             <div class="user-name">
               {{ user.displayName }}
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="down" layout="column " layout-align="center center">
-      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
+      <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </div>
   <div class="chat content-app" layout="column" layout-align="start start" flex>
@@ -64,7 +64,7 @@
           <div class="message-container isUser(message.uid)">
             <div class="message-info" layout layout-align="start start">
               <div class="left">
-                <img alt="photo profil user"/>
+                <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
               </div>
               <div class="right" layout="column" layout-align="start start">
                 <div class="user-name" layout="row" layout-align="start center">
@@ -81,6 +81,8 @@
       </div>
     </div>
     <div class="send-message shadow-top" layout layout-align="center center">
+      <video id="remoteaudio" autoplay style="display: none"></video>
+      <audio id="localaudio" muted></audio>
       <form ng-submit="sendMessage()">
           <input ng-model="message" rows="5"
                  placeholder="Message"/>
