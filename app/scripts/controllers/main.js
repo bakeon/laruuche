@@ -10,7 +10,7 @@
 
 angular.module('laruucheApp')
 
-  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, Auth) {
+  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, Auth, $mdDialog) {
     var auth = Auth;
 
     $rootScope.auth = Auth;
@@ -21,11 +21,16 @@ angular.module('laruucheApp')
       console.log(firebaseUser);
     });
 
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.loginButton = function(event){
+      $mdDialog.show({
+        controller: 'AuthDialogCtrl',
+        templateUrl: 'views/authDialog.html',
+        parent: angular.element(document.body),
+        targetEvent: event,
+        clickOutsideToClose: true
+      });
+    };
+
     $scope.homeTemplate=
       {
           first:{
