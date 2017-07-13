@@ -42,6 +42,7 @@
     "test": "karma start test\\karma.conf.js"
   },
   "dependencies": {
+    "angular-ui-router": "^1.0.3",
     "concat": "^1.0.3"
   }
 }

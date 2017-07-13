@@ -24,30 +24,28 @@ angular.module('laruucheApp')
       else{
         /*Retrieve User Data*/
         $scope.user = Users.getProfile(firebaseUser.uid);
-        userUid = $scope.user.$id;
         $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
-        $scope.mentors = Users.getMyMentors(userUid);
-      }
+        $scope.user.$loaded().then(function () {
+          userUid = $scope.user.$id;
+          $scope.mentors = Users.getMyMentors(userUid);
+          /*Get all mentors*/
+          $scope.mentors.$loaded().then(function () {
+            $scope.getDisplayName = function(uid){
+              return Users.getDisplayName(uid);
+            }
+          });
 
-      /*Get all students*/
-      $scope.mentors.$loaded().then(function () {
-      });
-
-      $scope.getDisplayName = function(uid){
-        return Users.getDisplayName(uid);
-      }
-
-
-      /*Join the private room*/
-      $scope.joinPrivateRoom = function(mentorId, studentId){
-        let myRoom = firebase.database().ref('chatrooms').orderByChild('uid').equalTo(mentorId+studentId);
-        myRoom.on('value', function(snap){
-          for(let value in snap.val()){
-            $location.path('/panel/chatroom/'+value);
-            break;
+          /*Join the private room*/
+          $scope.joinPrivateRoom = function(mentorId, studentId){
+            let myRoom = firebase.database().ref('chatrooms').child('private').orderByChild('uid').equalTo(mentorId+studentId);
+            myRoom.on('value', function(snap){
+              for(let value in snap.val()){
+                $location.path('/panel/chatroom/'+value);
+                break;
+              }
+            });
           }
         });
-        console.log(myRoom);
       }
 
     });

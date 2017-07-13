@@ -14,8 +14,8 @@ angular.module('laruucheApp')
     var ref = firebase.database().ref("chatrooms");
 
     var chatrooms = $firebaseArray(ref);
-
-    var publicRooms = $firebaseArray(ref.orderByChild('type').equalTo('public'));
+    var privateRooms = $firebaseArray(ref.child('private'));
+    var publicRooms = $firebaseArray(ref.child('public'));
 
     var Chatrooms = {
       getRoom: function(uid){
@@ -29,11 +29,12 @@ angular.module('laruucheApp')
       },
       getPrivateChatroom: function(mentorId, studentId){
         let uid = mentorId+studentId;
-        let chatroom = ref.orderByChild('uid').equalTo(uid);
+        let chatroom = ref.child('private').orderByChild('uid').equalTo(uid);
         return $firebaseObject(chatroom);
       },
       all: chatrooms,
       publicRooms: publicRooms,
+      privateRooms: privateRooms
     };
     return Chatrooms;
 

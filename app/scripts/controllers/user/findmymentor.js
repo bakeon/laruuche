@@ -39,11 +39,13 @@ angular.module('laruucheApp')
 
      $scope.askForMentoring = function(uid){
        let mentorNotifs = {
+         read:false,
          status:'pending',
          timestamp:firebase.database.ServerValue.TIMESTAMP,
          studentId:$scope.user.$id
        };
        let studentsNotif = {
+         read:false,
          status:'pending',
          timestamp:firebase.database.ServerValue.TIMESTAMP,
          mentorId:uid
@@ -56,9 +58,14 @@ angular.module('laruucheApp')
         student.child('mentors').child(uid).update(studentsNotif);
      };
 
-     $scope.joinPrivateRoom = function(mentorId, studentId){
-        let myRoom = Chatrooms.getPrivateChatroom(mentorId, studentId);
-        let roomId = myRoom.$id;
-        $location.path('/')
-     }
+      /*Join the private room*/
+      $scope.joinPrivateRoom = function(mentorId, studentId){
+        let myRoom = firebase.database().ref('chatrooms').orderByChild('uid').equalTo(mentorId+studentId);
+        myRoom.on('value', function(snap){
+          for(let value in snap.val()){
+            $location.path('/panel/chatroom/'+value);
+            break;
+          }
+        });
+      }
   });
