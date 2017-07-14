@@ -37,12 +37,12 @@ angular
         controller: 'ProfileCtrl as ProfileCtrl'
       })
       .when('/rooms',{
-        templateUrl: 'views/user/rooms.html',
-        controller: 'PanelCtrl'
+        templateUrl: 'views/public/rooms.html',
+        controller: 'RoomsCtrl as RoomsCtrl'
       })
       .when('/mentors',{
-        templateUrl: 'views/user/mentors.html',
-        controller: 'PanelCtrl'
+        templateUrl: 'views/public/mentors.html',
+        controller: 'MentorsCtrl as MentorsCtrl'
       })
       .when('/userProfile/chatroom/create',{
         templateUrl: 'views/user/create.html',

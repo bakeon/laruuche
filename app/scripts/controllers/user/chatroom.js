@@ -52,7 +52,7 @@ angular.module('laruucheApp')
         };
 
         if (!$rootScope.firebaseUser) {
-          $location.path('/login');
+          $location.path('/');
         }
         else {
           /*Retrieve User Data*/

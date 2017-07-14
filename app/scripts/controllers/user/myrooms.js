@@ -27,7 +27,7 @@ angular.module('laruucheApp')
         return Chatrooms.getName(uid);
       };
       if(!$rootScope.firebaseUser){
-        $location.path('/login');
+        $location.path('/');
       }
       else{
         /*Retrieve User Data*/

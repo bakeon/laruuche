@@ -13,7 +13,7 @@
         $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
           if(!$rootScope.firebaseUser){
-            $location.path('/login');
+            $location.path('/');
           }
           else{
             /*Retrieve User Data*/
