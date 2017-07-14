@@ -18,7 +18,7 @@ angular
     'firebase',
     'ngMaterial'
   ])
-  .config(function ($routeProvider,$mdThemingProvider) {
+  .config(function ($routeProvider,$locationProvider,$mdThemingProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -34,19 +34,24 @@ angular
       })
       .when('/userProfile',{
         templateUrl: 'views/user/userProfile.html',
-        controller: 'ProfileCtrl as ProfileCtrl'
+        controller: 'ProfileCtrl as ProfileCtrl',
+        active: 'profile'
       })
       .when('/rooms',{
         templateUrl: 'views/public/rooms.html',
-        controller: 'RoomsCtrl as RoomsCtrl'
+        controller: 'RoomsCtrl as RoomsCtrl',
+        active: 'rooms'
+
       })
       .when('/mentors',{
         templateUrl: 'views/public/mentors.html',
-        controller: 'MentorsCtrl as MentorsCtrl'
+        controller: 'MentorsCtrl as MentorsCtrl',
+        active: 'mentors'
+
       })
       .when('/userProfile/chatroom/create',{
         templateUrl: 'views/user/create.html',
-        controller: 'PanelCtrl'
+        controller: 'PanelCtrl',
       })
       .when('/userProfile/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
@@ -62,15 +67,21 @@ angular
       })
       .when('/userProfile/my-students',{
         templateUrl:'views/user/mystudents.html',
-        controller: 'MyStudentsCtrl as MyStudentsCtrl'
+        controller: 'MyStudentsCtrl as MyStudentsCtrl',
+        active: 'mystudents'
+
       })
       .when('/userProfile/my-mentors',{
         templateUrl:'views/user/mymentors.html',
-        controller: 'MyMentorsCtrl as MyMentorsCtrl'
+        controller: 'MyMentorsCtrl as MyMentorsCtrl',
+        active: 'mymentors'
+
       })
       .when('/userProfile/my-rooms',{
         templateUrl:'views/user/myrooms.html',
-        controller: 'MyRoomsCtrl as MyRoomsCtrl'
+        controller: 'MyRoomsCtrl as MyRoomsCtrl',
+        active: 'myrooms'
+
       })
       .when('/admin',{
         templateUrl:'views/admin/backoffice.html',
@@ -87,6 +98,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+    
 
     var customPrimary = {
       '50': '#7b7ee0',

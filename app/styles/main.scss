@@ -36,7 +36,12 @@ a{
   color: $white;
   height:60px;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 20px 0;
+  &>div{
+    &:first-child{
+      width:200px;
+    }
+  }
   .icon{
     font-size: 35px;
     &.lricon-picto-logo{
@@ -291,11 +296,16 @@ h5 {
       border-radius: 20px;
       background: $black-blue;
       box-sizing: border-box;
-      padding: 14px 8px;
+      height:40px;
       word-wrap: break-word;
       margin-bottom: 10px;
       a{
         font-size: 12px;
+        height:100%;
+        border-radius:20px;
+        &.active,&:hover{
+          background: $yellow;
+        }
       }
       & > div > div {
         word-wrap: break-word;
@@ -491,6 +501,23 @@ h5 {
   }
 }
 
+.lr-blue-button{
+  height: 40px;
+  padding: 0 20px;
+  background: $blue;
+  border-radius: 20px;
+  color: $white;
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background: $yellow;
+    color: $white;
+  }
+}
+.mentor .card-header-text{
+  color: $yellow;
+}
 .lr-link-button {
   height: 40px;
   padding: 0 20px;
@@ -620,7 +647,7 @@ md-dialog{
   height:18px;
   font-size: 14px;
   margin: 10px 0;
-  color: $yellow;
+  color: $blue;
 }
 
 .user-pic{

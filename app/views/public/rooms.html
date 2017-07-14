@@ -36,11 +36,13 @@
             <span class="icon lricon-messages"></span>
           </div>
           <div class="card-header-text">
+            <span class="type-card">{{ chatroom.type }}</span>
+
             <span class="title-card">{{ chatroom.name }}</span>
           </div>
         </div>
         <div class="card-actions" layout="row" layout-align="start center">
-          <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
+          <a layout layout-align="center center" class="lr-blue-button" ng-click="enterChat(chatroom.$id)">Rejoindre la room</a>
         </div>
       </div>
         <div class="card-room inactive-room" layout="column" layout-align="center center">
