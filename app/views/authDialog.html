@@ -2,7 +2,7 @@
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>{{ step }}</h2>
+        <h2>{{ step }} !</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="close()">
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
@@ -13,19 +13,19 @@
     <md-dialog-content>
       <div class="md-dialog-content">
           <div ng-if="isLogged === false">
-            <div class="login" layout="row" layout-align="space-around center">
-              <md-button  class="md-raised" ng-click="googleSignIn()">
+            <div class="login" layout="column" layout-align="space-around center">
+              <a class="lr-yellow-button" ng-click="googleSignIn()" layout="row" layout-align="center center">
                 Login with Gmail
-              </md-button>
-              <md-button class="md-raised" ng-click="fbSignIn()">
+              </a>
+              <a class="lr-yellow-button" ng-click="fbSignIn()" layout="row" layout-align="center center">
                 Login with Facebook
-              </md-button>
+              </a>
             </div>
           </div>
       </div>
       <div ng-if="isLogged === true">
-        <div layout="row" layout-align="center">
-          <md-content layout-padding flex="100">
+        <div layout="row" layout-align="center center">
+          <md-content layout-padding flex="100" layout="column" layout-align="center center">
             <div layout="row"  layout-align="center center">
               <div flex="20">
                 <img  ng-src="{{user.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
@@ -36,17 +36,17 @@
               </div>
             </div>
             <form ng-submit="$event.preventDefault()" name="searchForm">
-              <md-input-container class="md-block" flex-gt-sm>
+              <md-input-container class="md-block md-accent" flex-gt-sm>
                 <label>Prénom :</label>
                 <input ng-model="user.firstName">
               </md-input-container>
 
-              <md-input-container class="md-block" flex-gt-sm>
+              <md-input-container class="md-block md-accent" flex-gt-sm>
                 <label>Nom :</label>
                 <input ng-model="user.lastName">
               </md-input-container>
 
-              <md-input-container ng-if="!user.isMentor" class="md-block" flex-gt-sm>
+              <md-input-container ng-if="!user.isMentor" class="md-block md-accent" flex-gt-sm>
                 <label>Mon bac :</label>
                 <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
                   <md-option ng-repeat="track in tracks" ng-value="track">
@@ -54,7 +54,7 @@
                   </md-option>
                 </md-select>
               </md-input-container>
-              <md-input-container md-no-float class="md-block">
+              <md-input-container md-no-float class="md-block md-accent">
                 <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
               </md-input-container>
               <md-checkbox ng-model="user.isMentor" aria-label="isMentor">

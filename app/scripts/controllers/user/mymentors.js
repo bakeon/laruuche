@@ -19,7 +19,7 @@ angular.module('laruucheApp')
         return Chatrooms.getName(uid);
       };
       if(!$rootScope.firebaseUser){
-        $location.path('/login');
+        $location.path('/');
       }
       else{
         /*Retrieve User Data*/
@@ -49,4 +49,12 @@ angular.module('laruucheApp')
       }
 
     });
+    $scope.logout = function(){
+      Auth.$signOut().then(function(){
+        $rootScope.isLogged=false;
+        $scope.user = '';
+        $rootScope.firebaseUser = '';
+        $location.path('/');
+      });
+    };
   });

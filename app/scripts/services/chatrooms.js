@@ -28,7 +28,7 @@ angular.module('laruucheApp')
         return users.$getRecord(uid).displayName;
       },
       getName:function (uid) {
-        return chatrooms.$getRecord(uid).name;
+        return publicRooms.$getRecord(uid).name;
       },
       getPrivateChatroom: function(mentorId, studentId){
         let uid = mentorId+studentId;

@@ -27,11 +27,40 @@ body.md-default-theme, body, html.md-default-theme, html {
   padding-left: 15px;
   padding-right: 15px;
 }
-
+a{
+  cursor:pointer;
+}
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #000000;
+  background-color:$black;
+  color: $white;
+  height:60px;
+  box-sizing: border-box;
+  padding: 20px;
+  .icon{
+    font-size: 35px;
+    &.lricon-picto-logo{
+      font-size: 60px;
+    }
+  }
+  .nav li{
+    font-size: 18px;
+    margin:0 15px;
+    &:hover{
+      a{
+        color: $yellow;
+      }
+    }
+  }
+  .social li{
+    font-size: 20px;
+    a:hover{
+      color: $yellow;
+    }
+    &:first-child{
+      margin-right: 10px;
+    }
+  }
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
@@ -152,14 +181,15 @@ body.md-default-theme, body, html.md-default-theme, html {
     }
   }
 }
+.login{
+  .md-button{
+    width:80%;
+  }
+}
 
 .logo {
   width: 300px;
   height: auto;
-}
-
-.login {
-  height: 100vh;
 }
 
 a {
@@ -264,6 +294,9 @@ h5 {
       padding: 14px 8px;
       word-wrap: break-word;
       margin-bottom: 10px;
+      a{
+        font-size: 12px;
+      }
       & > div > div {
         word-wrap: break-word;
         height: 15px;
@@ -317,8 +350,9 @@ h5 {
 .sidebar {
   text-transform: uppercase;
   z-index: 2000;
+  height:100%;
   .save {
-    height: 65px;
+    height: 55px;
     color: $white;
     font-size: 12px;
     background: $yellow;
@@ -339,7 +373,7 @@ h5 {
   }
   .up-container {
     width: 100%;
-    height: 375px;
+    height: 265px;
   }
   .edit {
     width: 100%;
@@ -347,6 +381,7 @@ h5 {
   }
   .user-info {
     height: 32px;
+    color: $blue;
   }
   img {
     width: 100px;
@@ -357,7 +392,7 @@ h5 {
     padding: 0;
   }
   .my-info {
-    background: $black-blue;
+    background: $bg-light-grey;
     width: 100%;
     font-size: 13px;
     .user-name {
@@ -381,7 +416,7 @@ h5 {
       font-size: 65px;
     }
   }
-  background: $blue;
+  background: $bg-light-grey;
   width: 200px;
   color: $white;
   .lr-link-button {
@@ -467,11 +502,11 @@ h5 {
   cursor: pointer;
   background: transparent;
   &.black {
-    border: 1px solid $white;
-    color: $white;
+    border: 1px solid $yellow;
+    color: $yellow;
     &:hover {
-      background: $white;
-      color: $yellow;
+      background: $yellow;
+      color: $white;
     }
   }
   &:hover {
@@ -555,15 +590,45 @@ h5 {
 }
 
 .card-header {
-  color: $white;
+  color: $yellow;
+  margin-bottom: 10px;
   .icon {
     font-size: 30px;
+    color: $blue;
+  }
+}
+
+md-dialog{
+  min-width: 400px;
+  .login a{
+    width:80%;
+    margin-bottom: 15px;
+
+  }
+  h2{
+    color: $blue;
+    padding: 20px;
+    text-align: center;
+    width:100%;
+  }
+  md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar){
+    background: $white;
   }
 }
 
 .card-header-text {
-  margin: 20px 0;
-  color: $white;
+  height:18px;
+  font-size: 14px;
+  margin: 10px 0;
+  color: $yellow;
+}
+
+.user-pic{
+  height:40px;
+  width:40px;
+  border: 1px solid $yellow;
+  border-radius:25px;
+  margin-bottom: 10px;
 }
 
 .message {
@@ -714,16 +779,6 @@ html {
   }
 }
 
-.social {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  li {
-    .icon {
-      font-size: 40px;
-    }
-  }
-}
 
 .timestamp {
   color: $light-grey;
@@ -749,10 +804,10 @@ html {
 }
 
 .card-room {
-  background: url("../assets/images/alveole_chat.svg.svg") no-repeat center center;
-  background-size: cover;
+  background: url("../assets/images/alveole_chat.png") no-repeat center center;
+  background-size: 100%;
   height: 300px;
-  width: 230px;
+  width: 240px;
   margin: 0 20px;
   &.inactive-room{
     background: url("../assets/images/alveole_gris.svg") no-repeat center center;
@@ -768,12 +823,8 @@ html {
   box-sizing: border-box;
 }
 
-.container.main-container {
-  height: 100%;
-}
-
 .container {
-  height: 100%;
+  width:100%;
   & > div {
     height: 100%;
   }
@@ -1024,6 +1075,29 @@ html {
     font-size:12px;
   }
 }
+
+.md-chips md-chip .md-chip-content{
+  color: $white;
+}
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple{
+  color: $yellow;
+}
+.profile form>*{
+  margin-bottom: 15px;
+}
+.profile {
+  .profil-picture{
+    width:120px;
+    height:120px;
+  }
+}
+.profile md-content{
+  width:100%;
+  form{
+    width:80%;
+  }
+}
+
 .profile-title{
   font-family: Roboto, Helvetica Neue, sans-serif;;
   padding-left:15px;
@@ -1168,7 +1242,7 @@ html {
 }
 
 .mobile{
-  display: none;
+  display: block;
 }
 
 /* Custom page footer */
@@ -1204,8 +1278,7 @@ html {
   .header,
   .marketing,
   .footer {
-    padding-left: 0;
-    padding-right: 0;
+
   }
   /* Space out the masthead */
 
@@ -1259,5 +1332,8 @@ html {
   }
   .menu{
     left:10px;
+  }
+  .mobile{
+    display: none;
   }
 }

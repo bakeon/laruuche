@@ -64,30 +64,49 @@
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
-        <h3 class="md-title">Mes mentors</h3>
-        <ul class="social" layout="row" layout-align="space-between center">
-          <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
-          <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
-        </ul>
+        <md-button  ng-click="openLeftMenu()"
+                    class="md-fab md-mini menu" hide-gt-sm>
+          <span class="icon lricon-more"></span>
+        </md-button>
+        <h3 class="md-title">Mes rooms</h3>
+      </div>
+
+      <!--<form class="search-bar" layout layout-align="start center">
+        <div class="" layout="row" layout-align="start start">
+          <div class="search-input" layout layout-align="start center">
+            <span class="icon lricon-search"></span>
+            <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
+          </div>
+        </div>
+      </form>-->
+    </div>
+    <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications">
+      <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
+      <div layout="row"  layout-align="center center">
+        <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
+        <div flex="70">
+          <p class="title-notif">{{notification.displayName}} / {{ notification.track}}</p>
+          <span class="sub-notif">J'aimerais devenir ton élève !</span>
+        </div>
+      </div>
+      <div layout="row"  layout-align="center center">
+        <md-button class="md-raised black accept-mentor"  ng-click="acceptStudent(notification.studentId, $index)">Accepter</md-button>
+        <md-button class="md-raised black refuse-mentor"  ng-click="refuseStudent(notification.studentId, $index)">Refuser</md-button>
       </div>
     </div>
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room" ng-repeat="mentor in mentors" layout="column" layout-align="center center">
+        <div class="card-room " ng-repeat="room in ChatroomsList" ng-click="enterChat(room)" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
               <span class="icon lricon-messages"></span>
             </div>
-            <div class="card-head er-text">
-              <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
+            <div class="card-header-text">
+              <div>{{getRoomName(room)}}</div>
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
-            <!-- pending -->
-            <md-button class="md-raised black" ng-if="mentor.status === 'pending'" ng-disabled="">En attente</md-button>
-            <!-- accepted -->
-            <md-button class="md-raised black accept-mentor" ng-if="mentor.status === 'accepted'" ng-click="joinPrivateRoom( mentor.mentorId, user.$id)" >Rejoindre la room</md-button>
-            <!-- refused -->
+            <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
           </div>
         </div>
       </md-content>

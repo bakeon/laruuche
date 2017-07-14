@@ -142,7 +142,7 @@
 
         /*Enter to the chatroom*/
         $scope.enterChat = function(id){
-          $location.path('/panel/chatroom/' +id)
+          $location.path('/userProfile/chatroom/' + id);
         };
 
         $scope.editButton = function(event){
@@ -158,6 +158,7 @@
         /*Logout*/
         $scope.logout = function(){
           Auth.$signOut().then(function(){
+            $rootScope.isLogged=false;
             $scope.user = '';
             $rootScope.firebaseUser = '';
             $location.path('/');

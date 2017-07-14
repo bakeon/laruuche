@@ -6,3 +6,4 @@
 /.idea
 /functions/node_modules
 /app/bower_components
+app/assets/images/.DS_Store
