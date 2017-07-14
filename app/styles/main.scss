@@ -937,10 +937,29 @@ html {
 }
 
 /*Custom body*/
+/*Cookie bar*/
+#cookie-bar{
+  color:white;
+  padding: 5px 10px 5px 10px;
+  background: $black;
+  z-index: 9999;
+  width:100%;
+  position: absolute;
+  bottom: 0;
+}
+.md-ruuche{
+  color:white;
+}
+.md-ruuche:hover{
+  color:$yellow;
+  border-radius: 0px;
+}
 
+/*Gif*/
+.ruuche-gif{
+  width: 250px;
+}
 /*Notifications*/
-
-
 .accept-student-notif{
   -webkit-box-shadow: 0px 2px 8px -1px rgba(125,125,125,1);
   -moz-box-shadow: 0px 2px 8px -1px rgba(125,125,125,1);

@@ -33,7 +33,7 @@ angular
         controller: 'AuthCtrl'
       })
       .when('/userProfile',{
-        templateUrl: 'views/user/profile.html',
+        templateUrl: 'views/user/userProfile.html',
         controller: 'ProfileCtrl as ProfileCtrl'
       })
       .when('/rooms',{
@@ -52,8 +52,12 @@ angular
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl',
       })
-      .when('/mentors',{
-        templateUrl:'views/user/findmymentor.html',
+      .when('/userProfile/privateroom/:id',{
+        templateUrl: 'views/user/privatechatroom.html',
+        controller: 'PrivateChatroomCtrl',
+      })
+      .when('/userProfile/mentors',{
+        templateUrl:'views/user/mentors.html',
         controller: 'FindMyMentorCtrl as fmmCtrl'
       })
       .when('/userProfile/my-students',{

@@ -15,8 +15,11 @@ angular.module('laruucheApp')
       forChatroom: function(chatroomId){
         return $firebaseArray(chatMessagesRef.child(chatroomId));
       },
-      getChatMessages: function (chatroomId) {
-        return $firebaseArray(chatMessagesRef.child(chatroomId).child('messages'))
+      getPublicChatMessages: function (chatroomId) {
+        return $firebaseArray(chatMessagesRef.child('public').child(chatroomId).child('messages'))
+      },
+      getPrivateChatMessages: function (chatroomId) {
+        return $firebaseArray(chatMessagesRef.child('private').child(chatroomId).child('messages'))
       }
     };
     return Chatroom;
