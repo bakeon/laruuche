@@ -27,23 +27,23 @@
     </div>
     <div class="room-list-wrapper" flex layout="column" layout-align="start center">
       <div class="room-list" layout="column" layout-align="start center">
-        <div ng-if="user.isMentor" class="room pointer">
-          <div layout layout-align="center center">
-            <a  href="#!/userProfile/my-students">
+        <div ng-if="user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a  href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout layout-align="center center" flex>
               Mes étudiants
             </a>
           </div>
         </div>
-        <div ng-if="!user.isMentor" class="room pointer">
-          <div layout layout-align="center center">
-            <a  href="#!/userProfile/my-mentors">
+        <div ng-if="!user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a  href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout layout-align="center center" flex>
               Mes mentors
             </a>
           </div>
         </div>
-        <div class="room pointer">
-          <div layout layout-align="center center">
-            <a href="#!/userProfile/my-rooms">
+        <div class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}"layout layout-align="center center" flex>
               Mes rooms
             </a>
           </div>
@@ -61,7 +61,7 @@
       <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </md-sidenav>
-  <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
+  <div class="content-app mentor" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
         <h3 class="md-title">Mes mentors</h3>
