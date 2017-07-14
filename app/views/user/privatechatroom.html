@@ -78,7 +78,8 @@
                   <span class="timestamp">{{ message.timestamp | date:'h:mm ' }}</span>
                 </div>
                 <div class="message-text">
-                  {{ message.body }}
+                  <p ng-if="message.type == 'text' ">{{ message.body }}</p>
+                  <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
                 </div>
               </div>
             </div>
