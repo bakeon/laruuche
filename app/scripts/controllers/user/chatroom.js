@@ -24,7 +24,7 @@ angular.module('laruucheApp')
 
       const PUBLIC_KEY = '89689fe58d534335b4fc521ce8c8bb6e';
       const BASE_URL = 'https://api.giphy.com/v1/gifs/random?';
-      const RATING = 'pg';
+      const RATING = 'r';
 
       /*Get the room object*/
       $scope.ChatRoomObj = Chatrooms.getRoom($routeParams.id);
