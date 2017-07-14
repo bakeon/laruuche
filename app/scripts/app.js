@@ -32,7 +32,7 @@ angular
         templateUrl: 'views/login.html',
         controller: 'AuthCtrl'
       })
-      .when('/profile',{
+      .when('/userProfile',{
         templateUrl: 'views/user/profile.html',
         controller: 'ProfileCtrl as ProfileCtrl'
       })
@@ -44,23 +44,23 @@ angular
         templateUrl: 'views/user/mentors.html',
         controller: 'PanelCtrl'
       })
-      .when('/panel/chatroom/create',{
+      .when('/userProfile/chatroom/create',{
         templateUrl: 'views/user/create.html',
         controller: 'PanelCtrl'
       })
-      .when('/panel/chatroom/:id',{
+      .when('/userProfile/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl',
       })
-      .when('/panel/findmymentor',{
+      .when('/mentors',{
         templateUrl:'views/user/findmymentor.html',
         controller: 'FindMyMentorCtrl as fmmCtrl'
       })
-      .when('/panel/my-students',{
+      .when('/userProfile/my-students',{
         templateUrl:'views/user/mystudents.html',
         controller: 'MyStudentsCtrl as MyStudentsCtrl'
       })
-      .when('/panel/my-mentors',{
+      .when('/userProfile/my-mentors',{
         templateUrl:'views/user/mymentors.html',
         controller: 'MyMentorsCtrl as MyMentorsCtrl'
       })

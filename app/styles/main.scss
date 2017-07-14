@@ -27,19 +27,39 @@ body.md-default-theme, body, html.md-default-theme, html {
   padding-left: 15px;
   padding-right: 15px;
 }
-
+a{
+  cursor:pointer;
+}
 /* Custom page header */
 .header {
   background-color:$black;
   color: $white;
   height:60px;
+  box-sizing: border-box;
+  padding: 20px;
   .icon{
-    font-size: 40px;
+    font-size: 35px;
+    &.lricon-picto-logo{
+      font-size: 60px;
+    }
   }
-  li{
-    font-size: 25px;
+  .nav li{
+    font-size: 18px;
     margin:0 15px;
-
+    &:hover{
+      a{
+        color: $yellow;
+      }
+    }
+  }
+  .social li{
+    font-size: 20px;
+    a:hover{
+      color: $yellow;
+    }
+    &:first-child{
+      margin-right: 10px;
+    }
   }
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -1139,8 +1159,7 @@ html {
   .header,
   .marketing,
   .footer {
-    padding-left: 0;
-    padding-right: 0;
+
   }
   /* Space out the masthead */
 
