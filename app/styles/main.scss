@@ -30,8 +30,17 @@ body.md-default-theme, body, html.md-default-theme, html {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #000000;
+  background-color:$black;
+  color: $white;
+  height:60px;
+  .icon{
+    font-size: 40px;
+  }
+  li{
+    font-size: 25px;
+    margin:0 15px;
+
+  }
   /* Make the masthead heading the same height as the navigation */
   h3 {
     margin-top: 0;
