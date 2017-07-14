@@ -84,7 +84,7 @@
             <a class="lr-link-button accept-mentor" ng-if="student.status === 'pending'" ng-click="acceptStudent(student.studentId)" layout layout-align="center center">Accepter</a>
             <a class="lr-link-button refuse-mentor" ng-if="student.status === 'pending'" ng-click="refuseStudent(student.studentId)" layout layout-align="center center">Refuser</a>
             <!-- accepted -->
-            <a class="lr-link-button" ng-if="student.status === 'accepted'" ng-click="joinPrivateRoom(user.$id, student.studentId)"  layout layout-align="center center">discuter</a>
+            <a class="lr-link-button" ng-if="student.status === 'accepted'" ng-click="joinPrivateRoom(user.$id, student.studentId)"  layout layout-align="center center">Discuter</a>
             <!-- refused -->
             <a class="lr-link-button refuse-mentor" ng-if="student.status === 'refused'" ng-disabled="true" layout layout-align="center center">X Refuser</a>
           </div>

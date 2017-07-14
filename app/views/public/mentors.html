@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
-            <button ng-if="!user.mentors[mentor.$id].mentorId"class="lr-link-button black" ng-click="askForMentoring(mentor.$id)">Se connecter</button>
+            <button ng-if="!user.mentors[mentor.$id].mentorId && !user.isMentor"class="lr-link-button black" ng-click="askForMentoring(mentor.$id)">Se connecter</button>
             <button ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'pending'" class="lr-link-button black" disabled>En attente</button>
             <button ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'accepted'" ng-click="joinPrivateRoom(mentor.$id, user.$id)" class="lr-link-button black" >Discuter</button>
 

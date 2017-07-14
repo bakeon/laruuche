@@ -18,11 +18,17 @@ angular
     'firebase',
     'ngMaterial'
   ])
+  .run(function($rootScope){
+    $rootScope.$on('$routeChangeStart', function (evt, next, currentRoute) {
+      $rootScope.isActive = next.$$route.routeName;
+    });
+  })
   .config(function ($routeProvider,$locationProvider,$mdThemingProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        routeName: 'main'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -35,18 +41,18 @@ angular
       .when('/userProfile',{
         templateUrl: 'views/user/userProfile.html',
         controller: 'ProfileCtrl as ProfileCtrl',
-        active: 'profile'
+        routeName: 'profile'
       })
       .when('/rooms',{
         templateUrl: 'views/public/rooms.html',
         controller: 'RoomsCtrl as RoomsCtrl',
-        active: 'rooms'
+        routeName: 'rooms'
 
       })
       .when('/mentors',{
         templateUrl: 'views/public/mentors.html',
         controller: 'MentorsCtrl as MentorsCtrl',
-        active: 'mentors'
+        routeName: 'mentors'
 
       })
       .when('/userProfile/chatroom/create',{
@@ -68,19 +74,19 @@ angular
       .when('/userProfile/my-students',{
         templateUrl:'views/user/mystudents.html',
         controller: 'MyStudentsCtrl as MyStudentsCtrl',
-        active: 'mystudents'
+        routeName: 'mystudents'
 
       })
       .when('/userProfile/my-mentors',{
         templateUrl:'views/user/mymentors.html',
         controller: 'MyMentorsCtrl as MyMentorsCtrl',
-        active: 'mymentors'
+        routeName: 'mymentors'
 
       })
       .when('/userProfile/my-rooms',{
         templateUrl:'views/user/myrooms.html',
         controller: 'MyRoomsCtrl as MyRoomsCtrl',
-        active: 'myrooms'
+        routeName: 'myrooms'
 
       })
       .when('/admin',{
