@@ -11,7 +11,8 @@
         $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
         });
-        /*Load ChatRooms*/
+        /*Load mentors*/
+        $scope.mentors=Users.getMentors();
         /*Enter to the chatroom*/
         $scope.enterChat = function(id){
           if(!$rootScope.firebaseUser){
