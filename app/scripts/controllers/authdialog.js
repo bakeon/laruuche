@@ -125,7 +125,7 @@ angular.module('laruucheApp')
       $scope.user.tags = $scope.tags.join();
       $scope.user.$save().then(function(){
         console.log("Profile updated");
-        $location.path('/panel');
+        $location.path('/userProfile');
 
       }).catch(function(err){
         console.log(err);

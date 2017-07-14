@@ -152,10 +152,17 @@ angular.module('laruucheApp')
       };
 
       $scope.enterChat = function (id) {
-        $location.path('/panel/chatroom/' + id);
+        $location.path('/userProfile/chatroom/' + id);
       };
 
-
+      $scope.logout = function(){
+        Auth.$signOut().then(function(){
+          $rootScope.isLogged=false;
+          $scope.user = '';
+          $rootScope.firebaseUser = '';
+          $location.path('/');
+        });
+      };
 
 
     }]);

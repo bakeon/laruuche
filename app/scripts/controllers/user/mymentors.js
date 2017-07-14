@@ -49,4 +49,12 @@ angular.module('laruucheApp')
       }
 
     });
+    $scope.logout = function(){
+      Auth.$signOut().then(function(){
+        $rootScope.isLogged=false;
+        $scope.user = '';
+        $rootScope.firebaseUser = '';
+        $location.path('/');
+      });
+    };
   });

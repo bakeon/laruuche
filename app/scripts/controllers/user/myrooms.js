@@ -8,7 +8,7 @@
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
-  .controller('MyStudentsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms) {
+  .controller('MyRoomsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms) {
     $rootScope.auth = Auth;
     var userUid = '';
     $scope.Chatrooms = Chatrooms;
@@ -44,7 +44,7 @@ angular.module('laruucheApp')
 
           $scope.getDisplayName = function(uid){
             return Users.getDisplayName(uid);
-          }
+          };
 
           $scope.getTrack = function(uid){
             return Users.getTrack(uid);

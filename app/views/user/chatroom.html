@@ -1,19 +1,12 @@
 <div layout="row" class="container" layout-align="start start">
   <md-sidenav class="sidebar shadow" layout="column" layout-align="space-between start" class="md-sidenav-left"
               md-component-id="left"
-              md-is-locked-open="$mdMedia('gt-md')">
+              md-is-locked-open="$mdMedia('gt-sm')">
     <div class="up-container">
       <div class="up" flex layout="column" layout-align="start start">
-        <div class="header-app" layout="row" layout-align="center center">
-          <span class="icon lricon-picto-logo"></span>
-        </div>
-        <div class="back-home" layout="row" layout-align="start center" ng-href="#/">
-          <span class="icon lricon-back"></span>
-          <span>Accueil</span>
-        </div>
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
-            <a href="#!profile"
+            <a ng-click="editButton($event)"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
               <span class="icon lricon-edit"></span>
@@ -25,30 +18,47 @@
             <div class="user-name">
               {{ user.displayName }}
             </div>
-            <div class="actions">
-              <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
-                Créer une chatrooms
-              </a>
-            </div>
           </div>
         </div>
-        <div ng-href="#!/panel" class="rooms">toutes les alvéoles</div>
-        <div class="save" layout layout-align="center center">
-          alvéoles enregistrées
-        </div>
+      </div>
+      <div class="save" layout layout-align="center center">
+        Mon contenu
       </div>
     </div>
     <div class="room-list-wrapper" flex layout="column" layout-align="start center">
       <div class="room-list" layout="column" layout-align="start center">
-        <div class="room pointer" ng-repeat="room in ChatroomsList" ng-click="enterChat(room)">
+        <div ng-if="user.isMentor" class="room pointer">
           <div layout layout-align="center center">
-            <div>{{getRoomName(room)}}</div> <span class="icon lricon-messages margin-left"></span>
+            <a  href="#!/userProfile/my-students">
+              Mes étudiants
+            </a>
           </div>
         </div>
+        <div ng-if="!user.isMentor" class="room pointer">
+          <div layout layout-align="center center">
+            <a  href="#!/userProfile/my-mentors">
+              Mes mentors
+            </a>
+          </div>
+        </div>
+        <div class="room pointer">
+          <div layout layout-align="center center">
+            <a href="#!/userProfile/my-rooms">
+              Mes rooms
+            </a>
+          </div>
+        </div>
+        <!--<div class="room pointer">
+          <div layout layout-align="center center">
+            <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
+              Créer une chatrooms
+            </a>
+          </div>
+        </div>-->
       </div>
     </div>
     <div class="down" layout="column " layout-align="center center">
-      <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
+      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </md-sidenav>
   <div class="chat content-app" layout="column" layout-align="start start" flex>

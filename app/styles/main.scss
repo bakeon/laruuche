@@ -293,6 +293,9 @@ h5 {
       padding: 14px 8px;
       word-wrap: break-word;
       margin-bottom: 10px;
+      a{
+        font-size: 12px;
+      }
       & > div > div {
         word-wrap: break-word;
         height: 15px;
@@ -348,7 +351,7 @@ h5 {
   z-index: 2000;
   height:100%;
   .save {
-    height: 65px;
+    height: 55px;
     color: $white;
     font-size: 12px;
     background: $yellow;
@@ -369,7 +372,7 @@ h5 {
   }
   .up-container {
     width: 100%;
-    height: 375px;
+    height: 265px;
   }
   .edit {
     width: 100%;
@@ -377,6 +380,7 @@ h5 {
   }
   .user-info {
     height: 32px;
+    color: $blue;
   }
   img {
     width: 100px;
@@ -387,7 +391,7 @@ h5 {
     padding: 0;
   }
   .my-info {
-    background: $black-blue;
+    background: $bg-light-grey;
     width: 100%;
     font-size: 13px;
     .user-name {
@@ -411,7 +415,7 @@ h5 {
       font-size: 65px;
     }
   }
-  background: $blue;
+  background: $bg-light-grey;
   width: 200px;
   color: $white;
   .lr-link-button {
@@ -788,12 +792,8 @@ html {
   box-sizing: border-box;
 }
 
-.container.main-container {
-  height: 100%;
-}
-
 .container {
-  height: 100%;
+  width:100%;
   & > div {
     height: 100%;
   }

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="laruucheApp">
+  <body ng-app="laruucheApp" layout="column" flex>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -31,7 +31,7 @@
         <li><a href="#!" >Accueil</a></li>
         <li><a href="#!rooms" >Rooms</a></li>
         <li><a href="#!mentors" >Mentors</a></li>
-        <li><a href="#!profil" >Profil</a></li>
+        <li><a href="#!userProfile" >Profil</a></li>
       </ul>
       <ul layout="row" class="social" layout-align="space-between center">
         <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/"
@@ -40,8 +40,8 @@
                target="_blank"><span class="icon lricon-twitter"></span></a></li>
       </ul>
     </div>
-    <div class="container main-container" flex>
-      <div ng-view=""></div>
+    <div class="container main-container" layout flex width="100%">
+      <div ng-view="" layout flex width="100%"></div>
     </div>
     <div class="lightbox-container" layout="row" layout-align="center center">
       <div class="lightbox-shadow" layout layout-align="center center"></div>

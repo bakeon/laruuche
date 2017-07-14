@@ -226,7 +226,7 @@ angular.module('laruucheApp')
       };
 
       $scope.enterChat = function (id) {
-        $location.path('/panel/chatroom/' + id);
+        $location.path('/userProfile/chatroom/' + id);
       };
 
 

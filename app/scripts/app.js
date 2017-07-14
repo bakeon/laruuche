@@ -68,6 +68,10 @@ angular
         templateUrl:'views/user/mymentors.html',
         controller: 'MyMentorsCtrl as MyMentorsCtrl'
       })
+      .when('/userProfile/my-rooms',{
+        templateUrl:'views/user/myrooms.html',
+        controller: 'MyRoomsCtrl as MyRoomsCtrl'
+      })
       .when('/admin',{
         templateUrl:'views/admin/backoffice.html',
         controller:'BackOfficeCtrl'
