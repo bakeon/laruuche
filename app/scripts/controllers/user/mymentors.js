@@ -8,11 +8,14 @@
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
-  .controller('MyMentorsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms) {
+  .controller('MyMentorsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms,$mdSidenav) {
     $rootScope.auth = Auth;
     var userUid = '';
     $scope.Chatrooms = Chatrooms;
     // any time auth state changes, add the user data to scope
+    $scope.openLeftMenu = function() {
+      $mdSidenav('left').toggle();
+    };
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
       $rootScope.firebaseUser = firebaseUser;
       $scope.getRoomName = function(uid){
