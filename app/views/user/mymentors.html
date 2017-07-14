@@ -6,7 +6,7 @@
       <div class="up" flex layout="column" layout-align="start start">
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
-            <a ng-click="editButton($event)"
+            <a href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
               <span class="icon lricon-edit"></span>
@@ -60,6 +60,7 @@
     <div class="down" layout="column " layout-align="center center">
       <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
+  </md-sidenav>
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">

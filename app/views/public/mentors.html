@@ -22,16 +22,21 @@
         <div class="card-room" ng-repeat="(key, mentor) in mentors" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
-              <span class="icon lricon-messages"></span>
+              <span class="icon lricon-user"></span>
             </div>
             <div class="card-header-text">
               <span class="title-card">{{ mentor.displayName }}</span>
             </div>
+            <div layout="row" layout-align="start center">
+              <div><img class="user-pic" ng-src="{{mentor.photoURL}}"/>
+              </div>
+              <div>{{mentor.schoolName}}</div>
+            </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
-            <button ng-if="!user.mentors[mentor.$id].mentorId"class="lr-link-button black" ng-click="askForMentoring(mentor.$id)">Devenir élève</button>
+            <button ng-if="!user.mentors[mentor.$id].mentorId"class="lr-link-button black" ng-click="askForMentoring(mentor.$id)">Se connecter</button>
             <button ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'pending'" class="lr-link-button black" disabled>En attente</button>
-            <button ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'accepted'" ng-click="joinPrivateRoom(mentor.$id, user.$id)" class="lr-link-button black" >Rejoindre la room</button>
+            <button ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'accepted'" ng-click="joinPrivateRoom(mentor.$id, user.$id)" class="lr-link-button black" >Discuter</button>
 
           </div>
         </div>

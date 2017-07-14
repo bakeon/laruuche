@@ -6,7 +6,7 @@
       <div class="up" flex layout="column" layout-align="start start">
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
-            <a ng-click="editButton($event)"
+            <a href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
               <span class="icon lricon-edit"></span>
@@ -20,6 +20,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="save" layout layout-align="center center">
+        Mon contenu
       </div>
     </div>
     <div class="room-list-wrapper" flex layout="column" layout-align="start center">
@@ -66,7 +69,7 @@
     </div>
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room" ng-repeat="student in students" layout="column" layout-align="center center">
+        <div class="card-room" ng-repeat="student in students" layout="column" layout-align="center center" flex>
           <div class="card-header" layout="column" layout-align="center center">
             <div>
               <span class="icon lricon-messages"></span>
@@ -78,12 +81,12 @@
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
             <!-- pending -->
-            <md-button class="md-raised black accept-mentor" ng-if="student.status === 'pending'" ng-click="acceptStudent(student.studentId)">Accepter</md-button>
-            <md-button class="md-raised black refuse-mentor" ng-if="student.status === 'pending'" ng-click="refuseStudent(student.studentId)">Refuser</md-button>
+            <a class="lr-link-button accept-mentor" ng-if="student.status === 'pending'" ng-click="acceptStudent(student.studentId)" layout layout-align="center center">Accepter</a>
+            <a class="lr-link-button refuse-mentor" ng-if="student.status === 'pending'" ng-click="refuseStudent(student.studentId)" layout layout-align="center center">Refuser</a>
             <!-- accepted -->
-            <md-button class="md-raised black accept-mentor" ng-if="student.status === 'accepted'" ng-click="joinPrivateRoom(user.$id, student.studentId)" >Rejoindre la room</md-button>
+            <a class="lr-link-button" ng-if="student.status === 'accepted'" ng-click="joinPrivateRoom(user.$id, student.studentId)"  layout layout-align="center center">discuter</a>
             <!-- refused -->
-            <md-button class="md-raised black refuse-mentor" ng-if="student.status === 'refused'" ng-disabled="true">X Refuser</md-button>
+            <a class="lr-link-button refuse-mentor" ng-if="student.status === 'refused'" ng-disabled="true" layout layout-align="center center">X Refuser</a>
           </div>
         </div>
       </md-content>

@@ -6,7 +6,7 @@
       <div class="up" flex layout="column" layout-align="start start">
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
-            <a ng-click="editButton($event)"
+            <a href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
               <span class="icon lricon-edit"></span>
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="down" layout="column " layout-align="center center">
-        <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
+      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </md-sidenav>
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
@@ -68,7 +68,7 @@
                    class="md-fab md-mini menu" hide-gt-sm>
           <span class="icon lricon-more"></span>
         </md-button>
-        <h3 class="md-title">Mes rooms</h3>
+        <h3 class="md-title">Mon profil</h3>
       </div>
 
       <!--<form class="search-bar" layout layout-align="start center">
@@ -94,32 +94,53 @@
           <md-button class="md-raised black refuse-mentor"  ng-click="refuseStudent(notification.studentId, $index)">Refuser</md-button>
         </div>
     </div>
-    <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
-      <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room {{chatroom.active}}" ng-repeat="chatroom in chatrooms.publicRooms" layout="column" layout-align="center center">
-        <div class="card-header" layout="column" layout-align="center center">
-          <div>
-            <span class="icon lricon-messages"></span>
+    <div class="wrapper room-wrapper profile" layout="column" layout-align="start center" flex>
+      <md-content layout="column" layout-align="start center" class="inset-shadow" >
+        <div layout="row"  layout-align="center center">
+          <div flex="20">
+            <img  ng-src="{{user.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
           </div>
-          <div class="card-header-text">
-            <span class="title-card">{{ chatroom.name }}</span>
+          <div flex="70" class="profile-title">
           </div>
         </div>
-        <div class="card-actions" layout="row" layout-align="start center">
-          <button class="lr-link-button black" ng-click="enterChat(chatroom.$id)">Rejoindre la room</button>
-        </div>
-      </div>
-        <div class="card-room inactive-room" layout="column" layout-align="center center">
-          <div class="card-header" layout="column" layout-align="center center">
-            <div>
-              <span class="icon lricon-lock"></span>
-            </div>
-            <div class="card-header-text">
-              <span class="title-card">Disponible soon !</span>
-            </div>
-          </div>
+        <form ng-submit="$event.preventDefault()" name="searchForm">
+          <md-input-container class="md-block md-accent" flex-gt-sm>
+            <label>Prénom :</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
 
-        </div>
+          <md-input-container class="md-block md-accent" flex-gt-sm>
+            <label>Nom :</label>
+            <input ng-model="user.lastName">
+          </md-input-container>
+
+          <md-input-container ng-if="!user.isMentor" class="md-block md-accent" flex-gt-sm>
+            <label>Mon bac :</label>
+            <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
+              <md-option ng-repeat="track in tracks" ng-value="track">
+                {{ track }}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container md-no-float class="md-block md-accent">
+            <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
+          </md-input-container>
+          <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
+            Je souhaite devenir un mentor
+          </md-checkbox>
+          <p class="input-desc" ng-if="user.isMentor">Être mentor c'est conseiller les autres par rapport à son expérience dans un domaine.</p>
+          <div ng-if="user.isMentor">
+            <!--Mon domaine de compétences-->
+            <label>Mes domaines d'expertise :</label>
+            <md-chips
+
+              ng-model="tags"
+              placeholder="Espace pour ajouter"
+              secondary-placeholder="Espace pour ajouter"
+              md-separator-keys="ProfileCtrl.customKeys">
+            </md-chips>
+          </div>
+        </form>
       </md-content>
     </div>
 

@@ -38,7 +38,7 @@ angular.module('laruucheApp')
         });
         $scope.getUserName = function (uid) {
           return Users.getDisplayName(uid);
-        }
+        };
         $scope.getPhotoURL = function(uid){
           return Users.getPhotoURL(uid);
         }
@@ -117,7 +117,7 @@ angular.module('laruucheApp')
       $scope.addRoomToUser = function () {
         let roomToAdd = $routeParams.id;
         let exist;
-        let userRef = firebase.database().ref().child('users').child(firebaseUser.uid).child('roomList');
+        let userRef = firebase.database().ref().child('users').child($rootScope.firebaseUser.uid).child('roomList');
         userRef.once('value').then(function (snapshot) {
           room = snapshot.val();
           if (room == null) {
@@ -140,15 +140,6 @@ angular.module('laruucheApp')
           console.log(room);
           userRef.set(room);
         });
-        /*let isUser = Users.getProfile(uid);
-         isUser.$loaded().then(function(isUser) {
-         if(isUser.email){
-         //user exist
-         }
-         else{
-         userRef.child('users').child('room').set(user);
-         }
-         });*/
       };
 
       $scope.enterChat = function (id) {
