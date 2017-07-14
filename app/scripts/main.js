@@ -29,7 +29,27 @@
   console.log(acceptedCookie);
   if(acceptedCookie == 'true'){
     /*Start to write cookies*/
-
+    let body = $('body');
+    //Tutorial for Gif
+    body.on('focus', '#input-message', function () {
+        let gifTutorial = Cookies.get('gifTutorial');
+        console.log(gifTutorial);
+        if(gifTutorial != 'true'){
+          let text = '<div id="gif-tutorial">' +
+            '<div layout="row" layout-align="center center">'+
+              '<span id="gif-tutorial-close">X</span>'+
+              '<h5>Les gifs !</h5>'+
+              '<img src="https://media.giphy.com/media/ToMjGpxSDDBI4w7YEZa/giphy.gif" width="200px">'+
+              '<p>Vous pouvez enfin utiliser les gifs sur notre application!<br> Il suffit d\'écrire "/gif miel".</p>'+
+            '</div>'+
+          '</div>';
+          $('body').append(text);
+        }
+        body.on('click', '#gif-tutorial-close',function () {
+          Cookies.set('gifTutorial', true, {expires: 365 });
+          $(this).parent().parent().remove();
+        });
+    });
   }
   else{
     let body = $('body');
