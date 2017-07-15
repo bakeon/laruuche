@@ -10,7 +10,6 @@
 angular.module('laruucheApp')
   .controller('NavCtrl', function ($scope, $rootScope, $firebaseObject, Auth, Users, Chatrooms) {
     var userUid = '';
-    $scope.notifications = [];
     $rootScope.auth = Auth;
     $scope.chatrooms = Chatrooms;
 
@@ -22,6 +21,7 @@ angular.module('laruucheApp')
         console.log('anon user');
       }
       else{
+        $scope.notifications = [];
         /*Retrieve User Data*/
         $scope.user = Users.getProfile(firebaseUser.uid);
         userUid = $scope.user.$id;

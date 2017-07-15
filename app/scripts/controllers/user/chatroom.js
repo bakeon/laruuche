@@ -67,7 +67,6 @@ angular.module('laruucheApp')
 
           });
 
-          /*Add user to the chatroom*/
           $scope.ChatroomsList = Users.getRooms(firebaseUser.uid);
         }
       });
