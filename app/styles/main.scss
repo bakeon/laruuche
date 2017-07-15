@@ -63,6 +63,9 @@ a{
         color: $yellow;
       }
     }
+    &.isActive{
+      color: $yellow;
+    }
   }
   .social li{
     font-size: 20px;
@@ -278,6 +281,9 @@ h5 {
   }
   .lr-add-button {
     margin-right: 30px;
+    &.margin-left{
+      margin-left: 30px;
+    }
   }
 }
 
@@ -620,8 +626,18 @@ h5 {
   }
 }
 
+.chat2{
+  .header-room{
+    position: relative;
+  }
+  .lr-add-button{
+    @include absolute-center();
+  }
+}
+
+
 .lr-add-button {
-  height: 40px;
+  height: 30px;
   padding: 0 20px;
   border-radius: 20px;
   color: $white;
