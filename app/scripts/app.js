@@ -47,13 +47,16 @@ angular
         templateUrl: 'views/public/rooms.html',
         controller: 'RoomsCtrl as RoomsCtrl',
         routeName: 'rooms'
-
       })
       .when('/mentors',{
         templateUrl: 'views/public/mentors.html',
         controller: 'MentorsCtrl as MentorsCtrl',
         routeName: 'mentors'
 
+      })
+      .when('/chatroom/:id',{
+        templateUrl: 'views/public/chatroom.html',
+        controller: 'ChatroomBisCtrl as ChatroomBisCtrl',
       })
       .when('/userProfile/chatroom/create',{
         templateUrl: 'views/user/create.html',

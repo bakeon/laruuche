@@ -28,7 +28,7 @@
             });
           }
           else{
-            $location.path('/userProfile/chatroom/' + id);
+            $location.path('/chatroom/' + id);
           }
         };
       }]);
