@@ -555,7 +555,7 @@ h5 {
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background: $yellow;
+    background: $lr-blue;
     color: $white;
   }
 }
@@ -569,7 +569,7 @@ h5 {
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background: $blue;
+    background: $light-yellow;
     color: $white;
   }
 }
@@ -595,8 +595,8 @@ h5 {
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background: $blue;
-    color: $white;
+    background: $light-grey;
+    color: $lr-grey;
   }
 }
 .lr-link-button {
@@ -942,12 +942,27 @@ html {
   }
 }
 
+.title-card{
+  margin:8px 0;
+}
+
 .card-room {
   background: url("../assets/images/alveole_chat.png") no-repeat center center;
   background-size: 100%;
   height: 300px;
   width: 240px;
-  margin: 0 20px;
+  margin: 0 auto;
+  &.active{
+    background: url("../assets/images/alveole_chat_blanc.png") no-repeat center center;
+    background-size: 100%;
+    .card-header .icon{
+      color:$yellow;
+    }
+    .card-header-text{
+      color: $yellow;
+    }
+  }
+
   &.inactive-room{
     background: url("../assets/images/alveole_gris.svg") no-repeat center center;
     background-size: cover;

@@ -29,7 +29,7 @@
       <div class="room-list" layout="column" layout-align="start center">
         <div class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-rooms"  ng-class="isActive == 'myrooms' ? 'active' : ' ' " layout
+            <a href="#!/userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes rooms
               <span class="icon lricon-messages margin-left"></span>
@@ -38,7 +38,7 @@
         </div>
         <div ng-if="user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-students"  ng-class="isActive == 'mystudents' ? 'active' : ' ' " layout
+            <a href="#!/userProfile/my-students" ng-class="isActive == 'mystudents' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes étudiants
               <span class="icon lricon-user margin-left"></span>
@@ -47,7 +47,7 @@
         </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-mentors"  ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout
+            <a href="#!/userProfile/my-mentors" ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes mentors
               <span class="icon lricon-user margin-left"></span>
@@ -67,7 +67,7 @@
       <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </md-sidenav>
-<div class="content-app mentor" layout="column" layout-align="start start" flex class="chatroom">
+  <div class="content-app mentor" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
         <h3 class="md-title">Mes mentors</h3>
@@ -81,21 +81,26 @@
     </div>
     <div class="wrapper room-wrapper arrow" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room" ng-repeat="mentor in mentors" layout="column" layout-align="center center">
+        <div class="card-room active" ng-repeat="mentor in mentors" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
-              <span class="icon lricon-messages"></span>
+              <span class="icon lricon-user"></span>
             </div>
-            <div class="card-head er-text">
-              <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
+            <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
+
+            <div class="card-head er-text" layout="row" layout-align="start center">
+              <div layout="row" layout-align="start center">
+                <img class="user-pic" ng-src="{{getPhotoURL(mentor.mentorId)}}"/>
+                <span class="margin-left">{{mentor.studies}}</span>
+              </div>
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
             <!-- pending -->
-            <div class="attente" ng-if="mentor.status === 'pending'" ng-disabled="">En attente</div>
+            <div class="lr-grey-button" ng-if="mentor.status === 'pending'" ng-disabled="">En attente</div>
             <!-- accepted -->
-            <a class="mr-yellow-button accept-mentor" ng-if="mentor.status === 'accepted'"
-               ng-click="joinPrivateRoom( mentor.mentorId, user.$id)">Rejoindre la room</a>
+            <a class="lr-yellow-button" ng-if="mentor.status === 'accepted'"
+               ng-click="joinPrivateRoom( mentor.mentorId, user.$id)" layout="row" layout-align="center center">Rejoindre la room</a>
             <!-- refused -->
           </div>
         </div>

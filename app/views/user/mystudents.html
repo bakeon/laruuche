@@ -79,14 +79,19 @@
     </div>
     <div class="wrapper room-wrapper arrow" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room" ng-repeat="student in students" layout="column" layout-align="center center" flex>
+        <div class="card-room active" ng-repeat="student in students" layout="column" layout-align="center center" >
           <div class="card-header" layout="column" layout-align="center center">
             <div>
               <span class="icon lricon-messages"></span>
             </div>
-            <div class="card-head er-text">
-              <span class="title-card">{{ getDisplayName(student.studentId) }}</span>
-              <span class="subtitle-card">Bac : {{ getTrack(student.studentId) }}</span>
+            <div class="card-head er-text" layout="row" layout-align="start center">
+              <div>
+                <img class="user-pic" ng-src="{{student.photoURL}}"/>
+              </div>
+              <div layout="column" layout-align="start start">
+                <span class="title-card">{{ getDisplayName(student.studentId) }}</span>
+                <span class="subtitle-card">Bac : {{ getTrack(student.studentId) }}</span>
+              </div>
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">

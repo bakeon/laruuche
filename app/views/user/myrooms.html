@@ -104,7 +104,7 @@
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
         <div ng-if="ChatroomsList.publicRooms == 'undefined'">Vous n'avez pas encore enregistré de rooms</div>
 
-        <div class="card-room " ng-repeat="room in ChatroomsList" ng-click="enterChat(room)" layout="column" layout-align="center center">
+        <div class="card-room active" ng-repeat="room in ChatroomsList" ng-click="enterChat(room)" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
               <span class="icon lricon-messages"></span>
