@@ -43,7 +43,10 @@
               '<p>Vous pouvez enfin utiliser les gifs sur notre application!<br> Il suffit d\'écrire "/gif miel".</p>'+
             '</div>'+
           '</div>';
-          $('body').append(text);
+          if(!document.getElementById('gif-tutorial')){
+            $('body').append(text);
+          }
+
         }
         body.on('click', '#gif-tutorial-close',function () {
           Cookies.set('gifTutorial', true, {expires: 365 });

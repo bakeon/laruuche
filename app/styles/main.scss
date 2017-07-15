@@ -58,12 +58,15 @@ a{
   .nav li{
     font-size: 18px;
     margin:0 15px;
+    .active{
+      color:$yellow;
+    }
     &:hover{
       a{
         color: $yellow;
       }
     }
-    &.isActive{
+    &.active{
       color: $yellow;
     }
   }
@@ -1055,7 +1058,7 @@ html {
   background: $black;
   z-index: 9999;
   width:100%;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
 }
 .md-ruuche{
@@ -1070,7 +1073,8 @@ html {
   left:50%;
   color:white;
   padding: 20px;
-  background: $black;
+  background: #24289b;
+  border-radius: 5px;
   z-index: 9999;
   width:350px;
   position: absolute;
@@ -1108,7 +1112,7 @@ html {
   bottom: -13px;
   z-index: 1;
   left: 50%;
-  background: $black;
+  background: #24289b;
 }
 
 
@@ -1123,7 +1127,7 @@ html {
   box-shadow: 0px 2px 8px -1px rgba(125,125,125,1);
   z-index: 9999;
   width: 300px;
-  top:130px;
+  top:70px;
   right:20px;
   position: absolute;
   background:white;

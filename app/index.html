@@ -23,7 +23,7 @@
 
     <!-- Add your site or application content here -->
 
-    <div class="header" layout layout-align="space-between center">
+    <div class="header" layout layout-align="space-between center" ng-controller="NavCtrl as NavCtrl">
       <div layout layout-align="center center">
         <a href="#!"  class="icon lricon-picto-logo"></a>
       </div>
@@ -39,6 +39,24 @@
         <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
                target="_blank"><span class="icon lricon-twitter"></span></a></li>
       </ul>
+      <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications">
+        <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
+        <div layout="row" layout-align="center center">
+          <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
+          <div flex="70">
+            <p class="title-notif">{{notification.displayName}} / {{ notification.track}}</p>
+            <span class="sub-notif">J'aimerais devenir ton élève !</span>
+          </div>
+        </div>
+        <div layout="row" layout-align="center center">
+          <md-button class="md-raised black accept-mentor" ng-click="acceptStudent(notification.studentId, $index)">
+            Accepter
+          </md-button>
+          <md-button class="md-raised black refuse-mentor" ng-click="refuseStudent(notification.studentId, $index)">
+            Refuser
+          </md-button>
+        </div>
+      </div>
     </div>
     <div class="container main-container" layout flex width="100%">
       <div ng-view="" layout flex width="100%"></div>
@@ -74,6 +92,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/js-cookie/src/js.cookie.js"></script>
     <!-- endbower -->
 
@@ -112,6 +131,9 @@
     <script src="scripts/controllers/user/privatechatroom.js"></script>
         <script src="scripts/controllers/authdialog.js"></script>
         <script src="scripts/directives/scrollbottom.js"></script>
+        <script src="scripts/directives/nomentor.js"></script>
+        <script src="scripts/directives/nochatroom.js"></script>
+        <script src="scripts/controllers/nav.js"></script>
         <!-- endbuild -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
   </body>

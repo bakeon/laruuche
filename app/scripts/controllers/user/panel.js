@@ -66,7 +66,7 @@
               });
 
               /*Create the private Room*/
-              let Chatrooms = $scope.Chatrooms.privateRooms;
+              let Chatrooms = $scope.chatrooms.privateRooms;
               let newChatroom = {
                 uid:$scope.user.$id+studentId,
                 name:'Mentor by '+$scope.user.displayName,
