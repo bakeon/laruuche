@@ -13,8 +13,13 @@
         $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
           if(!$rootScope.firebaseUser){
-            $location.path('/');
-          }
+            $mdDialog.show({
+              controller: 'AuthDialogCtrl',
+              templateUrl: 'views/authDialog.html',
+              parent: angular.element(document.body),
+              targetEvent: event,
+              clickOutsideToClose: true
+            });          }
           else{
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);

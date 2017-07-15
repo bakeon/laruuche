@@ -52,6 +52,9 @@ a{
       font-size: 60px;
     }
   }
+  .social{
+    padding: 20px;
+  }
   .nav li{
     font-size: 18px;
     margin:0 15px;
@@ -175,8 +178,10 @@ a{
 }
 #footer{
   background: $black;
+  height:80px;
   .lr-link-button,p{
     color: $white;
+    padding: 10px 25px;
   }
 }
 .footer {
@@ -190,6 +195,19 @@ a{
     }
   }
 }
+
+.tags{
+  width:80%;
+}
+
+.update-yellow-button{
+  margin:20px auto;
+}
+
+.profile-title{
+  margin:20px auto;
+}
+
 .login{
   .md-button{
     width:80%;
@@ -506,7 +524,7 @@ h5 {
 }
 
 .lr-blue-button{
-  height: 40px;
+  height: 30px;
   padding: 0 20px;
   background: $blue;
   border-radius: 20px;
@@ -532,9 +550,6 @@ h5 {
     background: $blue;
     color: $white;
   }
-}
-.mentor .card-header-text{
-  color: $yellow;
 }
 .lr-link-button {
   height: 40px;
@@ -671,9 +686,8 @@ md-dialog{
 .user-pic{
   height:40px;
   width:40px;
-  border: 1px solid $yellow;
+  border: 1px solid $blue;
   border-radius:25px;
-  margin-bottom: 10px;
 }
 
 .message {
@@ -861,12 +875,6 @@ html {
   }
 }
 
-.mentor .card-room{
-  background: url("../assets/images/alveole_chat_blanc.png") no-repeat center center;
-  background-size: 100%;
-
-}
-
 
 * {
   -webkit-box-sizing: border-box;
@@ -908,10 +916,15 @@ html {
     transform: translateX(-50%);
     color: $blue;
     font-size: 28px;
-    background: url("../assets/images/alveoleombre.svg");
+    background: url("../assets/images/alveoleombre.png")no-repeat center center;
     background-size: 100%;
+    z-index:10;
     &>div:first-child{
-      height:110%;
+      height:100%;
+
+    }
+    &>div:last-child{
+      transform:translateX(-20px);
     }
     .icon{
       font-size: 75px;
@@ -919,7 +932,7 @@ html {
     }
   }
   .title-container {
-    height:200px;
+    height:250px;
     background-color: $bg-grey;
     &>span{
       color: $yellow;
@@ -1190,6 +1203,19 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
 
 .fourthArticle .section-container {
   width: 50%;
+  &:nth-child(2){
+    &:after{
+      content: '';
+      display: block;
+      height:100%;
+      width:2px;
+      background: #F1F1F1;
+      position: absolute;
+      top:0;
+      left:50%;
+      z-index:9;
+    }
+  }
 }
 
 .video {
