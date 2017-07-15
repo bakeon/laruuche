@@ -10,9 +10,13 @@
 
 angular.module('laruucheApp')
 
-  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, Auth, $mdDialog) {
+  .controller('MainCtrl', function ($scope, $rootScope, $firebaseObject, Auth, $mdDialog, $location) {
     var auth = Auth;
+    console.log($location.path())
 
+    $scope.isActive = function(route) {
+      return route === $location.path();
+    }
     $rootScope.auth = Auth;
     console.log($rootScope.auth);
     // any time auth state changes, add the user data to scope

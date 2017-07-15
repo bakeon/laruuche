@@ -10,6 +10,10 @@
         var userUid = '';
         $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;
+          if($rootScope.firebaseUser){
+            /*Retrieve User Data*/
+            $scope.user = Users.getProfile(firebaseUser.uid);
+          }
         });
         /*Load mentors*/
         $scope.mentors=Users.getMentors();

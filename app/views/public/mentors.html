@@ -37,7 +37,6 @@
             <a layout layout-align="center center" ng-if="!user.mentors[mentor.$id].mentorId"class="lr-blue-button" ng-click="askForMentoring(mentor.$id)">Se connecter</a>
             <a layout layout-align="center center" ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'pending'" class="lr-blue-button" disabled>En attente</a>
             <a layout layout-align="center center" ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'accepted'" ng-click="joinPrivateRoom(mentor.$id, user.$id)" class="lr-blue-button" >Discuter</a>
-
           </div>
         </div>
       </md-content>

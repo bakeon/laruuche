@@ -29,21 +29,25 @@
       <div class="room-list" layout="column" layout-align="start center">
         <div ng-if="user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a ng-click="openLeftMenu()" href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout
+               layout-align="center center" flex>
               Mes étudiants
             </a>
           </div>
         </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a ng-click="openLeftMenu()" href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout layout-align="center center" flex>
+
+            <a href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout
+               layout-align="center center" flex>
               Mes mentors
             </a>
           </div>
         </div>
         <div class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a ng-click="openLeftMenu()" href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}"layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}" layout
+               layout-align="center center" flex>
               Mes rooms
             </a>
           </div>
@@ -64,7 +68,7 @@
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
     <div class="title-content shadow" layout layout-align="start start">
       <div layout="row" layout-align="end center">
-        <md-button  ng-click="openLeftMenu()"
+        <md-button ng-click="openLeftMenu()"
                    class="md-fab md-mini menu" hide-gt-sm>
           <span class="icon lricon-more"></span>
         </md-button>
@@ -81,25 +85,30 @@
       </form>-->
     </div>
     <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications">
-        <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
-        <div layout="row"  layout-align="center center">
-          <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
-          <div flex="70">
-            <p class="title-notif">{{notification.displayName}} / {{ notification.track}}</p>
-            <span class="sub-notif">J'aimerais devenir ton élève !</span>
-          </div>
+      <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
+      <div layout="row" layout-align="center center">
+        <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
+        <div flex="70">
+          <p class="title-notif">{{notification.displayName}} / {{ notification.track}}</p>
+          <span class="sub-notif">J'aimerais devenir ton élève !</span>
         </div>
-        <div layout="row"  layout-align="center center">
-          <md-button class="md-raised black accept-mentor"  ng-click="acceptStudent(notification.studentId, $index)">Accepter</md-button>
-          <md-button class="md-raised black refuse-mentor"  ng-click="refuseStudent(notification.studentId, $index)">Refuser</md-button>
-        </div>
+      </div>
+      <div layout="row" layout-align="center center">
+        <md-button class="md-raised black accept-mentor" ng-click="acceptStudent(notification.studentId, $index)">
+          Accepter
+        </md-button>
+        <md-button class="md-raised black refuse-mentor" ng-click="refuseStudent(notification.studentId, $index)">
+          Refuser
+        </md-button>
+      </div>
     </div>
     <div class="wrapper room-wrapper profile" layout="column" layout-align="start center" flex>
-      <md-content layout="column" layout-align="start center" class="inset-shadow" >
+      <md-content layout="column" layout-align="start center" class="inset-shadow">
         <div layout="column" layout-align="start center">
-          <div layout="row"  layout-align="center center">
+          <div layout="row" layout-align="center center">
             <div flex="20">
-              <img  ng-src="{{user.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
+              <img ng-src="{{user.photoURL}}" class="profil-picture"
+                   alt="Photo de profil de {{ firebaseUser.displayName }}">
             </div>
             <div flex="70" class="profile-title">
             </div>
@@ -147,7 +156,6 @@
             </md-button>
           </form>
         </div>
-
       </md-content>
     </div>
 

@@ -73,10 +73,10 @@
       </div>
       <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser(chatroom.$id)"><span class="icon lricon-plus"></span><span class="mobile">ajouter cette room</span></button>
     </div>
-    <div class="messengerBox" flex>
-      <div class="message-wrapper">
+    <div class="messengerBox" flex scroll-bottom="messages">
+      <div class="message-wrapper" >
         <h5>Exprime toi !</h5>
-        <div class="message" ng-repeat="message in messages">
+        <div class="message" ng-repeat="message in messages" >
           <div class="message-container isUser(message.uid)">
             <div class="message-info" layout layout-align="start start">
               <div class="left">
@@ -88,7 +88,7 @@
                   <span class="timestamp">{{ message.timestamp | date:'h:mm ' }}</span>
                 </div>
                 <div class="message-text">
-                  <p ng-if="message.type == 'text' ">{{ message.body }}</p>
+                  <p ng-if="message.type == 'text' ">{{ message.body  }}</p>
                   <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
                 </div>
               </div>
@@ -102,7 +102,7 @@
       <audio id="localaudio" muted></audio>
       <form ng-submit="sendMessage()">
           <input ng-model="message" rows="5"
-                 placeholder="Message"/>
+                 placeholder="Message" id="input-message"/>
       </form>
     </div>
   </div>

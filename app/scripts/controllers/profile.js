@@ -53,7 +53,7 @@
           $scope.user.$save().then(function(){
             //If works redirect To
             console.log("Profile updated");
-            $location.path('/userProfile');
+            $location.path('/userProfile/my-rooms');
 
           }).catch(function(err){
             console.log(err);

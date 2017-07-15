@@ -1027,7 +1027,7 @@ html {
   z-index: 9999;
   width:100%;
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
 }
 .md-ruuche{
   color:white;
@@ -1036,6 +1036,52 @@ html {
   color:$yellow;
   border-radius: 0px;
 }
+#gif-tutorial{
+  transform: translateX(-50%);
+  left:50%;
+  color:white;
+  padding: 20px;
+  background: $black;
+  z-index: 9999;
+  width:350px;
+  position: absolute;
+  bottom: 85px;
+  text-align: center;
+  #gif-tutorial-close{
+    color:white;
+    position: absolute;
+    right:0;
+    top:0;
+    padding:15px;
+    cursor:pointer;
+  }
+  h5{
+    font-size:14px;
+    margin-bottom: 15px;
+  }
+  img{
+    margin:auto;
+    margin-bottom: 10px;
+  }
+  p{
+    text-align: left;
+    font-size:12px
+  }
+}
+#gif-tutorial::after{
+  content: '';
+  display: block;
+  height: 15px;
+  width: 15px;
+  -webkit-transform: rotate(45deg) translateX(-50%);
+  transform: rotate(45deg) translateX(-50%);
+  position: absolute;
+  bottom: -13px;
+  z-index: 1;
+  left: 50%;
+  background: $black;
+}
+
 
 /*Gif*/
 .ruuche-gif{
@@ -1117,7 +1163,7 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
 .profil-picture {
   border:2px solid $blue;
   margin: auto;
-  max-width: 200px;
+  width: 100px;
   border-radius: 100px;
 }
 

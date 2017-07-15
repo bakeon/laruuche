@@ -28,10 +28,10 @@
         <a href="#!"  class="icon lricon-picto-logo"></a>
       </div>
       <ul class="nav" layout="row" layout-align="start center">
-        <li><a href="#!" ng-class="{'active': $route.current.active == 'home'}">Accueil</a></li>
-        <li><a href="#!rooms" ng-class="{'active': $route.current.active == 'rooms'}">Rooms</a></li>
-        <li><a href="#!mentors" ng-class="{'active': $route.current.active == 'mentors'}">Mentors</a></li>
-        <li><a href="#!userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}">Profil</a></li>
+          <li><a href="#!" ng-class="isActive == 'main' ? 'active' : ' ' ">Accueil</a></li>
+        <li><a href="#!rooms" ng-class="isActive == 'rooms' ? 'active' : ' ' ">Rooms</a></li>
+        <li><a href="#!mentors" ng-class="isActive == 'mentors' ? 'active' : ' ' ">Mentors</a></li>
+        <li><a href="#!userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' ">Profil</a></li>
       </ul>
       <ul layout="row" class="social" layout-align="space-between center">
         <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/"
@@ -74,7 +74,6 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/js-cookie/src/js.cookie.js"></script>
     <!-- endbower -->
 
@@ -110,6 +109,7 @@
 
     <script src="scripts/controllers/user/privatechatroom.js"></script>
         <script src="scripts/controllers/authdialog.js"></script>
+        <script src="scripts/directives/scrollbottom.js"></script>
         <!-- endbuild -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
   </body>
