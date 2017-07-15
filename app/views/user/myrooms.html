@@ -9,7 +9,7 @@
             <a ng-click="openLeftMenu()" href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
-              <span class="icon lricon-edit"></span>
+              <span class="icon lricon-pencil"></span>
               Éditer
             </a>
           </div>
@@ -27,24 +27,28 @@
     </div>
     <div class="room-list-wrapper" flex layout="column" layout-align="start center">
       <div class="room-list" layout="column" layout-align="start center">
+        <div class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}" layout
+               layout-align="center center" flex>
+              Mes rooms
+            </a>
+          </div>
+        </div>
         <div ng-if="user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a ng-click="openLeftMenu()" href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout
+               layout-align="center center" flex>
               Mes étudiants
             </a>
           </div>
         </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a ng-click="openLeftMenu()" href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout layout-align="center center" flex>
+
+            <a href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout
+               layout-align="center center" flex>
               Mes mentors
-            </a>
-          </div>
-        </div>
-        <div class="room pointer" layout>
-          <div layout layout-align="center center" flex>
-            <a ng-click="openLeftMenu()" href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}"layout layout-align="center center" flex>
-              Mes rooms
             </a>
           </div>
         </div>
@@ -71,14 +75,14 @@
         <h3 class="md-title">Mes rooms</h3>
       </div>
 
-      <!--<form class="search-bar" layout layout-align="start center">
+      <form class="search-bar" layout layout-align="start center">
         <div class="" layout="row" layout-align="start start">
           <div class="search-input" layout layout-align="start center">
             <span class="icon lricon-search"></span>
             <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
           </div>
         </div>
-      </form>-->
+      </form>
     </div>
     <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications">
       <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
@@ -96,6 +100,8 @@
     </div>
     <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
+        <div ng-if="ChatroomsList.publicRooms == 'undefined'">Vous n'avez pas encore enregistré de rooms</div>
+
         <div class="card-room " ng-repeat="room in ChatroomsList" ng-click="enterChat(room)" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
