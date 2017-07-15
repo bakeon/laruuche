@@ -82,13 +82,13 @@
         <div class="card-room active" ng-repeat="student in students" layout="column" layout-align="center center" >
           <div class="card-header" layout="column" layout-align="center center">
             <div>
-              <span class="icon lricon-messages"></span>
+              <span class="icon lricon-user"></span>
             </div>
             <div class="card-head er-text" layout="row" layout-align="start center">
               <div>
-                <img class="user-pic" ng-src="{{student.photoURL}}"/>
+                <img class="user-pic" ng-src="{{getPhotoUrl(student.studentId)}}"/>
               </div>
-              <div layout="column" layout-align="start start">
+              <div class="margin-left" layout="column" layout-align="start start">
                 <span class="title-card">{{ getDisplayName(student.studentId) }}</span>
                 <span class="subtitle-card">Bac : {{ getTrack(student.studentId) }}</span>
               </div>
@@ -96,12 +96,12 @@
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
             <!-- pending -->
-            <a class="lr-link-button accept-mentor" ng-if="student.status === 'pending'" ng-click="acceptStudent(student.studentId)" layout layout-align="center center">Accepter</a>
-            <a class="lr-link-button refuse-mentor" ng-if="student.status === 'pending'" ng-click="refuseStudent(student.studentId)" layout layout-align="center center">Refuser</a>
+            <a class="lr-yellow-button" ng-if="student.status === 'pending'" ng-click="acceptStudent(student.studentId)" layout layout-align="center center">Accepter</a>
+            <a class="lr-grey-button" ng-if="student.status === 'pending'" ng-click="refuseStudent(student.studentId)" layout layout-align="center center">Refuser</a>
             <!-- accepted -->
-            <a class="lr-link-button" ng-if="student.status === 'accepted'" ng-click="joinPrivateRoom(user.$id, student.studentId)"  layout layout-align="center center">Discuter</a>
+            <a class="lr-yellow-button" ng-if="student.status === 'accepted'" ng-click="joinPrivateRoom(user.$id, student.studentId)"  layout layout-align="center center">Discuter</a>
             <!-- refused -->
-            <a class="lr-link-button refuse-mentor" ng-if="student.status === 'refused'" ng-disabled="true" layout layout-align="center center">X Refuser</a>
+            <a class="lr-grey-button" ng-if="student.status === 'refused'" ng-disabled="true" layout layout-align="center center">X Refuser</a>
           </div>
         </div>
       </md-content>

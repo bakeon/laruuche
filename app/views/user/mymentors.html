@@ -86,13 +86,13 @@
             <div>
               <span class="icon lricon-user"></span>
             </div>
-            <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
-
-            <div class="card-head er-text" layout="row" layout-align="start center">
-              <div layout="row" layout-align="start center">
-                <img class="user-pic" ng-src="{{getPhotoURL(mentor.mentorId)}}"/>
-                <span class="margin-left">{{mentor.studies}}</span>
+            <div class="card-header-text">
+              <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
+            </div>
+            <div layout="row" layout-align="start center">
+              <div><img class="user-pic" ng-src="{{getPhotoURL(mentor.mentorId)}}"/>
               </div>
+              <div>{{mentor.studies}}</div>
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
