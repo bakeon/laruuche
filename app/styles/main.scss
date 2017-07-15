@@ -515,6 +515,20 @@ h5 {
     color: $white;
   }
 }
+.lr-yellow-button{
+  height: 40px;
+  padding: 0 20px;
+  background: $yellow;
+  border-radius: 20px;
+  color: $white;
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background: $blue;
+    color: $white;
+  }
+}
 .mentor .card-header-text{
   color: $yellow;
 }
@@ -841,6 +855,12 @@ html {
     background-size: cover;
 
   }
+}
+
+.mentor .card-room{
+  background: url("../assets/images/alveole_chat_blanc.png") no-repeat center center;
+  background-size: 100%;
+
 }
 
 

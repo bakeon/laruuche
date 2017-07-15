@@ -6,7 +6,7 @@
       <div class="up" flex layout="column" layout-align="start start">
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
-            <a href="#!userProfile"
+            <a ng-click="openLeftMenu()" href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
               <span class="icon lricon-pencil"></span>
@@ -29,21 +29,21 @@
       <div class="room-list" layout="column" layout-align="start center">
         <div ng-if="user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a  href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout layout-align="center center" flex>
+            <a ng-click="openLeftMenu()" href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout layout-align="center center" flex>
               Mes étudiants
             </a>
           </div>
         </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a  href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout layout-align="center center" flex>
+            <a ng-click="openLeftMenu()" href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout layout-align="center center" flex>
               Mes mentors
             </a>
           </div>
         </div>
         <div class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}"layout layout-align="center center" flex>
+            <a ng-click="openLeftMenu()" href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}"layout layout-align="center center" flex>
               Mes rooms
             </a>
           </div>
