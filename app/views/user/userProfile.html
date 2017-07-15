@@ -29,26 +29,28 @@
       <div class="room-list" layout="column" layout-align="start center">
         <div class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}" layout
+            <a href="#!/userProfile/my-rooms"  ng-class="isActive == 'myrooms' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes rooms
+              <span class="icon lricon-messages margin-left"></span>
             </a>
           </div>
         </div>
         <div ng-if="user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout
+            <a href="#!/userProfile/my-students"  ng-class="isActive == 'mystudents' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes étudiants
+              <span class="icon lricon-user margin-left"></span>
             </a>
           </div>
         </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-
-            <a href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout
+            <a href="#!/userProfile/my-mentors"  ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes mentors
+              <span class="icon lricon-user margin-left"></span>
             </a>
           </div>
         </div>
@@ -62,7 +64,7 @@
       </div>
     </div>
     <div class="down" layout="column " layout-align="center center">
-      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
+      <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </md-sidenav>
   <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
@@ -84,7 +86,7 @@
         </div>
       </form>-->
     </div>
-    <div class="wrapper room-wrapper profile" layout="column" layout-align="start center" flex>
+    <div class="wrapper room-wrapper profile arrow" layout="column" layout-align="start center" flex>
       <md-content layout="column" layout-align="start center" class="inset-shadow">
         <div layout="column" layout-align="start center">
           <div layout="row" layout-align="center center">

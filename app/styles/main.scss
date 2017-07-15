@@ -347,6 +347,9 @@ h5 {
         &.active,&:hover{
           background: $yellow;
         }
+        .icon{
+          font-size: 18px;
+        }
       }
       & > div > div {
         word-wrap: break-word;
@@ -639,6 +642,23 @@ h5 {
   }
 }
 
+.arrow{
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    height:30px;
+    width:30px;
+    background: $white;
+    position: absolute;
+    top:-5px;
+    left:50%;
+    transform: translateX(-50%) rotate(45deg);
+    z-index:9;
+    border-radius:2px;
+  }
+}
+
 .chat2{
   .header-room{
     position: relative;
@@ -731,6 +751,7 @@ md-dialog{
   width:40px;
   border: 1px solid $blue;
   border-radius:25px;
+  z-index:9;
 }
 
 .message {
@@ -1202,6 +1223,7 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
   .profil-picture{
     width:120px;
     height:120px;
+    margin-top: 10px;
   }
 }
 .profile md-content{
@@ -1227,6 +1249,7 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
   margin: auto;
   width: 100px;
   border-radius: 100px;
+  z-index:9;
 }
 
 .mentionWrapper {
