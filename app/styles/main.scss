@@ -5,6 +5,16 @@
 @import "variables";
 @import "gui";
 
+$yellow:#e5b900;
+$blue:#2a2eb2;
+$black:#1B1B1B;
+$black-blue:#24289b;
+$white:#FFF;
+$lr-grey:#bdc3c7;
+$bg-light-grey:#ecf0f1;
+$bg-grey:#F9F9F9;
+$light-grey:#f8f8f8;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -632,9 +642,23 @@ h5 {
 .chat2{
   .header-room{
     position: relative;
+    &:after{
+      content: '';
+      display: block;
+      height:30px;
+      width:30px;
+      background: $white;
+      position: absolute;
+      top:-5px;
+      left:50%;
+      transform: translateX(-50%) rotate(45deg);
+      z-index:9;
+      border-radius:2px;
+    }
   }
   .lr-add-button{
     @include absolute-center();
+    z-index:10;
   }
 }
 
@@ -890,7 +914,12 @@ html {
   &.inactive-room{
     background: url("../assets/images/alveole_gris.svg") no-repeat center center;
     background-size: cover;
-
+    .card-header .icon{
+      color:$lr-grey;
+    }
+    .card-header-text{
+      color: $lr-grey;
+    }
   }
 }
 
@@ -978,7 +1007,7 @@ html {
     h1{
       text-align: center;
     }
-    color:$grey;
+    color:$lr-grey;
     .blue{
       color: $blue;
     }
@@ -1010,7 +1039,7 @@ html {
       position: relative;
       .number-etape {
         font-size: 60px;
-        color: $grey;
+        color: $lr-grey;
         position: absolute;
         &.blue{
           color: $blue;
@@ -1155,7 +1184,7 @@ html {
     font-weight: 500;
   }
   .sub-notif{
-    color:$grey;
+    color:$lr-grey;
     font-size:12px;
   }
 }

@@ -19,7 +19,7 @@
         <!--Search bar -->
 
         <!-- Find my mentor -->
-        <div class="card-room" ng-repeat="(key, mentor) in mentors" layout="column" layout-align="center center">
+        <div class="card-room" ng-class="" ng-repeat="(key, mentor) in mentors" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
               <span class="icon lricon-user"></span>
@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
-            <a layout layout-align="center center" ng-if="!user.mentors[mentor.$id].mentorId"class="lr-blue-button" ng-click="askForMentoring(mentor.$id)">Se connecter</a>
+            <a layout layout-align="center center" ng-if="!user.mentors[mentor.$id].mentorId"class="lr-blue-button" ng-click="askForMentoring(mentor.$id)">Voir profil</a>
             <a layout layout-align="center center" ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'pending'" class="lr-blue-button" disabled>En attente</a>
             <a layout layout-align="center center" ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'accepted'" ng-click="joinPrivateRoom(mentor.$id, user.$id)" class="lr-blue-button" >Discuter</a>
           </div>
