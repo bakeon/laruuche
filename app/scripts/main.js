@@ -33,7 +33,6 @@
     //Tutorial for Gif
     body.on('focus', '#input-message', function () {
         let gifTutorial = Cookies.get('gifTutorial');
-        console.log(gifTutorial);
         if(gifTutorial != 'true'){
           let text = '<div id="gif-tutorial">' +
             '<div layout="row" layout-align="center center">'+

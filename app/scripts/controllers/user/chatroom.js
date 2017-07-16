@@ -129,6 +129,7 @@ angular.module('laruucheApp')
                 exist=true;
               }
               else{
+
                 exist=false
               }
             });
@@ -136,7 +137,6 @@ angular.module('laruucheApp')
               room.push(roomToAdd);
             }
           }
-          console.log(room);
           userRef.set(room);
         });
       };

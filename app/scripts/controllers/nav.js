@@ -9,10 +9,10 @@
  */
 angular.module('laruucheApp')
   .controller('NavCtrl', function ($scope, $rootScope, $firebaseObject, Auth, Users, Chatrooms) {
-    var userUid = '';
+    let userUid = '';
     $rootScope.auth = Auth;
     $scope.chatrooms = Chatrooms;
-
+    $scope.isLogged = false;
 
     // any time auth state changes, add the user data to scope
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
@@ -27,20 +27,23 @@ angular.module('laruucheApp')
         userUid = $scope.user.$id;
         $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
         $scope.user.$loaded().then(function () {
+          $scope.isLogged = true;
           $scope.pendingStudents = Users.getNotificationsForUnreadStudents($scope.user.$id);
-          $scope.pendingStudents.$watch(function (event) {
-            console.log(event);
-            let ref = $scope.pendingStudents.$ref();
-            let notifications = {
-              studentId:event.key,
-              studentPhotoURL:Users.getPhotoURL(event.key),
-              displayName:Users.getDisplayName(event.key),
-              track:Users.getTrack(event.key)
-            };
-            if(event.event == 'child_added'){
-              $scope.notifications.push(notifications);
-            }
+          $scope.pendingStudents.$loaded().then(function () {
+            $scope.pendingStudents.$watch(function (event) {
+              console.log(event);
+              let ref = $scope.pendingStudents.$ref();
+              let notifications = {
+                studentId:event.key,
+                studentPhotoURL:Users.getPhotoURL(event.key),
+                displayName:Users.getDisplayName(event.key),
+                track:Users.getTrack(event.key)
+              };
+              if(event.event == 'child_added'){
+                $scope.notifications.push(notifications);
+              }
 
+            });
           });
         });
 

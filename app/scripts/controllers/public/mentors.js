@@ -13,6 +13,9 @@
           if($rootScope.firebaseUser){
             /*Retrieve User Data*/
             $scope.user = Users.getProfile(firebaseUser.uid);
+            if(!$scope.user.isMentor){
+              $location.path('/userProfile')
+            }
           }
         });
         /*Load mentors*/

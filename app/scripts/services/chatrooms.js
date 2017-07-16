@@ -9,15 +9,18 @@
  */
 angular.module('laruucheApp')
   .factory('Chatrooms', function ($firebaseArray, $firebaseObject) {
-    var usersRef = firebase.database().ref('users');
-    var users = $firebaseArray(usersRef);
-    var ref = firebase.database().ref("chatrooms");
+    let usersRef = firebase.database().ref('users');
+    let users = $firebaseArray(usersRef);
+    let ref = firebase.database().ref("chatrooms");
 
-    var chatrooms = $firebaseArray(ref);
-    var privateRooms = $firebaseArray(ref.child('private'));
-    var publicRooms = $firebaseArray(ref.child('public'));
+    let chatrooms = $firebaseArray(ref);
+    let privateRooms = $firebaseArray(ref.child('private'));
+    let publicRooms = $firebaseArray(ref.child('public'));
 
-    var Chatrooms = {
+    let isRoomAdded = "";
+
+
+    let Chatrooms = {
       getRoom: function(uid){
         return $firebaseObject(ref.child('public').child(uid));
       },
@@ -34,6 +37,12 @@ angular.module('laruucheApp')
         let uid = mentorId+studentId;
         let chatroom = ref.child('private').orderByChild('uid').equalTo(uid);
         return $firebaseObject(chatroom);
+      },
+      setIsRoomAdded: function(value){
+        isRoomAdded = value;
+      },
+      getIsRoomAdded: function(){
+        return isRoomAdded;
       },
       all: chatrooms,
       publicRooms: publicRooms,

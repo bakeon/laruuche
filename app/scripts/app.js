@@ -64,7 +64,7 @@ angular
       })
       .when('/userProfile/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
-        controller: 'ChatRoomCtrl',
+        controller: 'ChatRoomCtrl as ChatRoomCtrl',
       })
       .when('/userProfile/privateroom/:id',{
         templateUrl: 'views/user/privatechatroom.html',

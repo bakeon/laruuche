@@ -140,7 +140,6 @@ angular.module('laruucheApp')
               room.push(roomToAdd);
             }
           }
-          console.log(room);
           userRef.set(room);
         });
       };

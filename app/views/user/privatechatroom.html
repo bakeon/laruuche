@@ -6,10 +6,10 @@
       <div class="up" flex layout="column" layout-align="start start">
         <div class="my-info" layout="column" layout-align="center center" layout-padding>
           <div class="edit" layout="row" layout-align="end center">
-            <a href="#!userProfile"
+            <a ng-click="openLeftMenu()" href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
-              <span class="icon lricon-edit"></span>
+              <span class="icon lricon-pencil"></span>
               Éditer
             </a>
           </div>
@@ -27,24 +27,28 @@
     </div>
     <div class="room-list-wrapper" flex layout="column" layout-align="start center">
       <div class="room-list" layout="column" layout-align="start center">
-        <div ng-if="user.isMentor" class="room pointer">
-          <div layout layout-align="center center">
-            <a  href="#!/userProfile/my-students">
+        <div class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}" layout
+               layout-align="center center" flex>
+              Mes rooms
+            </a>
+          </div>
+        </div>
+        <div ng-if="user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout
+               layout-align="center center" flex>
               Mes étudiants
             </a>
           </div>
         </div>
-        <div ng-if="!user.isMentor" class="room pointer">
-          <div layout layout-align="center center">
-            <a  href="#!/userProfile/my-mentors">
+        <div ng-if="!user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+
+            <a href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout
+               layout-align="center center" flex>
               Mes mentors
-            </a>
-          </div>
-        </div>
-        <div class="room pointer">
-          <div layout layout-align="center center">
-            <a href="#!/userProfile/my-rooms">
-              Mes rooms
             </a>
           </div>
         </div>
@@ -67,7 +71,7 @@
                   class=" md-fab md-mini menu-2" hide-gt-sm>
         <span class="icon lricon-more"></span>
       </md-button>
-      <a class="back" href="#!/panel" layout layout-align="start center"><span class="icon lricon-back"></span><span class="mobile">Retour</span></a>
+      <a class="back" href="#!/rooms" layout layout-align="start center"><span class="icon lricon-back"></span><span class="mobile">Retour</span></a>
       <div class="room-title" flex>
         <h2>{{ chatroomName }}</h2>
       </div>
