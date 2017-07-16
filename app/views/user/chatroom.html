@@ -80,7 +80,7 @@
     <div class="messengerBox" flex scroll-bottom="messages">
       <div class="message-wrapper" >
         <h5>Exprime toi !</h5>
-        <div class="message" ng-repeat="message in messages" >
+        <div class="message {{getActiveMessage(message.uid)}}" ng-repeat="message in messages" >
           <div class="message-container isUser(message.uid)">
             <div class="message-info" layout layout-align="start start">
               <div class="left">

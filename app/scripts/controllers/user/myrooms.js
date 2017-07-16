@@ -42,7 +42,7 @@ angular.module('laruucheApp')
 
           /*Enter to the chatroom*/
           $scope.enterChat = function(uid){
-            $location.path('/chatroom/'+uid);
+            $location.path('userProfile/chatroom/'+uid);
           }
 
         });
