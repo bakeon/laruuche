@@ -35,7 +35,10 @@ angular.module('laruucheApp')
           $scope.mentors.$loaded().then(function () {
             $scope.getDisplayName = function(uid){
               return Users.getDisplayName(uid);
-            }
+            };
+            $scope.getPhotoURL = function(uid){
+              return Users.getPhotoURL(uid);
+            };
           });
 
           /*Join the private room*/

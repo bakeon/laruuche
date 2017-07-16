@@ -39,7 +39,7 @@
         <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
                target="_blank"><span class="icon lricon-twitter"></span></a></li>
       </ul>
-      <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications">
+      <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications" layout="column" layout-align="space-between center">
         <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
         <div layout="row" layout-align="center center">
           <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
@@ -49,12 +49,12 @@
           </div>
         </div>
         <div layout="row" layout-align="center center">
-          <md-button class="md-raised black accept-mentor" ng-click="acceptStudent(notification.studentId, $index)">
+          <div class="lr-yellow-button" ng-click="acceptStudent(notification.studentId, $index)" layout layout-align="center center">
             Accepter
-          </md-button>
-          <md-button class="md-raised black refuse-mentor" ng-click="refuseStudent(notification.studentId, $index)">
+          </div>
+          <div class="lr-grey-button margin-left" ng-click="refuseStudent(notification.studentId, $index)" layout layout-align="center center">
             Refuser
-          </md-button>
+          </div>
         </div>
       </div>
     </div>

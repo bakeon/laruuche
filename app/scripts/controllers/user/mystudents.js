@@ -29,6 +29,9 @@ angular.module('laruucheApp')
       $scope.getRoomName = function(uid){
         return Chatrooms.getName(uid);
       };
+      $scope.getPhotoUrl = function(uid){
+        return Users.getPhotoURL(uid);
+      };
       if(!$rootScope.firebaseUser){
         $location.path('/');
       }

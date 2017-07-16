@@ -72,12 +72,13 @@ angular
       })
       .when('/userProfile/mentors',{
         templateUrl:'views/user/mentors.html',
-        controller: 'FindMyMentorCtrl as fmmCtrl'
+        controller: 'FindMyMentorCtrl as fmmCtrl',
+        routeName:'mymentors'
       })
       .when('/userProfile/my-students',{
         templateUrl:'views/user/mystudents.html',
         controller: 'MyStudentsCtrl as MyStudentsCtrl',
-        routeName: 'mystudents'
+        routeName: 'mystudents',
 
       })
       .when('/userProfile/my-mentors',{

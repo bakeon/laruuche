@@ -5,6 +5,16 @@
 @import "variables";
 @import "gui";
 
+$yellow:#e5b900;
+$blue:#2a2eb2;
+$black:#1B1B1B;
+$black-blue:#24289b;
+$white:#FFF;
+$lr-grey:#bdc3c7;
+$bg-light-grey:#ecf0f1;
+$bg-grey:#F9F9F9;
+$light-grey:#f8f8f8;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -337,6 +347,9 @@ h5 {
         &.active,&:hover{
           background: $yellow;
         }
+        .icon{
+          font-size: 18px;
+        }
       }
       & > div > div {
         word-wrap: break-word;
@@ -542,12 +555,12 @@ h5 {
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background: $yellow;
+    background: $lr-blue;
     color: $white;
   }
 }
 .lr-yellow-button{
-  height: 40px;
+  height: 30px;
   padding: 0 20px;
   background: $yellow;
   border-radius: 20px;
@@ -556,8 +569,34 @@ h5 {
   font-size: 14px;
   cursor: pointer;
   &:hover {
-    background: $blue;
+    background: $light-yellow;
     color: $white;
+  }
+}
+
+.logo-margin{
+  margin-bottom: 40px;
+}
+
+.main-content{
+  .lr-yellow-button{
+    font-size: 20px;
+    height:40px;
+  }
+}
+
+.lr-grey-button{
+  height: 30px;
+  padding: 0 20px;
+  background: $lr-grey;
+  border-radius: 20px;
+  color: $white;
+  box-sizing: border-box;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background: $light-grey;
+    color: $lr-grey;
   }
 }
 .lr-link-button {
@@ -613,28 +652,49 @@ h5 {
     outline-style: none;
   }
 }
-.lr-yellow-button {
-  height: 40px;
-  padding: 10px 40px;
-  border-radius: 20px;
-  color: $white;
-  box-sizing: border-box;
-  font-weight: 600;
-  font-size: 18px;
-  cursor: pointer;
-  background: $yellow;
-  &:hover {
-    color: $yellow;
+
+.accept-student-notif{
+  height:110px;
+  border-radius:3px;
+}
+
+.arrow{
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    height:30px;
+    width:30px;
     background: $white;
+    position: absolute;
+    top:-5px;
+    left:50%;
+    transform: translateX(-50%) rotate(45deg);
+    z-index:9;
+    border-radius:2px;
   }
 }
 
 .chat2{
   .header-room{
     position: relative;
+    &:after{
+      content: '';
+      display: block;
+      height:30px;
+      width:30px;
+      background: $white;
+      position: absolute;
+      top:-5px;
+      left:50%;
+      transform: translateX(-50%) rotate(45deg);
+      z-index:9;
+      border-radius:2px;
+    }
   }
   .lr-add-button{
     @include absolute-center();
+    z-index:10;
   }
 }
 
@@ -707,6 +767,7 @@ md-dialog{
   width:40px;
   border: 1px solid $blue;
   border-radius:25px;
+  z-index:9;
 }
 
 .message {
@@ -881,16 +942,34 @@ html {
   }
 }
 
+
+
 .card-room {
   background: url("../assets/images/alveole_chat.png") no-repeat center center;
   background-size: 100%;
   height: 300px;
   width: 240px;
-  margin: 0 20px;
+  margin: 0 auto;
+  &.active{
+    background: url("../assets/images/alveole_chat_blanc.png") no-repeat center center;
+    background-size: 100%;
+    .card-header .icon{
+      color:$yellow;
+    }
+    .card-header-text{
+      color: $yellow;
+    }
+  }
+
   &.inactive-room{
     background: url("../assets/images/alveole_gris.svg") no-repeat center center;
     background-size: cover;
-
+    .card-header .icon{
+      color:$lr-grey;
+    }
+    .card-header-text{
+      color: $lr-grey;
+    }
   }
 }
 
@@ -978,7 +1057,7 @@ html {
     h1{
       text-align: center;
     }
-    color:$grey;
+    color:$lr-grey;
     .blue{
       color: $blue;
     }
@@ -1010,7 +1089,7 @@ html {
       position: relative;
       .number-etape {
         font-size: 60px;
-        color: $grey;
+        color: $lr-grey;
         position: absolute;
         &.blue{
           color: $blue;
@@ -1155,7 +1234,7 @@ html {
     font-weight: 500;
   }
   .sub-notif{
-    color:$grey;
+    color:$lr-grey;
     font-size:12px;
   }
 }
@@ -1173,6 +1252,7 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
   .profil-picture{
     width:120px;
     height:120px;
+    margin-top: 10px;
   }
 }
 .profile md-content{
@@ -1198,6 +1278,7 @@ md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .
   margin: auto;
   width: 100px;
   border-radius: 100px;
+  z-index:9;
 }
 
 .mentionWrapper {

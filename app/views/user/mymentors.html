@@ -29,26 +29,28 @@
       <div class="room-list" layout="column" layout-align="start center">
         <div class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-rooms" ng-class="{'active': $route.current.active == 'myrooms'}" layout
+            <a href="#!/userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes rooms
+              <span class="icon lricon-messages margin-left"></span>
             </a>
           </div>
         </div>
         <div ng-if="user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-            <a href="#!/userProfile/my-students" ng-class="{'active': $route.current.active == 'mystudents'}" layout
+            <a href="#!/userProfile/my-students" ng-class="isActive == 'mystudents' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes étudiants
+              <span class="icon lricon-user margin-left"></span>
             </a>
           </div>
         </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
-
-            <a href="#!/userProfile/my-mentors" ng-class="{'active': $route.current.active == 'mymentors'}" layout
+            <a href="#!/userProfile/my-mentors" ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout
                layout-align="center center" flex>
               Mes mentors
+              <span class="icon lricon-user margin-left"></span>
             </a>
           </div>
         </div>
@@ -62,7 +64,7 @@
       </div>
     </div>
     <div class="down" layout="column " layout-align="center center">
-      <a href="/" ng-click="logout()">Déconnection<span class="icon lricon-settings margin-left"></span></a>
+      <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
     </div>
   </md-sidenav>
   <div class="content-app mentor" layout="column" layout-align="start start" flex class="chatroom">
@@ -70,27 +72,35 @@
       <div layout="row" layout-align="end center">
         <h3 class="md-title">Mes mentors</h3>
         <ul class="social" layout="row" layout-align="space-between center">
-          <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/" target="_blank"><span class="icon lricon-facebook"></span></a></li>
-          <li><a title="Profil Twitter de La Ruuche" class="social-twitter"href="https://twitter.com/LaRuuche" target="_blank"><span class="icon lricon-twitter"></span></a></li>
+          <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/"
+                 target="_blank"><span class="icon lricon-facebook"></span></a></li>
+          <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
+                 target="_blank"><span class="icon lricon-twitter"></span></a></li>
         </ul>
       </div>
     </div>
-    <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
+    <div class="wrapper room-wrapper arrow" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
-        <div class="card-room" ng-repeat="mentor in mentors" layout="column" layout-align="center center">
+        <div class="card-room active" ng-repeat="mentor in mentors" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>
-              <span class="icon lricon-messages"></span>
+              <span class="icon lricon-user"></span>
             </div>
-            <div class="card-head er-text">
+            <div class="card-header-text">
               <span class="title-card">{{ getDisplayName(mentor.mentorId) }}</span>
+            </div>
+            <div layout="row" layout-align="start center">
+              <div><img class="user-pic" ng-src="{{getPhotoURL(mentor.mentorId)}}"/>
+              </div>
+              <div>{{mentor.studies}}</div>
             </div>
           </div>
           <div class="card-actions" layout="row" layout-align="start center">
             <!-- pending -->
-            <div class="attente" ng-if="mentor.status === 'pending'" ng-disabled="">En attente</div>
+            <div class="lr-grey-button" ng-if="mentor.status === 'pending'" ng-disabled="">En attente</div>
             <!-- accepted -->
-            <a class="mr-yellow-button accept-mentor" ng-if="mentor.status === 'accepted'" ng-click="joinPrivateRoom( mentor.mentorId, user.$id)" >Rejoindre la room</a>
+            <a class="lr-yellow-button" ng-if="mentor.status === 'accepted'"
+               ng-click="joinPrivateRoom( mentor.mentorId, user.$id)" layout="row" layout-align="center center">Rejoindre la room</a>
             <!-- refused -->
           </div>
         </div>

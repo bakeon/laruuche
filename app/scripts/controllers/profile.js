@@ -2,9 +2,12 @@
 
 (function () {
   angular.module('laruucheApp')
-    .controller('ProfileCtrl', ["$rootScope","$scope", "Auth", "$location","Users", "$timeout", "$q", "Degrees", "$mdConstant",
-      function ($rootScope ,$scope, Auth, $location, Users, $timeout, $q, Degrees, $mdConstant) {
+    .controller('ProfileCtrl', ["$rootScope","$scope", "Auth", "$location","Users", "$timeout", "$q", "Degrees", "$mdConstant","$mdSidenav",
+      function ($rootScope ,$scope, Auth, $location, Users, $timeout, $q, Degrees, $mdConstant, $mdSidenav) {
         var self = this;
+        $scope.openLeftMenu = function() {
+          $mdSidenav('left').toggle();
+        };
         $scope.getTags = '';
         $rootScope.auth = Auth;
         var userRef = firebase.database().ref();
