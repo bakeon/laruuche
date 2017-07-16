@@ -778,7 +778,34 @@ md-dialog{
 
 .message {
   padding: 20px;
-  border-top: 1px solid $yellow;
+}
+
+.message-text{
+  position: relative;
+  p{
+    min-height: 30px;
+    max-width: 300px;
+    background: $lr-grey;
+    border-top-left-radius: 0;
+    padding:10px 15px;
+    color: $white;
+  }
+  p,img{
+    border-radius:15px;
+    border-top-left-radius: 0;
+    transform: translateX(30px);
+  }
+}
+
+.activeUser .message-text{
+  p,img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 0;
+    transform: translateX(-30px);
+  }
+  p{
+    background: $yellow;
+  }
 }
 
 input[type=search] {
@@ -926,16 +953,14 @@ html {
 
 
 .timestamp {
-  color: $light-grey;
-  margin-left: 15px;
+  color: $lr-grey;
 }
 
-.user-name {
-  margin-bottom: 20px;
+.message-info{
+  margin-bottom: 10px;
 }
 
 .left {
-  margin-right: 15px;
   width: 40px;
   height: 40px;
   border-radius: 20px;
