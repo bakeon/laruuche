@@ -47,7 +47,11 @@ angular.module('laruucheApp')
         $scope.getRoomName = function (uid) {
           return Chatrooms.getName(uid);
         };
-
+        $scope.getActiveMessage = function (uidd) {
+          if($rootScope.firebaseUser.uid==uidd){
+            return 'activeUser'
+          }
+        };
         if (!$rootScope.firebaseUser) {
           $mdDialog.show({
             controller: 'AuthDialogCtrl',
