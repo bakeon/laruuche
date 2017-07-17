@@ -38,11 +38,9 @@ angular.module('laruucheApp')
         let chatroom = ref.child('private').orderByChild('uid').equalTo(uid);
         return $firebaseObject(chatroom);
       },
-      setIsRoomAdded: function(value){
-        isRoomAdded = value;
-      },
-      getIsRoomAdded: function(){
-        return isRoomAdded;
+      getMyChatrooms: function(uid){
+          let roomRef = firebase.database().ref('users').child(uid).child('roomList');
+          return $firebaseArray(roomRef);
       },
       all: chatrooms,
       publicRooms: publicRooms,

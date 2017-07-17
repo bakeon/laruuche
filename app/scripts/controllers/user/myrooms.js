@@ -26,9 +26,7 @@ angular.module('laruucheApp')
     };
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
       $rootScope.firebaseUser = firebaseUser;
-      $scope.getRoomName = function(uid){
-        return Chatrooms.getName(uid);
-      };
+
       if(!$rootScope.firebaseUser){
         $location.path('/');
       }
@@ -39,6 +37,13 @@ angular.module('laruucheApp')
           //Do things when user is logged;
           userUid = $scope.user.$id;
           $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
+          $scope.ChatroomsList.$loaded().then(function () {
+
+          });
+
+          $scope.getRoomName = function(uid){
+            return Chatrooms.getName(uid);
+          };
 
           /*Enter to the chatroom*/
           $scope.enterChat = function(uid){

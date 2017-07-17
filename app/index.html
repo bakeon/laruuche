@@ -31,7 +31,7 @@
           <li><a href="#!" ng-class="isActive == 'main' ? 'active' : ' ' ">Accueil</a></li>
         <li><a href="#!rooms" ng-class="isActive == 'rooms' ? 'active' : ' ' ">Rooms</a></li>
         <li ng-if="!user.isMentor"><a href="#!mentors" ng-class="isActive == 'mentors' ? 'active' : ' ' ">Mentors</a></li>
-        <li><a href="#!userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' ">Profil</a></li>
+        <li><a href="#!userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' ">Profil <span ng-if="roomAdded" id="addRoomNotif"></span></a></li>
       </ul>
       <ul layout="row" class="social" layout-align="space-between center">
         <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/"
@@ -134,7 +134,6 @@
         <script src="scripts/controllers/authdialog.js"></script>
         <script src="scripts/directives/scrollbottom.js"></script>
         <script src="scripts/directives/nomentor.js"></script>
-        <script src="scripts/directives/nochatroom.js"></script>
         <script src="scripts/controllers/nav.js"></script>
         <!-- endbuild -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>

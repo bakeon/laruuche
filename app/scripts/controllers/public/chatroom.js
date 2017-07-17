@@ -116,31 +116,26 @@ angular.module('laruucheApp')
         };
       };
 
-      let room = [];
       $scope.addRoomToUser = function () {
+        let roomArray = [];
         let roomToAdd = $routeParams.id;
-        let exist;
         let userRef = firebase.database().ref().child('users').child($rootScope.firebaseUser.uid).child('roomList');
         userRef.once('value').then(function (snapshot) {
-          room = snapshot.val();
-          if (room == null) {
-            room = new Array();
-            room[0] = roomToAdd;
-          }
-          else {
-            room.forEach(function (value) {
-              if (value==roomToAdd){
-                exist=true;
-              }
-              else{
-                exist=false
-              }
-            });
-            if(exist==false){
-              room.push(roomToAdd);
+          roomArray = snapshot.val();
+          if(roomArray != null){
+            let exist = roomArray.includes(roomToAdd);
+            console.log(roomArray, exist);
+            if(exist == false){
+              roomArray.push(roomToAdd);
+              userRef.set(roomArray);
             }
           }
-          userRef.set(room);
+          else{
+            roomArray = [];
+            roomArray.push(roomToAdd);
+            userRef.set(roomArray);
+          }
+
         });
       };
 

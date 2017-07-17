@@ -133,7 +133,7 @@ angular.module('laruucheApp')
                 exist=false
               }
             });
-            if(exist==false){
+            if(exist==false){ 
               room.push(roomToAdd);
             }
           }

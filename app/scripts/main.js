@@ -26,7 +26,6 @@
 
   /*Cookie bar*/
   let acceptedCookie = Cookies.get('acceptedCookie');
-  console.log(acceptedCookie);
   if(acceptedCookie == 'true'){
     /*Start to write cookies*/
     let body = $('body');

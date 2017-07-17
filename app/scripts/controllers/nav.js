@@ -9,10 +9,18 @@
  */
 angular.module('laruucheApp')
   .controller('NavCtrl', function ($scope, $rootScope, $firebaseObject, Auth, Users, Chatrooms) {
+    $scope.roomAdded = false;
     let userUid = '';
     $rootScope.auth = Auth;
     $scope.chatrooms = Chatrooms;
     $scope.isLogged = false;
+
+    $rootScope.$on('$routeChangeStart', function(event, next, current){
+      console.log(  next.$$route.originalPath);
+      if(next.$$route.originalPath == '/userProfile/my-rooms'){
+        $scope.roomAdded = false;
+      }
+    });
 
     // any time auth state changes, add the user data to scope
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
@@ -45,7 +53,19 @@ angular.module('laruucheApp')
 
             });
           });
+
+          /*Get all my rooms*/
+          $scope.myChatrooms = Chatrooms.getMyChatrooms($scope.user.$id);
+          $scope.myChatrooms.$loaded().then(function () {
+            $scope.myChatrooms.$watch(function (event) {
+                if(event.event == "child_added"){
+                  $scope.roomAdded = true;
+                }
+            });
+          });
+
         });
+
 
         /*Accept a student*/
         $scope.acceptStudent = function(studentId, index){
