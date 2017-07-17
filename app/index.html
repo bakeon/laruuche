@@ -31,6 +31,7 @@
           <li><a href="#!" ng-class="isActive == 'main' ? 'active' : ' ' ">Accueil</a></li>
         <li><a href="#!rooms" ng-class="isActive == 'rooms' ? 'active' : ' ' ">Rooms</a></li>
         <li ng-if="!user.isMentor"><a href="#!mentors" ng-class="isActive == 'mentors' ? 'active' : ' ' ">Mentors</a></li>
+        <li><a href="#!schools" ng-class="isActive == 'schools' ? 'active' : ' ' ">Écoles</a></li>
         <li><a href="#!userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' ">Profil <span ng-if="roomAdded" id="addRoomNotif"></span></a></li>
       </ul>
       <ul layout="row" class="social" layout-align="space-between center">
@@ -121,6 +122,8 @@
         <script src="scripts/controllers/admin/adminrooms.js"></script>
         <script src="scripts/controllers/admin/admineditroom.js"></script>
         <script src="scripts/controllers/public/rooms.js"></script>
+    <script src="scripts/controllers/public/school.js"></script>
+
     <script src="scripts/controllers/public/chatroom.js"></script>
 
     <script src="scripts/controllers/public/mentors.js"></script>
