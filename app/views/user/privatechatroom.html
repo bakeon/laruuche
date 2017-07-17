@@ -81,20 +81,43 @@
       <div class="message-wrapper">
         <h5>Exprime toi !</h5>
         <div class="message" ng-repeat="message in messages">
-          <div class="message-container isUser(message.uid)">
-            <div class="message-info" layout layout-align="start start">
-              <div class="left">
-                <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
+          <div class="message-container" ng-if="getActiveMessage(message.uid)">
+            <div layout="column" layout-align="start end" class="{{getActiveMessage(message.uid)}}">
+              <div class="message-info" layout layout-align="start center">
+
+                <div class="right" layout="column" layout-align="start start">
+                  <div class="user-name" layout="row" layout-align="end center">
+                    <span class="timestamp margin-right">{{ message.timestamp | date:'h:mm ' }}</span>
+                    {{ getUserName(message.uid) }}
+                  </div>
+                </div>
+                <div class="left margin-left">
+                  <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
+                </div>
               </div>
-              <div class="right" layout="column" layout-align="start start">
-                <div class="user-name" layout="row" layout-align="start center">
-                  {{ getUserName(message.uid) }}
-                  <span class="timestamp">{{ message.timestamp | date:'h:mm ' }}</span>
+              <div class="message-text">
+                <p ng-if="message.type == 'text' " layout="row" layout-align="start center">{{ message.body }}</p>
+                <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
+              </div>
+            </div>
+
+          </div>
+          <div class="message-container" ng-if="!getActiveMessage(message.uid)">
+            <div layout="column" layout-align="start start">
+              <div class="message-info" layout layout-align="start center">
+                <div class="left margin-right">
+                  <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
                 </div>
-                <div class="message-text">
-                  <p ng-if="message.type == 'text' ">{{ message.body }}</p>
-                  <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
+                <div class="right" layout="column" layout-align="start start">
+                  <div class="user-name" layout="row" layout-align="start center">
+                    {{ getUserName(message.uid) }}
+                    <span class="timestamp margin-left">{{ message.timestamp | date:'h:mm ' }}</span>
+                  </div>
                 </div>
+              </div>
+              <div class="message-text">
+                <p ng-if="message.type == 'text' " layout="row" layout-align="start center">{{ message.body }}</p>
+                <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
               </div>
             </div>
           </div>

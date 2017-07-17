@@ -114,6 +114,24 @@ a{
   }
 }
 
+.hive-right{
+  display: block;
+  width:30vw;
+  height:30vw;
+  position: absolute;
+  span{
+    display: block;
+    height:100%;
+    width:100%;
+    &.hive-pleine{
+      background: url("../assets/images/hive-plein.svg");
+    }
+    &.hive-contour{
+      background: url("../assets/images/hive-contour.svg");
+    }
+  }
+}
+
 .header-main {
   background: url("../assets/images/bg_header_2.jpg") no-repeat center center;
   background-size: cover;
