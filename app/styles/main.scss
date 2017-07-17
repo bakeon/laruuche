@@ -114,6 +114,24 @@ a{
   }
 }
 
+.hive-right{
+  display: block;
+  width:30vw;
+  height:30vw;
+  position: absolute;
+  span{
+    display: block;
+    height:100%;
+    width:100%;
+    &.hive-pleine{
+      background: url("../assets/images/hive-plein.svg");
+    }
+    &.hive-contour{
+      background: url("../assets/images/hive-contour.svg");
+    }
+  }
+}
+
 .header-main {
   background: url("../assets/images/bg_header_2.jpg") no-repeat center center;
   background-size: cover;
@@ -399,6 +417,12 @@ h5 {
 }
 .refuse-mentor{
   color: #c14233 !important;
+}
+
+#mentorNotif{
+  position: absolute;
+  top:60px;
+  right:0;
 }
 
 .sidebar {
@@ -772,7 +796,34 @@ md-dialog{
 
 .message {
   padding: 20px;
-  border-top: 1px solid $yellow;
+}
+
+.message-text{
+  position: relative;
+  p{
+    min-height: 30px;
+    max-width: 300px;
+    background: $lr-grey;
+    border-top-left-radius: 0;
+    padding:10px 15px;
+    color: $white;
+  }
+  p,img{
+    border-radius:15px;
+    border-top-left-radius: 0;
+    transform: translateX(30px);
+  }
+}
+
+.activeUser .message-text{
+  p,img{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 0;
+    transform: translateX(-30px);
+  }
+  p{
+    background: $yellow;
+  }
 }
 
 input[type=search] {
@@ -920,16 +971,14 @@ html {
 
 
 .timestamp {
-  color: $light-grey;
-  margin-left: 15px;
+  color: $lr-grey;
 }
 
-.user-name {
-  margin-bottom: 20px;
+.message-info{
+  margin-bottom: 10px;
 }
 
 .left {
-  margin-right: 15px;
   width: 40px;
   height: 40px;
   border-radius: 20px;
