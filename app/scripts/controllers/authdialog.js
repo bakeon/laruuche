@@ -38,6 +38,7 @@ angular.module('laruucheApp')
             $scope.tags = [];
           }
         });
+
       }
     });
 
@@ -93,6 +94,8 @@ angular.module('laruucheApp')
       });
     };
 
+    $scope.school={};
+
     $scope.goToPanel = function () {
       if($scope.user){
         $location.path('/panel');
@@ -105,6 +108,7 @@ angular.module('laruucheApp')
 
     /*Data for profile*/
     $scope.userTags = [];
+    $scope.schoolTags =[];
     $scope.userTrack = '';
     $scope.tracks = [
       "S",
@@ -121,7 +125,33 @@ angular.module('laruucheApp')
     this.customKeys = [$mdConstant.KEY_CODE.ENTER,$mdConstant.KEY_CODE.SPACE];
 
     $scope.updateProfile = function(){
+      $scope.school.tags=$scope.schoolTags.join();
+      let exist;
+      let userRef = firebase.database().ref().child('schools');
+      userRef.once('value').then(function (snapshot) {
+        let schools = snapshot.val();
+        if (schools == null) {
+          schools = new Array();
+          schools[0] = $scope.school;
+        }
+        else {
+          schools.forEach(function (value) {
+            if (value==$scope.school){
+              exist=true;
+            }
+            else{
+
+              exist=false
+            }
+          });
+          if(exist==false){
+            schools.push($scope.school);
+          }
+        }
+        userRef.set(schools);
+      });
       $mdDialog.hide();
+      console.log($scope.school);
       $scope.user.tags = $scope.tags.join();
       $scope.user.$save().then(function(){
         console.log("Profile updated");
