@@ -45,6 +45,15 @@
             </a>
           </div>
         </div>
+        <div ng-if="user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-ama"  ng-class="isActive == 'myama' ? 'active' : ' ' " layout
+               layout-align="center center" flex>
+              Mes AMA
+              <span class="icon lricon-user margin-left"></span>
+            </a>
+          </div>
+        </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
             <a href="#!/userProfile/my-mentors"  ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout
@@ -58,6 +67,13 @@
           <div layout layout-align="center center" flex>
             <a href="#!/userProfile/chatroom/create" layout layout-align="center center" flex>
             Créer une chatrooms
+            </a>
+          </div>
+        </div>
+        <div class="room pointer" layout ng-if="user.isMentor">
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/ama/create" layout layout-align="center center" flex>
+              Créer mon AMA
             </a>
           </div>
         </div>
@@ -89,7 +105,6 @@
     <div class="wrapper room-wrapper arrow" layout="column" layout-align="start start" flex>
       <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
         <div ng-if="ChatroomsList.publicRooms == 'undefined'">Vous n'avez pas encore enregistré de rooms</div>
-
         <div class="card-room active" ng-repeat="room in ChatroomsList" ng-click="enterChat(room)" layout="column" layout-align="center center">
           <div class="card-header" layout="column" layout-align="center center">
             <div>

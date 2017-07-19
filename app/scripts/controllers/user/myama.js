@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name laruucheApp.controller:MyStudentsCtrl
+ * @name laruucheApp.controller:MyAmaCtrl
  * @description
- * # MyStudentsCtrl
+ * # MyAmaCtrl
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
-  .controller('MyRoomsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms,$mdSidenav) {
+  .controller('MyAmaCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms,$mdSidenav) {
     $rootScope.auth = Auth;
     var userUid = '';
     $scope.Chatrooms = Chatrooms;
@@ -36,18 +36,15 @@ angular.module('laruucheApp')
         $scope.user.$loaded().then(function () {
           //Do things when user is logged;
           userUid = $scope.user.$id;
-          $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
-          $scope.ChatroomsList.$loaded().then(function () {
-
-          });
-          $scope.ama = Chatrooms.getMyAMA(userUid);
+          $scope.amas = Chatrooms.getAllMyAma(userUid);
+          console.log($scope.amas);
           $scope.getRoomName = function(uid){
-            return Chatrooms.getName(uid);
+            return Chatrooms.getAmaName(uid);
           };
 
           /*Enter to the chatroom*/
           $scope.enterChat = function(uid){
-            $location.path('userProfile/chatroom/'+uid);
+            $location.path('ama/'+uid);
           }
 
         });
@@ -55,4 +52,6 @@ angular.module('laruucheApp')
       }
 
     });
+
+
   });

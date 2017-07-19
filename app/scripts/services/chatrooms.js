@@ -16,6 +16,7 @@ angular.module('laruucheApp')
     let chatrooms = $firebaseArray(ref);
     let privateRooms = $firebaseArray(ref.child('private'));
     let publicRooms = $firebaseArray(ref.child('public'));
+    let amaRooms = $firebaseArray(ref.child('ama'));
 
     let isRoomAdded = "";
 
@@ -42,9 +43,25 @@ angular.module('laruucheApp')
           let roomRef = firebase.database().ref('users').child(uid).child('roomList');
           return $firebaseArray(roomRef);
       },
+      getAllMyAma: function(uid){
+        let ama = ref.child('ama').orderByChild('createdBy').equalTo(uid);
+        return $firebaseArray(ama);
+      },
+      getMyAMA: function (uid) {
+        let ama = ref.child('ama').orderByChild('createdBy').equalTo(uid);
+        return $firebaseObject(ama);
+      },
+      getAmaRoom: function(uid){
+        let amaRoom = ref.child('ama').child(uid);
+        return $firebaseObject(amaRoom);
+      },
+      getAmaName:function (uid) {
+        return amaRooms.$getRecord(uid).name;
+      },
       all: chatrooms,
       publicRooms: publicRooms,
-      privateRooms: privateRooms
+      privateRooms: privateRooms,
+      amaRooms: amaRooms
     };
     return Chatrooms;
 

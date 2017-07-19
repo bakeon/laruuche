@@ -68,6 +68,24 @@ angular
         templateUrl: 'views/user/create.html',
         controller: 'PanelCtrl',
       })
+      .when('/userProfile/ama/create',{
+        templateUrl: 'views/user/createama.html',
+        controller: 'CreateAmaCtrl'
+      })
+      .when('/ama', {
+        templateUrl: 'views/public/ama.html',
+        controller: 'AmaCtrl',
+        routeName: 'ama'
+      })
+      .when('/ama/:id', {
+        templateUrl: 'views/public/amaroom.html',
+        controller: 'StudentAmaCtrl'
+      })
+      .when('/userProfile/my-ama', {
+        templateUrl: 'views/user/myama.html',
+        controller: 'MyAmaCtrl',
+        routeName: 'my-ama'
+      })
       .when('/userProfile/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl as ChatRoomCtrl',

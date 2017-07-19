@@ -45,6 +45,15 @@
             </a>
           </div>
         </div>
+        <div ng-if="user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-ama"  ng-class="isActive == 'myama' ? 'active' : ' ' " layout
+               layout-align="center center" flex>
+              Mes AMA
+              <span class="icon lricon-user margin-left"></span>
+            </a>
+          </div>
+        </div>
         <div ng-if="!user.isMentor" class="room pointer" layout>
           <div layout layout-align="center center" flex>
             <a href="#!/userProfile/my-mentors"  ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout

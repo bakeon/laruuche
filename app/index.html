@@ -30,6 +30,7 @@
       <ul class="nav" layout="row" layout-align="start center">
           <li><a href="#!" ng-class="isActive == 'main' ? 'active' : ' ' ">Accueil</a></li>
         <li><a href="#!rooms" ng-class="isActive == 'rooms' ? 'active' : ' ' ">Rooms</a></li>
+        <li><a href="#!ama" ng-class="isActive == 'ama' ? 'active' : ' ' ">AMA</a></li>
         <li ng-if="!user.isMentor"><a href="#!mentors" ng-class="isActive == 'mentors' ? 'active' : ' ' ">Mentors</a></li>
         <li><a href="#!schools" ng-class="isActive == 'schools' ? 'active' : ' ' ">Écoles</a></li>
         <li><a href="#!userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' ">Profil <span ng-if="roomAdded" id="addRoomNotif"></span></a></li>
@@ -40,7 +41,7 @@
         <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
                target="_blank"><span class="icon lricon-twitter"></span></a></li>
       </ul>
-      <div id="mentorNotif" ng-hide="!isLogged">
+      <div id="mentorNotif" ng-show="pendingStudents">
           <div class="accept-student-notif" ng-if="notifications.length >= 1" ng-repeat="notification in notifications" layout="column" layout-align="space-between center">
             <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
             <div layout="row" layout-align="center center">
@@ -142,6 +143,11 @@
         <script src="scripts/directives/scrollbottom.js"></script>
         <script src="scripts/directives/nomentor.js"></script>
         <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/controllers/createama.js"></script>
+        <script src="scripts/controllers/public/ama.js"></script>
+        <script src="scripts/controllers/user/studentama.js"></script>
+        <script src="scripts/controllers/user/answer.js"></script>
+        <script src="scripts/controllers/user/myama.js"></script>
         <!-- endbuild -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
   </body>

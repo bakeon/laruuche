@@ -1195,6 +1195,29 @@ html {
 }
 
 /*Custom body*/
+.lr-subtitle{
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.message{
+  position: relative;
+}
+.message-actions{
+  position: absolute;
+  right:50px;
+  top:50%;
+  transform: translateY(-50%);
+  .icon{
+    padding:7px;
+    border:1px solid $yellow;
+    border-radius: 30px;
+    font-size:25px;
+    cursor: pointer;
+  }
+}
 #addRoomNotif{
   margin-left:5px;
   display:inline-block;
