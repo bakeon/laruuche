@@ -81,6 +81,11 @@ angular
         templateUrl: 'views/public/amaroom.html',
         controller: 'StudentAmaCtrl'
       })
+      .when('/userProfile/my-ama', {
+        templateUrl: 'views/user/myama.html',
+        controller: 'MyAmaCtrl',
+        routeName: 'my-ama'
+      })
       .when('/userProfile/chatroom/:id',{
         templateUrl: 'views/user/chatroom.html',
         controller: 'ChatRoomCtrl as ChatRoomCtrl',

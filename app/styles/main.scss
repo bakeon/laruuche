@@ -1179,6 +1179,13 @@ html {
 }
 
 /*Custom body*/
+.lr-subtitle{
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 .message{
   position: relative;
 }

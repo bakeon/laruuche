@@ -43,6 +43,10 @@ angular.module('laruucheApp')
           let roomRef = firebase.database().ref('users').child(uid).child('roomList');
           return $firebaseArray(roomRef);
       },
+      getAllMyAma: function(uid){
+        let ama = ref.child('ama').orderByChild('createdBy').equalTo(uid);
+        return $firebaseArray(ama);
+      },
       getMyAMA: function (uid) {
         let ama = ref.child('ama').orderByChild('createdBy').equalTo(uid);
         return $firebaseObject(ama);

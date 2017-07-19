@@ -41,7 +41,7 @@
         <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
                target="_blank"><span class="icon lricon-twitter"></span></a></li>
       </ul>
-      <div id="mentorNotif" ng-hide="!isLogged">
+      <div id="mentorNotif" ng-show="pendingStudents">
           <div class="accept-student-notif" ng-if="notifications.length >= 1" ng-repeat="notification in notifications" layout="column" layout-align="space-between center">
             <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
             <div layout="row" layout-align="center center">
@@ -144,6 +144,7 @@
         <script src="scripts/controllers/public/ama.js"></script>
         <script src="scripts/controllers/user/studentama.js"></script>
         <script src="scripts/controllers/user/answer.js"></script>
+        <script src="scripts/controllers/user/myama.js"></script>
         <!-- endbuild -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
   </body>
