@@ -93,6 +93,7 @@ angular.module('laruucheApp')
               }
               else{
                 like[key] = "";
+
               }
             }
           });
