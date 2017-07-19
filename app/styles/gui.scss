@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'laRucheFont';
-  src:  url('#{$icomoon-font-path}/laRucheFont.eot?sq1wjk');
-  src:  url('#{$icomoon-font-path}/laRucheFont.eot?sq1wjk#iefix') format('embedded-opentype'),
-  url('#{$icomoon-font-path}/laRucheFont.ttf?sq1wjk') format('truetype'),
-  url('#{$icomoon-font-path}/laRucheFont.woff?sq1wjk') format('woff'),
-  url('#{$icomoon-font-path}/laRucheFont.svg?sq1wjk#laRucheFont') format('svg');
+  src:  url('#{$icomoon-font-path}/laRucheFont.eot?jfzm4j');
+  src:  url('#{$icomoon-font-path}/laRucheFont.eot?jfzm4j#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/laRucheFont.ttf?jfzm4j') format('truetype'),
+  url('#{$icomoon-font-path}/laRucheFont.woff?jfzm4j') format('woff'),
+  url('#{$icomoon-font-path}/laRucheFont.svg?jfzm4j#laRucheFont') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,14 +26,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.lricon-facebook {
+.lricon-edit {
   &:before {
-    content: $lricon-facebook;
+    content: $lricon-edit;
   }
 }
-.lricon-twitter {
+.lricon-fb {
   &:before {
-    content: $lricon-twitter;
+    content: $lricon-fb;
+  }
+}
+.lricon-tt {
+  &:before {
+    content: $lricon-tt;
   }
 }
 .lricon-picto-logo {

@@ -9,7 +9,7 @@
             <a ng-click="openLeftMenu()" href="#!userProfile"
                title="Editer mon profil"
                class="md-raised md-primary launch" layout="row" layout-align="end center">
-              <span class="icon lricon-pencil"></span>
+              <span class="icon lricon-edit"></span>
               Éditer
             </a>
           </div>
@@ -128,6 +128,7 @@
       <video id="remoteaudio" autoplay style="display: none"></video>
       <audio id="localaudio" muted></audio>
       <form ng-submit="sendMessage()">
+        <div class="icon lricon-mic"></div>
         <input ng-model="message" rows="5"
                placeholder="Message" id="input-message"/>
       </form>

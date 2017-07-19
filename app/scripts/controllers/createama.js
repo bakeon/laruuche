@@ -13,8 +13,6 @@ angular.module('laruucheApp')
     var userUid = '';
     /*Load ChatRooms*/
     $scope.chatrooms = Chatrooms;
-
-
     // any time auth state changes, add the user data to scope
     $rootScope.auth.$onAuthStateChanged(function(firebaseUser) {
       $rootScope.firebaseUser = firebaseUser;
@@ -41,8 +39,6 @@ angular.module('laruucheApp')
               createdAt:'',
               questions:'',
             };
-
-
 
             $scope.createAMA = function(){
               $scope.amaChatroom.createdBy = userUid;
