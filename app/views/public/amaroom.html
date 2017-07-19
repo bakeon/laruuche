@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div ng-show="isStudent" class="send-message shadow-top" layout layout-align="center center">
+    <div ng-show="user.$id != ChatRoomObj.createdBy" class="send-message shadow-top" layout layout-align="center center">
       <form ng-submit="sendQuestion()">
         <input ng-model="question" rows="5"
                placeholder="Une question?" id="input-question"/>
