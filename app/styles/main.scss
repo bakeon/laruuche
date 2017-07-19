@@ -816,6 +816,18 @@ md-dialog{
 
 .message-text{
   position: relative;
+  &.answered{
+    p{
+      &:first-child{
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        margin-bottom: 2px;
+      }
+      &:last-child{
+        border-top-right-radius: 2px;
+      }
+    }
+  }
   p{
     min-height: 30px;
     max-width: 300px;
@@ -823,6 +835,10 @@ md-dialog{
     border-top-left-radius: 0;
     padding:10px 15px;
     color: $white;
+    &.answer{
+      background: $yellow;
+      border-top-left-radius: 3px;
+    }
   }
   p,img{
     border-radius:15px;

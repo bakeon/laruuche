@@ -54,12 +54,12 @@ angular
         routeName: 'mentors'
 
       })
-      .when('/schools',{
+      /*.when('/schools',{
         templateUrl: 'views/public/school.html',
         controller: 'SchoolCtrl as SchoolCtrl',
         routeName: 'schools'
 
-      })
+      })*/
       .when('/chatroom/:id',{
         templateUrl: 'views/public/chatroom.html',
         controller: 'ChatroomBisCtrl as ChatroomBisCtrl',

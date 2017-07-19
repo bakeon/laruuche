@@ -14,25 +14,25 @@
       <div class="message-wrapper" >
         <h5>Exprime toi !</h5>
         <div class="message" ng-repeat="question in questions" >
-          <div class="message-container isUser(message.uid)">
-            <div class="message-info" layout layout-align="start start">
+          <div class="message-container isUser(message.uid)" layout="column">
+            <div class="message-info" layout layout-align="start center">
               <div class="left">
                 <img alt="photo profil user" src="{{getPhotoURL(question.uid)}}"/>
               </div>
               <div class="right" layout="column" layout-align="start start">
-                <div class="user-name" layout="row" layout-align="start center">
+                <div class="user-name margin-left margin-right margin-top margin-bottom" layout="row" layout-align="start center">
                   {{ getUserName(question.uid) }}
-                  <span class="timestamp">{{ question.timestamp | date:'h:mm ' }}</span>
-                </div>
-                <div class="message-text">
-                  <p>{{ question.body  }}</p>
-                  <p class="answer" ng-if="question.answer">{{ getUserName(ChatRoomObj.createdBy) }} : {{ question.answer  }}</p>
-                </div>
-                <div class="message-actions">
-                  <span>{{likeArray[question.$id]}} </span><span ng-if="user" ng-click="likeQuestion(question.$id)" class="icon lricon-like"></span>
-                  <span class="icon lricon-messages" ng-if="user.$id == ChatRoomObj.createdBy" ng-click="setAnswer($event, question.$id)"></span>
+                  <span class="timestamp margin-left">{{ question.timestamp | date:'h:mm ' }}</span>
                 </div>
               </div>
+            </div>
+            <div class="message-text" ng-class="question.answer ? 'answered' : 'notAnswer'">
+              <p>{{ question.body  }}</p>
+              <p class="answer" ng-if="question.answer">{{ getUserName(ChatRoomObj.createdBy) }} : {{ question.answer  }}</p>
+            </div>
+            <div class="message-actions">
+              <span>{{likeArray[question.$id]}} </span><span ng-if="user" ng-click="likeQuestion(question.$id)" class="icon lricon-like"></span>
+              <span class="icon lricon-messages" ng-if="user.$id == ChatRoomObj.createdBy" ng-click="setAnswer($event, question.$id)"></span>
             </div>
           </div>
         </div>
