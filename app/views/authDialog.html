@@ -67,9 +67,25 @@
                   md-separator-keys="ProfileCtrl.customKeys">
                 </md-chips>
               </div>
-              <p ng-if="user.isMentor">quelque renseignement sur mon école</p>
+              <p ng-if="user.isMentor">quelques renseignement sur mon école</p>
+              <div layout="row" layout-align="start center">
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.name" type="text" placeholder="Établissement"  ng-if="user.isMentor">
+                </md-input-container>
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.site" type="text" placeholder="site web"  ng-if="user.isMentor">
+                </md-input-container>
+              </div>
+              <div layout="row" layout-align="start center">
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.positif" type="text" placeholder="point positif"  ng-if="user.isMentor">
+                </md-input-container>
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.negatif" type="text" placeholder="point négatif "  ng-if="user.isMentor">
+                </md-input-container>
+              </div>
               <md-input-container md-no-float class="md-block md-accent">
-                <input ng-model="school.name" type="text" placeholder="Établissement"  ng-if="user.isMentor">
+                <input ng-model="school.price" type="text" placeholder="prix"  ng-if="user.isMentor">
               </md-input-container>
               <div class="tags" ng-if="user.isMentor" width="80%">
                 <!--Mon domaine de compétences-->

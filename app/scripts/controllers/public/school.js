@@ -7,8 +7,8 @@
         $rootScope.auth = Auth;
         var userUid = '';
 
-        $scope.schools = Schools;
-
+        $scope.schools = Schools.all;
+        console.log($scope.schools);
 
         $rootScope.auth.$onAuthStateChanged(function (firebaseUser) {
           $rootScope.firebaseUser = firebaseUser;

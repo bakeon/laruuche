@@ -17,7 +17,6 @@ angular.module('laruucheApp')
 
 
     let Schools = {
-
       all: schools
     };
     return Schools;

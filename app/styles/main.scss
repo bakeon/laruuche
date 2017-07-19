@@ -132,6 +132,22 @@ a{
   }
 }
 
+.school-style{
+  width:100%;
+  .left-info{
+    width:200px;
+  }
+  .right-info>div{
+    width:100%;
+  }
+  .liste{
+    width:100%;
+    li{
+      width:50%;
+    }
+  }
+}
+
 .header-main {
   background: url("../assets/images/bg_header_2.jpg") no-repeat center center;
   background-size: cover;

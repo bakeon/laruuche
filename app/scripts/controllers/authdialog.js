@@ -125,6 +125,7 @@ angular.module('laruucheApp')
     this.customKeys = [$mdConstant.KEY_CODE.ENTER,$mdConstant.KEY_CODE.SPACE];
 
     $scope.updateProfile = function(){
+      console.log($scope.schoolTags)
       $scope.school.tags=$scope.schoolTags.join();
       let exist;
       let userRef = firebase.database().ref().child('schools');
