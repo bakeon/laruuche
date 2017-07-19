@@ -40,7 +40,7 @@ angular.module('laruucheApp')
           $scope.ChatroomsList.$loaded().then(function () {
 
           });
-
+          $scope.ama = Chatrooms.getMyAMA(userUid);
           $scope.getRoomName = function(uid){
             return Chatrooms.getName(uid);
           };

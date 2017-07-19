@@ -28,7 +28,6 @@ angular.module('laruucheApp')
 
       /*Get the room object*/
       $scope.ChatRoomObj = Chatrooms.getRoom($routeParams.id);
-      console.log($scope.ChatRoomObj);
 
       chatrooms.$loaded().then(function () {
         $scope.chatroom = chatrooms.$getRecord($routeParams.id);
@@ -133,7 +132,7 @@ angular.module('laruucheApp')
                 exist=false
               }
             });
-            if(exist==false){ 
+            if(exist==false){
               room.push(roomToAdd);
             }
           }
