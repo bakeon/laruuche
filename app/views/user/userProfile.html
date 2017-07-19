@@ -1,0 +1,157 @@
+<div layout="row" class="container" layout-align="start start">
+  <md-sidenav class="sidebar shadow" layout="column" layout-align="space-between start" class="md-sidenav-left"
+              md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-sm')">
+    <div class="up-container">
+      <div class="up" flex layout="column" layout-align="start start">
+        <div class="my-info" layout="column" layout-align="center center" layout-padding>
+          <div class="edit" layout="row" layout-align="end center">
+            <a ng-click="openLeftMenu()" href="#!userProfile"
+               title="Editer mon profil"
+               class="md-raised md-primary launch" layout="row" layout-align="end center">
+              Éditer
+              <span class="icon lricon-edit margin-left"></span>
+
+            </a>
+          </div>
+          <img class="user-pic" ng-src="{{user.photoURL}}"/>
+          <div class="user-info">
+            <div class="user-name">
+              {{ user.displayName }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="save" layout layout-align="center center">
+        Mon contenu
+      </div>
+    </div>
+    <div class="room-list-wrapper" flex layout="column" layout-align="start center">
+      <div class="room-list" layout="column" layout-align="start center">
+        <div class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-rooms"  ng-class="isActive == 'myrooms' ? 'active' : ' ' " layout
+               layout-align="center center" flex>
+              Mes rooms
+              <span class="icon lricon-messages margin-left"></span>
+            </a>
+          </div>
+        </div>
+        <div ng-if="user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-students"  ng-class="isActive == 'mystudents' ? 'active' : ' ' " layout
+               layout-align="center center" flex>
+              Mes étudiants
+              <span class="icon lricon-user margin-left"></span>
+            </a>
+          </div>
+        </div>
+        <div ng-if="user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-ama"  ng-class="isActive == 'myama' ? 'active' : ' ' " layout
+               layout-align="center center" flex>
+              Mes AMA
+              <span class="icon lricon-user margin-left"></span>
+            </a>
+          </div>
+        </div>
+        <div ng-if="!user.isMentor" class="room pointer" layout>
+          <div layout layout-align="center center" flex>
+            <a href="#!/userProfile/my-mentors"  ng-class="isActive == 'mymentors' ? 'active' : ' ' " layout
+               layout-align="center center" flex>
+              Mes mentors
+              <span class="icon lricon-user margin-left"></span>
+            </a>
+          </div>
+        </div>
+        <!--<div class="room pointer">
+          <div layout layout-align="center center">
+            <a href="#!/panel/chatroom/create" ng-show="user.accessLevel >= 20">
+              Créer une chatrooms
+            </a>
+          </div>
+        </div>-->
+      </div>
+    </div>
+    <div class="down" layout="column " layout-align="center center">
+      <a href="/" ng-click="logout()">Déconnexion<span class="icon lricon-settings margin-left"></span></a>
+    </div>
+  </md-sidenav>
+  <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content shadow" layout layout-align="start start">
+      <div layout="row" layout-align="end center">
+        <md-button ng-click="openLeftMenu()"
+                   class="md-fab md-mini menu" hide-gt-sm>
+          <span class="icon lricon-more"></span>
+        </md-button>
+        <h3 class="md-title">Mon profil</h3>
+      </div>
+
+      <!--<form class="search-bar" layout layout-align="start center">
+        <div class="" layout="row" layout-align="start start">
+          <div class="search-input" layout layout-align="start center">
+            <span class="icon lricon-search"></span>
+            <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
+          </div>
+        </div>
+      </form>-->
+    </div>
+    <div class="wrapper room-wrapper profile arrow" layout="column" layout-align="start center" flex>
+      <md-content layout="column" layout-align="start center" class="inset-shadow">
+        <div layout="column" layout-align="start center">
+          <div layout="row" layout-align="center center">
+            <div flex="20">
+              <img ng-src="{{user.photoURL}}" class="profil-picture"
+                   alt="Photo de profil de {{ firebaseUser.displayName }}">
+            </div>
+            <div flex="70" class="profile-title">
+            </div>
+          </div>
+          <form ng-submit="$event.preventDefault()" name="searchForm" layout="column">
+            <md-input-container class="md-block md-accent" flex-gt-sm>
+              <label>Prénom :</label>
+              <input ng-model="user.firstName">
+            </md-input-container>
+
+            <md-input-container class="md-block md-accent" flex-gt-sm>
+              <label>Nom :</label>
+              <input ng-model="user.lastName">
+            </md-input-container>
+
+            <md-input-container ng-if="!user.isMentor" class="md-block md-accent" flex-gt-sm>
+              <label>Mon bac :</label>
+              <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
+                <md-option ng-repeat="track in tracks" ng-value="track">
+                  {{ track }}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container md-no-float class="md-block md-accent">
+              <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
+            </md-input-container>
+            <md-checkbox ng-model="user.isMentor" aria-label="isMentor">
+              Je souhaite devenir un mentor
+            </md-checkbox>
+            <p class="input-desc" ng-if="user.isMentor">Être mentor c'est conseiller les autres par rapport à son
+              expérience dans un domaine.</p>
+            <div ng-if="user.isMentor">
+              <!--Mon domaine de compétences-->
+              <label>Mes domaines d'expertise :</label>
+              <md-chips
+
+                ng-model="tags"
+                placeholder="Espace pour ajouter"
+                secondary-placeholder="Espace pour ajouter"
+                md-separator-keys="ProfileCtrl.customKeys">
+              </md-chips>
+            </div>
+            <md-button class="update-yellow-button" ng-click="updateProfile()">
+              Sauvegarder
+            </md-button>
+          </form>
+        </div>
+      </md-content>
+    </div>
+
+  </div>
+</div>

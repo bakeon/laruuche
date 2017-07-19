@@ -1,0 +1,47 @@
+<div layout="row" class="container" layout-align="start start">
+  <div class="sidebar" layout="column" layout-align="space-between start">
+    <div class="up" flex layout="column" layout-align="start start">
+      <div class="my-info" layout="column" layout-align="start start">
+        <img class="user-pic" ng-src="{{  }}"/>
+        <div class="user-info">
+          <div class="user-name">
+            {{ user.displayName }}
+          </div>
+          <div class="actions">
+          </div>
+          <div class="options" layout="column" layout-align="start start">
+            <md-button ng-href="#!admin/users"
+                       title="Nos utilisateurs"
+                       class="md-raised md-primary launch">
+              Nos utilisateurs
+            </md-button>
+            <md-button ng-href="#!admin/rooms"
+                       title="Nos rooms"
+                       class="md-raised md-primary launch">
+              Nos rooms
+            </md-button>
+
+            <md-button ng-href="#!profile"
+                       title="Editer mon profil"
+                       class="md-raised md-primary launch">
+              Éditer
+            </md-button>
+            <md-button ng-click="logout()" class="md-raised md-warn">Déconnexion</md-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="down" layout="column " layout-align="end start">
+      <div id="footer" layout="column " layout-align="end start" >
+        <a href="#!about" class="lr-link-button condition">conditions générale d'utilisation</a>
+        <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
+      </div>
+    </div>
+  </div>
+  <div layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content" layout-padding>
+      <h3 class="md-title">Panel administrateur</h3>
+    </div>
+  </div>
+</div>
+

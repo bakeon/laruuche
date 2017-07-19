@@ -1,23 +1,105 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="main-content">
+  <div class="header-main" layout layout-align="center center">
+    <div class="container" layout="column" layout-align="space-around center" width="80%">
+      <div class="navbar-header" layout="row" layout-align="center center">
+        <a href="#/"><img class="logo logo-margin" src="assets/images/logo-inline.svg" alt="logo la ruuche"></a>
+      </div>
+      <div layout="column" layout-align="start start">
+        <h1>Ta conseillère d'orientation en mieux</h1>
+        <p>la ruuche est la première plateforme de conseil pour les étudiants par des étudiants</p>
+        <div layout>
+          <ul layout="row" layout-align="start center" class="cta-list">
+            <li class="lr-yellow-button" ng-click="loginButton($event)" layout layout-align="center center">Essayer</li>
+          </ul>
+        </div>
+      </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+      <!--<div ng-show="firebaseUser">
+        <p>Salut, {{ firebaseUser.displayName }}</p>
+        <a ng-href="#!panel">Ruuche Rooms</a>
+        <a ng-href="#!profile">Profil</a>
+        <span class="hive1 hive">hive</span>
+      <span class="hive2 hive">hive</span>
+      <span class="hive-left">
+        <span class="hive-pleine"></span>
+        <span class="hive-contour"></span>
+        <span class="hive-contour-2"></span>
+      </span>
+      <span class="hive-right">
+        <span class="hive-pleine"></span>
+        <span class="hive-contour"></span>
+      </span>
+      </div>-->
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    </div>
+  </div>
+  <div class="what" layout layout-align="center center">
+    <div layout="row">
+      Tu cherches une orientation ? Contacte un Mentor et pose lui toutes tes questions.
+      T’es étudiant ou jeune actif, partage ton expérience et devient mentor pour les jeunes intéressés par ton domaine.
+    </div>
+  </div>
+  <div class="video">
+    <div class="title-video" layout="row" layout-align="center center">
+      <p>Présentation en vidéo</p>
+    </div>
+    <div class="section-container layout-column-space-around-center">
+      <!--<span id="playVideo" class="icon lricon-{{icon}} pointer"></span>-->
+      <div class="playVideoInLightbox player-action"></div>
+    </div>
+  </div>
+  <div id="fourthArticle" class="fourthArticle" layout="row" layout-align="start start">
+    <div class="big-title" layout="row" layout-align="start center">
+      <div layout="column" layout-align="start start">
+        <div class="icon lricon-3"></div>
+      </div>
+      <div>étapes</div>
+    </div>
+    <div class="section-container">
+      <div class="title-container" layout="row" layout-align="center center">
+        <h1 class="blue">Tu cherches une orientation</h1>
+      </div>
+      <div class="articleWrapper layout-{{direction}}">
+        <div ng-repeat="article in homeTemplate" layout="row" layout-align="center center">
+          <div class="article-container" layout="row" layout-align="{{article.alignement}}">
+            <article class="{{article.class}}" layout="row">
+              <div class="icon lricon-{{article.title}} number-etape blue" layout="row"
+                   layout-align="center center"></div>
+              <p layout="row" layout-align="center center">
+                <span class="text-fonctionality blue">{{article.paragraphe}}</span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-container">
+      <div class="title-container" layout="column" layout-align="center center">
+        <span>Bientôt disponible !</span>
+        <h1>Tu souhaites devenir mentor</h1>
+      </div>
+      <div class="articleWrapper layout-{{direction}}">
+        <div ng-repeat="article in homeTemplate2" layout="row" layout-align="center center">
+          <div class="article-container" layout="row" layout-align="{{article.alignement}}">
+            <article class="{{article.class}}" layout="row" layout-align="center center">
+              <div class="icon lricon-{{article.title}} number-etape"></div>
+              <p layout="row" layout-align="center center">
+                <span class="text-fonctionality">{{article.paragraphe}}</span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cta-app" layout>
+    <ul layout="row" layout-align="center center" class="cta-list">
+      <li class="lr-yellow-button" ng-click="loginButton($event)" layout layout-align="center center">Essayer</li>
+    </ul>
+  </div>
+  <div id="footer" layout="row " layout-align="space-between center" layout-padding>
+    <a href="#!about" class="lr-link-button condition" layout layout-align="center center">conditions générales</a>
+    <p><span class="glyphicon glyphicon-heart"></span> Made with love by La Ruuche for students © 2017</p>
+  </div>
 </div>

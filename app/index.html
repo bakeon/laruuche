@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>La Ruuche</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500" rel="stylesheet">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -15,53 +16,74 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="laruucheApp">
+  <body ng-app="laruucheApp" layout="column" flex>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
 
-            <a class="navbar-brand" href="#/">laruuche</a>
-          </div>
-
-          <div class="collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#!about">About</a></li>
-              <li><a ng-href="#!login">Login</a></li>
-            </ul>
+    <div class="header" layout layout-align="space-between center" ng-controller="NavCtrl as NavCtrl">
+      <div layout layout-align="center center">
+        <a href="#!"  class="icon lricon-picto-logo"></a>
+      </div>
+      <ul class="nav" layout="row" layout-align="start center">
+          <li><a href="#!" ng-class="isActive == 'main' ? 'active' : ' ' ">Accueil</a></li>
+        <li><a href="#!rooms" ng-class="isActive == 'rooms' ? 'active' : ' ' ">Rooms</a></li>
+        <li><a href="#!ama" ng-class="isActive == 'ama' ? 'active' : ' ' ">AMA</a></li>
+        <li ng-if="!user.isMentor"><a href="#!mentors" ng-class="isActive == 'mentors' ? 'active' : ' ' ">Mentors</a></li>
+        <!--<li><a href="#!schools" ng-class="isActive == 'schools' ? 'active' : ' ' ">Écoles</a></li>-->
+        <li><a href="#!userProfile/my-rooms" ng-class="isActive == 'myrooms' ? 'active' : ' ' ">Profil <span ng-if="roomAdded" id="addRoomNotif"></span></a></li>
+      </ul>
+      <ul layout="row" class="social" layout-align="space-between center">
+        <li><a title="Page Facebook de La Ruuche" class="social-facebook" href="https://www.facebook.com/laruuche/"
+               target="_blank"><span class="icon lricon-facebook"></span></a></li>
+        <li><a title="Profil Twitter de La Ruuche" class="social-twitter" href="https://twitter.com/LaRuuche"
+               target="_blank"><span class="icon lricon-twitter"></span></a></li>
+      </ul>
+      <div id="mentorNotif" ng-show="pendingStudents">
+          <div class="accept-student-notif" ng-if="notifications.length >= 1" ng-repeat="notification in notifications" layout="column" layout-align="space-between center">
+            <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
+            <div layout="row" layout-align="center center">
+              <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
+              <div flex="70">
+                <p class="title-notif">{{notification.displayName}} / {{ notification.track}}</p>
+                <span class="sub-notif">J'aimerais devenir ton élève !</span>
+              </div>
+            </div>
+          <div layout="row" layout-align="center center">
+            <div class="lr-yellow-button" ng-click="acceptStudent(notification.studentId, $index)" layout layout-align="center center">
+              Accepter
+            </div>
+            <div class="lr-grey-button margin-left" ng-click="refuseStudent(notification.studentId, $index)" layout layout-align="center center">
+              Refuser
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-    <div ng-view=""></div>
+    <div class="container main-container" layout flex width="100%">
+      <div ng-view="" layout flex width="100%"></div>
     </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+    <div class="lightbox-container" layout="row" layout-align="center center">
+      <div class="lightbox-shadow" layout layout-align="center center"></div>
+      <div class="lightbox">
+        <iframe width="100%" height="480" src="https://www.youtube.com/embed/eK1iQ6be4Zg" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
 
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-100897209-1', 'auto');
        ga('send', 'pageview');
-    </script>
+     </script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -75,21 +97,58 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/js-cookie/src/js.cookie.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
-
-    <!-- CDN scripts-->
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/services/authfactory.js"></script>
+        <script src="scripts/controllers/auth.js"></script>
+        <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/user/panel.js"></script>
+        <script src="scripts/controllers/user/chatroom.js"></script>
+        <script src="scripts/controllers/admin/backoffice.js"></script>
+        <script src="scripts/services/users.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/chatrooms.js"></script>
+        <script src="scripts/services/messages.js"></script>
+    <script src="scripts/services/schools.js"></script>
+
+    <script src="scripts/controllers/admin/adminusers.js"></script>
+        <script src="scripts/controllers/admin/adminedituser.js"></script>
+        <script src="scripts/controllers/admin/adminrooms.js"></script>
+        <script src="scripts/controllers/admin/admineditroom.js"></script>
+        <script src="scripts/controllers/public/rooms.js"></script>
+    <script src="scripts/controllers/public/school.js"></script>
+
+    <script src="scripts/controllers/public/chatroom.js"></script>
+
+    <script src="scripts/controllers/public/mentors.js"></script>
+
+    <script src="scripts/services/degrees.js"></script>
+        <script src="scripts/controllers/user/findmymentor.js"></script>
+        <script src="scripts/controllers/user/mystudents.js"></script>
+        <script src="scripts/controllers/user/mymentors.js"></script>
+    <script src="scripts/controllers/user/myrooms.js"></script>
+
+    <script src="scripts/controllers/user/privatechatroom.js"></script>
+        <script src="scripts/controllers/authdialog.js"></script>
+        <script src="scripts/directives/scrollbottom.js"></script>
+        <script src="scripts/directives/nomentor.js"></script>
+        <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/controllers/createama.js"></script>
+        <script src="scripts/controllers/public/ama.js"></script>
+        <script src="scripts/controllers/user/studentama.js"></script>
+        <script src="scripts/controllers/user/answer.js"></script>
+        <script src="scripts/controllers/user/myama.js"></script>
         <!-- endbuild -->
-</body>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  </body>
 </html>

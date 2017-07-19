@@ -1,0 +1,67 @@
+<div layout="row" class="container" layout-align="start start">
+  <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content shadow" layout layout-align="start start">
+      <div layout="row" layout-align="end center">
+        <h3 class="md-title">Recherche les écoles qui t'intéressent</h3>
+      </div>
+
+      <form id="searchJob" class="search-bar" layout layout-align="start center">
+        <div class="" layout="row" layout-align="start start">
+          <div class="search-input" layout layout-align="start center">
+            <span class="icon lricon-search"></span>
+            <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="accept-student-notif" ng-if="notifications.length > 0" ng-repeat="notification in notifications">
+      <md-button ng-click="closeNotif(notification.studentId, $index)" class="close-cross">x</md-button>
+      <div layout="row"  layout-align="center center">
+        <img flex="20" class="md-user-avatar" src="{{notification.studentPhotoURL}}"/>
+        <div flex="70">
+          <p class="title-notif">{{notification.displayName}} / {{ notification.track}}</p>
+          <span class="sub-notif">J'aimerais devenir ton élève !</span>
+        </div>
+      </div>
+      <div layout="row"  layout-align="center center">
+        <md-button class="md-raised black accept-mentor"  ng-click="acceptStudent(notification.studentId, $index)">Accepter</md-button>
+        <md-button class="md-raised black refuse-mentor"  ng-click="refuseStudent(notification.studentId, $index)">Refuser</md-button>
+      </div>
+    </div>
+    <div class="wrapper room-wrapper" layout="column" layout-align="start start" flex>
+      <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
+        <div class="school-style" layout="row" layout-align="start start" ng-repeat="school in schools">
+          <div class="left-info" layout="column" layout-align="end center">
+            <div class="images-container">
+              <div>
+                <img src="../assets/img/forme_triangulaire.jpg"/>
+                <div class="logo-school">
+                  <span class="icon lricon-picto-logo">
+                  </span>
+                </div>
+              </div>
+            </div>
+            <a href="#" class="lr-link-button">ajouter à mes écoles</a>
+          </div>
+          <div class="right-info" layout="column" layout-align="start start" flex>
+            <div class="school-title">
+              <h1>{{school.name}}</h1>
+              <div>{{school.tags}}</div>
+            </div>
+            <div layout="column" layout-align="start start">
+              <ul layout="row" layout-align="space-around center" flex class="liste">
+                <li layout layout-align="center center"><div layout="row"><span class="icon lricon-picto-logo" flex></span>{{school.price}} euro/an</div></li>
+                <li layout layout-align="center center"><div layout="row"><span class="icon lricon-picto-logo" flex></span><a layout="row" layout-align="center center" class="lr-yellow-button" href="{{school.site}}" target="_blank">lien vers le site</a></div></li>
+              </ul>
+              <ul layout="row" layout-align="space-around center" flex class="liste">
+                <li layout layout-align="center center"><div layout><span class="icon lricon-picto-logo" flex></span>{{school.positif}}</div></li>
+                <li layout layout-align="center center"><div layout><span class="icon lricon-picto-logo" flex></span>{{school.negatif}}</div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </md-content>
+    </div>
+
+  </div>
+</div>

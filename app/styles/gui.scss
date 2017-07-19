@@ -1,0 +1,247 @@
+@import "variables";
+
+@font-face {
+  font-family: 'laRucheFont';
+  src:  url('#{$icomoon-font-path}/laRucheFont.eot?jfzm4j');
+  src:  url('#{$icomoon-font-path}/laRucheFont.eot?jfzm4j#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/laRucheFont.ttf?jfzm4j') format('truetype'),
+  url('#{$icomoon-font-path}/laRucheFont.woff?jfzm4j') format('woff'),
+  url('#{$icomoon-font-path}/laRucheFont.svg?jfzm4j#laRucheFont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'laRucheFont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lricon-edit {
+  &:before {
+    content: $lricon-edit;
+  }
+}
+.lricon-fb {
+  &:before {
+    content: $lricon-fb;
+  }
+}
+.lricon-tt {
+  &:before {
+    content: $lricon-tt;
+  }
+}
+.lricon-picto-logo {
+  &:before {
+    content: $lricon-picto-logo;
+  }
+}
+.lricon-back {
+  &:before {
+    content: $lricon-back;
+  }
+}
+.lricon-delete {
+  &:before {
+    content: $lricon-delete;
+  }
+}
+.lricon-doodle {
+  &:before {
+    content: $lricon-doodle;
+  }
+}
+.lricon-go {
+  &:before {
+    content: $lricon-go;
+  }
+}
+.lricon-help {
+  &:before {
+    content: $lricon-help;
+  }
+}
+.lricon-home {
+  &:before {
+    content: $lricon-home;
+  }
+}
+.lricon-letter {
+  &:before {
+    content: $lricon-letter;
+  }
+}
+.lricon-like {
+  &:before {
+    content: $lricon-like;
+  }
+}
+.lricon-link {
+  &:before {
+    content: $lricon-link;
+  }
+}
+.lricon-list {
+  &:before {
+    content: $lricon-list;
+  }
+}
+.lricon-location {
+  &:before {
+    content: $lricon-location;
+  }
+}
+.lricon-lock {
+  &:before {
+    content: $lricon-lock;
+  }
+}
+.lricon-messages {
+  &:before {
+    content: $lricon-messages;
+  }
+}
+.lricon-mic {
+  &:before {
+    content: $lricon-mic;
+  }
+}
+.lricon-more {
+  &:before {
+    content: $lricon-more;
+  }
+}
+.lricon-plus {
+  &:before {
+    content: $lricon-plus;
+  }
+}
+.lricon-pulse {
+  &:before {
+    content: $lricon-pulse;
+  }
+}
+.lricon-send {
+  &:before {
+    content: $lricon-send;
+  }
+}
+.lricon-settings {
+  &:before {
+    content: $lricon-settings;
+  }
+}
+.lricon-share {
+  &:before {
+    content: $lricon-share;
+  }
+}
+.lricon-slider {
+  &:before {
+    content: $lricon-slider;
+  }
+}
+.lricon-unlike {
+  &:before {
+    content: $lricon-unlike;
+  }
+}
+.lricon-user {
+  &:before {
+    content: $lricon-user;
+  }
+}
+.lricon-1 {
+  &:before {
+    content: $lricon-1;
+  }
+}
+.lricon-2 {
+  &:before {
+    content: $lricon-2;
+  }
+}
+.lricon-3 {
+  &:before {
+    content: $lricon-3;
+  }
+}
+.lricon-4 {
+  &:before {
+    content: $lricon-4;
+  }
+}
+
+
+.hide {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+
+
+.lightbox-container {
+  height: 0vh;
+  width: 0vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(33, 33, 33, 0.8);
+  z-index:1;
+  overflow:hidden;
+  transition : all .25s ease;
+}
+
+.lightbox-shadow {
+  position:absolute;
+  height: 100vh;
+  width: 100vw;
+  left:0vw;
+  top:0vh;
+
+}
+.lightbox{
+  position:absolute;
+  height: 70vh;
+  width: 80vw;
+  //@include absolute-center();
+  background: $black;
+  overflow: scroll;
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.lightbox-open .lightbox-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+
+.lr-shadow {
+  -moz-box-shadow: 1px 1px 3px 2px #EEEEEE;
+  -webkit-box-shadow: 1px 1px 3px 2px #EEEEEE;
+  -o-box-shadow: 1px 1px 3px 2px #EEEEEE;
+  box-shadow: 1px 1px 3px 2px #EEEEEE;
+}
+
+.lr-CTA {
+  padding: 8px 25px;
+  background: $yellow;
+  color: $black;
+  border-radius: 40px;
+}

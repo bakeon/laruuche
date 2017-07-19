@@ -1,0 +1,29 @@
+<md-dialog aria-label="Répondre à la question">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>J'ai une réponse !</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div ng-if="isLogged === true">
+        <div layout="row" layout-align="center center">
+          <md-content layout-padding flex="100" layout="column" layout-align="center center">
+            {{question.body}}
+            <form ng-submit="$event.preventDefault()" name="searchForm">
+              <md-input-container class="md-block md-accent" flex="100">
+                <label>Ma réponse:</label>
+                <textarea ng-model="question.answer" rows="5" md-maxlength="100"></textarea>
+              </md-input-container>
+              <button class="update-yellow-button" ng-click="sendAnswer()">
+                Répondre
+              </button>
+            </form>
+          </md-content>
+        </div>
+      </div>
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

@@ -1,0 +1,15 @@
+<div layout="row" layout-wrap style="padding:30px;">
+  <h3 class="md-title" style="text-align:center;">Créer une chatroom</h3>
+  <div flex="grow">
+    <form ng-submit="createChatroom()">
+      <md-input-container class="md-block">
+        <label>Nom :</label>
+        <input md-maxlength="30" required md-no-asterisk name="Nom de la chatroom" ng-model="newChatroom.name">
+      </md-input-container>
+      <md-checkbox ng-model="newChatroom.active" aria-label="Finished?">
+        active
+      </md-checkbox>
+      <md-button class="md-raise md-primary" type="submit">Créer</md-button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div layout="row" class="container" layout-align="start start">
+  <div class="sidebar" layout="column" layout-align="space-between start">
+    <div class="up" flex layout="column" layout-align="start start">
+      <div class="my-info" layout="column" layout-align="start start">
+        <img class="user-pic" ng-src="{{  }}"/>
+        <div class="user-info">
+          <div class="user-name">
+            {{ user.displayName }}
+          </div>
+          <div class="actions">
+          </div>
+          <div class="options" layout="column" layout-align="start start">
+            <md-button ng-href="#!admin/users"
+                       title="Nos utilisateurs"
+                       class="md-raised md-primary launch">
+              Nos utilisateurs
+            </md-button>
+            <md-button ng-href="#!admin/rooms"
+                       title="Nos rooms"
+                       class="md-raised md-primary launch">
+              Nos rooms
+            </md-button>
+
+            <md-button ng-href="#!profile"
+                       title="Editer mon profil"
+                       class="md-raised md-primary launch">
+              Éditer
+            </md-button>
+            <md-button ng-click="logout()" class="md-raised md-warn">Déconnexion</md-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="down" layout="column " layout-align="end start">
+      <div id="footer" layout="column " layout-align="end start" >
+        <a href="#!about" class="lr-link-button condition">conditions générale d'utilisation</a>
+        <p><span class="glyphicon glyphicon-heart"></span> Made by La Ruuche for students © 2017</p>
+      </div>
+    </div>
+  </div>
+  <div layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content" layout-padding>
+      <h3 class="md-title">Nos utilisateurs</h3>
+    </div>
+    <table class="angular-material-table">
+      <thead>
+        <tr>
+          <td>Nom</td>
+          <td>Prénom</td>
+          <td>Nom d'utilisateur</td>
+          <td>Email</td>
+          <td>N° de téléphone</td>
+          <td>Mentor</td>
+          <td>Filière actuelle </td>
+          <td>Dernier diplome</td>
+          <td>Niveau d'accès</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users">
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.displayName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.isMentor ? 'OUI':'NON' }}</td>
+          <td>{{ user.track }}</td>
+          <td>{{ user.lastDegree }}</td>
+          <td>{{ filterLevel(user.accessLevel) }}</td>
+          <td>
+            <div layout="column" flex="33" flex-sm="100" flex-xs="100" layout-align="center center">
+              <md-menu md-offset="0 -7">
+                <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                  <md-icon md-menu-origin md-svg-icon="call:chat"></md-icon>
+                </md-button>
+                <md-menu-content width="2">
+                  <md-menu-item>
+                    <md-button ng-click="showEdit(user, $event)"> <span md-menu-align-target></span>Editer</md-button>
+                  </md-menu-item>
+                  <md-menu-item>
+                    <md-button ng-click="delete(user.$id, $event)"> <span md-menu-align-target></span>Supprimer</md-button>
+                  </md-menu-item>
+                </md-menu-content>
+              </md-menu>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

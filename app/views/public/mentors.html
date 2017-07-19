@@ -1,0 +1,46 @@
+<div layout="row" class="container" layout-align="start start">
+  <div class="content-app" layout="column" layout-align="start start" flex class="chatroom">
+    <div class="title-content shadow" layout layout-align="start start">
+      <div layout="row" layout-align="end center">
+        <h3 class="md-title">Trouve ton mentor</h3>
+      </div>
+
+      <form class="search-bar" layout layout-align="start center">
+        <div class="" layout="row" layout-align="start start">
+          <div class="search-input" layout layout-align="start center">
+            <span class="icon lricon-search"></span>
+            <input id="search" class="flex-1" type="search" placeholder="Recherche de mots clefs" flex/>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="wrapper room-wrapper mentor" layout="column" layout-align="start start" flex>
+      <md-content layout="row" layout-align="start start" class="inset-shadow" layout-wrap>
+        <!--Search bar -->
+
+        <!-- Find my mentor -->
+        <div class="card-room" ng-class="" ng-repeat="(key, mentor) in mentors" layout="column" layout-align="center center">
+          <div class="card-header" layout="column" layout-align="center center">
+            <div>
+              <span class="icon lricon-user"></span>
+            </div>
+            <div class="card-header-text">
+              <span class="title-card">{{ mentor.displayName }}</span>
+            </div>
+            <div layout="row" layout-align="start center">
+              <div><img class="user-pic" ng-src="{{mentor.photoURL}}"/>
+              </div>
+              <div>{{mentor.schoolName}}</div>
+            </div>
+          </div>
+          <div class="card-actions" layout="row" layout-align="start center">
+            <a layout layout-align="center center" ng-if="!user.mentors[mentor.$id].mentorId"class="lr-blue-button" ng-click="askForMentoring(mentor.$id)">Voir profil</a>
+            <a layout layout-align="center center" ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'pending'" class="lr-blue-button" disabled>En attente</a>
+            <a layout layout-align="center center" ng-if="user.mentors[mentor.$id].mentorId === mentor.$id && user.mentors[mentor.$id].status === 'accepted'" ng-click="joinPrivateRoom(mentor.$id, user.$id)" class="lr-blue-button" >Discuter</a>
+          </div>
+        </div>
+      </md-content>
+    </div>
+
+  </div>
+</div>

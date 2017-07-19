@@ -1,0 +1,109 @@
+<md-dialog aria-label="Rejoins la Ruuche">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{ step }} !</h2>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+          <div ng-if="isLogged === false">
+            <div class="login" layout="column" layout-align="space-around center">
+              <a class="lr-yellow-button" ng-click="googleSignIn()" layout="row" layout-align="center center">
+                Login with Gmail
+              </a>
+              <a class="lr-yellow-button" ng-click="fbSignIn()" layout="row" layout-align="center center">
+                Login with Facebook
+              </a>
+            </div>
+          </div>
+      </div>
+      <div ng-if="isLogged === true">
+        <div layout="row" layout-align="center center">
+          <md-content layout-padding flex="100" layout="column" layout-align="center center">
+            <div layout="column"  layout-align="center center">
+              <div>
+                <img  ng-src="{{user.photoURL}}" class="profil-picture" alt="Photo de profil de {{ firebaseUser.displayName }}">
+              </div>
+              <div class="profile-title">
+                <h3 class=".md-headline">Vous êtes à l'entrée de la Ruuche !</h3>
+                <p>Une dernière étape avant de nous rejoindre.</p>
+              </div>
+            </div>
+            <form ng-submit="$event.preventDefault()" name="searchForm">
+              <md-input-container class="md-block md-accent" flex-gt-sm>
+                <label>Prénom :</label>
+                <input ng-model="user.firstName">
+              </md-input-container>
+
+              <md-input-container class="md-block md-accent" flex-gt-sm>
+                <label>Nom :</label>
+                <input ng-model="user.lastName">
+              </md-input-container>
+
+              <md-input-container ng-if="!user.isMentor" class="md-block md-accent" flex-gt-sm>
+                <label>Mon bac :</label>
+                <md-select ng-model="user.track" class="md-no-underline" placeholder="Ma classe :">
+                  <md-option ng-repeat="track in tracks" ng-value="track">
+                    {{ track }}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container md-no-float class="md-block md-accent">
+                <input ng-model="user.phone" type="text" placeholder="Numéro de téléphone">
+              </md-input-container>
+              <md-checkbox ng-model="user.isMentor" aria-label="isMentor" ng-change="isMentor()">
+                Je souhaite devenir un mentor
+              </md-checkbox>
+              <p class="input-desc" ng-if="user.isMentor">Être mentor c'est conseiller les autres par rapport à son expérience dans un domaine.</p>
+              <div class="tags" ng-if="user.isMentor" width="80%">
+                <!--Mon domaine de compétences-->
+                <md-chips
+
+                  ng-model="tags"
+                  placeholder="Mes domaines d'expertise :"
+                  secondary-placeholder="Mes domaines d'expertise :"
+                  md-separator-keys="ProfileCtrl.customKeys">
+                </md-chips>
+              </div>
+              <!--<p ng-if="user.isMentor">quelques renseignement sur mon école</p>
+              <div layout="row" layout-align="start center">
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.name" type="text" placeholder="Établissement"  ng-if="user.isMentor">
+                </md-input-container>
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.site" type="text" placeholder="site web"  ng-if="user.isMentor">
+                </md-input-container>
+              </div>
+              <div layout="row" layout-align="start center">
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.positif" type="text" placeholder="point positif"  ng-if="user.isMentor">
+                </md-input-container>
+                <md-input-container md-no-float class="md-block md-accent">
+                  <input ng-model="school.negatif" type="text" placeholder="point négatif "  ng-if="user.isMentor">
+                </md-input-container>
+              </div>
+              <md-input-container md-no-float class="md-block md-accent">
+                <input ng-model="school.price" type="text" placeholder="prix"  ng-if="user.isMentor">
+              </md-input-container>
+              <div class="tags" ng-if="user.isMentor" width="80%">-->
+                <!--Mon domaine de compétences-->
+               <!-- <md-chips
+                  ng-model="schoolTags"
+                  placeholder="Les domaines d'expertise de l'école :"
+                  secondary-placeholder="Les domaines d'expertise de l'école:"
+                  md-separator-keys="ProfileCtrl.customKeys">
+                </md-chips>
+              </div>-->
+              <md-button class="update-yellow-button" ng-if="isLogged === true" ng-click="updateProfile()">
+                C'est parti !
+              </md-button>
+            </form>
+          </md-content>
+        </div>
+      </div>
+    </md-dialog-content>
+
+  </form>
+</md-dialog>
