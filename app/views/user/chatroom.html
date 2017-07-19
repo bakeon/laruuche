@@ -67,34 +67,59 @@
   </md-sidenav>
   <div class="chat content-app" layout="column" layout-align="start start" flex>
     <div class="header-room shadow" layout="row" layout-align="space-between center">
-      <md-button  ng-click="openLeftMenu()"
-                  class=" md-fab md-mini menu-2" hide-gt-sm>
+      <md-button ng-click="openLeftMenu()"
+                 class=" md-fab md-mini menu-2" hide-gt-sm>
         <span class="icon lricon-more"></span>
       </md-button>
-      <a class="back" href="#!/rooms" layout layout-align="start center"><span class="icon lricon-back"></span><span class="mobile">Retour</span></a>
+      <a class="back" href="#!/rooms" layout layout-align="start center"><span class="icon lricon-back"></span><span
+        class="mobile">Retour</span></a>
       <div class="room-title" flex>
         <h2>{{ chatroomName }}</h2>
       </div>
-      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser()"><span class="icon lricon-plus"></span><span class="mobile">ajouter cette room au profil</span></button>
+      <button class="lr-add-button" layout="row" layout-align="center center" ng-click="addRoomToUser()"><span
+        class="icon lricon-plus"></span><span class="mobile">ajouter cette room au profil</span></button>
     </div>
     <div class="messengerBox" flex scroll-bottom="messages">
-      <div class="message-wrapper" >
+      <div class="message-wrapper">
         <h5>Exprime toi !</h5>
-        <div class="message" ng-repeat="message in messages" >
-          <div class="message-container isUser(message.uid)">
-            <div class="message-info" layout layout-align="start start">
-              <div class="left">
-                <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
+        <div class="message" ng-repeat="message in messages">
+          <div class="message-container" ng-if="getActiveMessage(message.uid)">
+            <div layout="column" layout-align="start end" class="{{getActiveMessage(message.uid)}}">
+              <div class="message-info" layout layout-align="start center">
+
+                <div class="right" layout="column" layout-align="start start">
+                  <div class="user-name" layout="row" layout-align="end center">
+                    <span class="timestamp margin-right">{{ message.timestamp | date:'h:mm ' }}</span>
+                    {{ getUserName(message.uid) }}
+                  </div>
+                </div>
+                <div class="left margin-left">
+                  <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
+                </div>
               </div>
-              <div class="right" layout="column" layout-align="start start">
-                <div class="user-name" layout="row" layout-align="start center">
-                  {{ getUserName(message.uid) }}
-                  <span class="timestamp">{{ message.timestamp | date:'h:mm ' }}</span>
+              <div class="message-text">
+                <p ng-if="message.type == 'text' " layout="row" layout-align="start center">{{ message.body }}</p>
+                <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
+              </div>
+            </div>
+
+          </div>
+          <div class="message-container" ng-if="!getActiveMessage(message.uid)">
+            <div layout="column" layout-align="start start">
+              <div class="message-info" layout layout-align="start center">
+                <div class="left margin-right">
+                  <img alt="photo profil user" src="{{getPhotoURL(message.uid)}}"/>
                 </div>
-                <div class="message-text">
-                  <p ng-if="message.type == 'text' ">{{ message.body  }}</p>
-                  <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
+                <div class="right" layout="column" layout-align="start start">
+                  <div class="user-name" layout="row" layout-align="start center">
+                    {{ getUserName(message.uid) }}
+                    <span class="timestamp margin-left">{{ message.timestamp | date:'h:mm ' }}</span>
+                  </div>
                 </div>
+              </div>
+              <div class="message-text">
+                <p ng-if="message.type == 'text' " layout="row" layout-align="start center">{{ message.body }}</p>
+                <img class="ruuche-gif" ng-if="message.type == 'gif' " src="{{ message.body }}">
               </div>
             </div>
           </div>
@@ -105,8 +130,8 @@
       <video id="remoteaudio" autoplay style="display: none"></video>
       <audio id="localaudio" muted></audio>
       <form ng-submit="sendMessage()">
-          <input ng-model="message" rows="5"
-                 placeholder="Message" id="input-message"/>
+        <input ng-model="message" rows="5"
+               placeholder="Message" id="input-message"/>
       </form>
     </div>
   </div>

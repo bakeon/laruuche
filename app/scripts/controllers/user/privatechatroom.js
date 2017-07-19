@@ -36,19 +36,21 @@ angular.module('laruucheApp')
         });
         $scope.getUserName = function (uid) {
           return Users.getDisplayName(uid);
-        }
+        };
         $scope.getPhotoURL = function(uid){
           return Users.getPhotoURL(uid);
         }
-
-
-
       });
 
       $rootScope.auth.$onAuthStateChanged(function (firebaseUser) {
         $rootScope.firebaseUser = firebaseUser;
         $scope.getRoomName = function (uid) {
           return Chatrooms.getName(uid);
+        };
+        $scope.getActiveMessage = function (uidd) {
+          if($rootScope.firebaseUser.uid==uidd){
+            return 'activeUser'
+          }
         };
 
         if (!$rootScope.firebaseUser) {

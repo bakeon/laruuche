@@ -16,7 +16,6 @@ angular.module('laruucheApp')
     $scope.isLogged = false;
 
     $rootScope.$on('$routeChangeStart', function(event, next, current){
-      console.log(  next.$$route.originalPath);
       if(next.$$route.originalPath == '/userProfile/my-rooms'){
         $scope.roomAdded = false;
       }
