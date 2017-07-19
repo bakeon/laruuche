@@ -128,7 +128,7 @@
       <video id="remoteaudio" autoplay style="display: none"></video>
       <audio id="localaudio" muted></audio>
       <form ng-submit="sendMessage()">
-        <div class="icon lricon-mic"></div>
+        <div id="audioControl" class="icon lricon-mic {{micClass}}"ng-click="controlAudio()"></div>
         <input ng-model="message" rows="5"
                placeholder="Message" id="input-message"/>
       </form>

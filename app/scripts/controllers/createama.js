@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name laruucheApp.controller:CreateamaCtrl
+ * @name laruucheApp.controller:CreateAmaCtrl
  * @description
- * # CreateamaCtrl
+ * # CreateAmaCtrl
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
@@ -41,6 +41,7 @@ angular.module('laruucheApp')
             };
 
             $scope.createAMA = function(){
+              $mdDialog.hide();
               $scope.amaChatroom.createdBy = userUid;
               $scope.amaChatroom.createdAt = firebase.database.ServerValue.TIMESTAMP;
               $scope.chatrooms.amaRooms.$add($scope.amaChatroom).then(function(){
@@ -51,7 +52,7 @@ angular.module('laruucheApp')
                   questions:'',
                 };
 
-                $location.path('/userProfile');
+                $location.path('/userProfile/my-ama');
 
               });
             };

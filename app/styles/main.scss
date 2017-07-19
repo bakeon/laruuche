@@ -335,6 +335,7 @@ h5 {
 }
 
 .send-message {
+  position: relative;
   height: 80px;
   form {
     width: 90%;
@@ -1211,6 +1212,21 @@ html {
 }
 
 /*Custom body*/
+#audioControl{
+  position: absolute;
+  font-size:25px;
+  cursor: pointer;
+  left:5px;
+  top:50%;
+  transform: translateY(-50%);
+}
+.mic-enabled{
+  color: #772025;
+}
+.mic-disabled{
+  color:grey;
+  opacity:.7;
+}
 .lr-subtitle{
   position: absolute;
   top: 72%;

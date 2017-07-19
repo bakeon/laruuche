@@ -8,7 +8,7 @@
  * Controller of the laruucheApp
  */
 angular.module('laruucheApp')
-  .controller('MyRoomsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms,$mdSidenav) {
+  .controller('MyRoomsCtrl', function ($rootScope, $scope, Auth, $location, Users, $firebaseObject, Chatrooms,$mdSidenav, $mdDialog) {
     $rootScope.auth = Auth;
     var userUid = '';
     $scope.Chatrooms = Chatrooms;
@@ -38,6 +38,16 @@ angular.module('laruucheApp')
           userUid = $scope.user.$id;
           $scope.ChatroomsList=Users.getRooms(firebaseUser.uid);
           $scope.ChatroomsList.$loaded().then(function () {
+
+          $scope.dialogAma = function($event){
+            $mdDialog.show({
+              controller: 'CreateAmaCtrl',
+              templateUrl: 'views/user/createAmaDialog.html',
+              parent: angular.element(document.body),
+              targetEvent: event,
+              clickOutsideToClose: true
+            });
+          }
 
           });
           $scope.ama = Chatrooms.getMyAMA(userUid);

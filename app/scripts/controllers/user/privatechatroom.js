@@ -76,7 +76,7 @@ angular.module('laruucheApp')
                   fromUser = $scope.ChatRoomObj.mentorId;
                   yourId = $scope.ChatRoomObj.studentId;
                 }
-
+                let myStream = '';
                 let database = firebase.database().ref('chatrooms').child($scope.ChatRoomObj.$id).child('audio');
                 let yourAudio = document.getElementById("localaudio");
                 let friendsAudio = document.getElementById("remoteaudio");
@@ -104,11 +104,36 @@ angular.module('laruucheApp')
 
                 };
 
-                function getMyAudio(){
+/*                function getMyAudio(){
                   navigator.mediaDevices.getUserMedia({audio:true, video:false})
                     .then(stream => yourAudio.srcObject = stream)
                     .then(stream => pc.addStream(stream))
-                };
+                };*/
+
+              $scope.micClass = 'mic-disabled';
+              $scope.mic = false;
+
+              function getMyAudio() {
+                navigator.mediaDevices.getUserMedia({audio: true, video: false}).then(function (stream) {
+                  yourAudio.srcObject = stream;
+                  pc.addStream(stream);
+                  myStream = stream;
+                  myStream.getAudioTracks()[0].enabled = false;
+                }).catch(function (err) {
+                  /* handle the error */
+                });
+              };
+
+                $scope.controlAudio = function(){
+                  myStream.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+                  $scope.mic = !($scope.mic);
+                  if($scope.mic){
+                    $scope.micClass = 'mic-enabled';
+                  }
+                  else{
+                    $scope.micClass = 'mic-disabled';
+                  }
+                }
 
                 function getHisAudio(){
                   pc.createOffer()
